@@ -26,3 +26,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
 end
+
+#adminka
+gem 'rails_admin'
