@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Short name</th>
+      <th>Logo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.short_name %></td>
+        <td><%= team.logo %></td>
+        <td><%= link_to 'Show', team %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
