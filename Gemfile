@@ -29,3 +29,5 @@ end
 
 #adminka
 gem 'rails_admin'
+#uploader
+gem 'carrierwave'
