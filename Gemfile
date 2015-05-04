@@ -27,6 +27,8 @@ group :development, :test do
   gem 'pry-rescue'
 end
 
+# support russian
+gem 'russian'
 #adminka
 gem 'rails_admin'
 #uploader
