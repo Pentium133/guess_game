@@ -14,9 +14,13 @@
   <tbody>
     <% @teams.each do |team| %>
       <tr>
-        <td><%= team.short_name %></td>
-        <td><%= team.logo %></td>
-        <td><%= link_to 'Show', team %></td>
+        <td>
+          <%= flag_list 32 do %>
+              <%= flags team.country.downcase.to_sym, :language => I18n.locale %>
+          <% end %>
+          <%= link_to team.short_name, team %>
+        </td>
+        <td><%= image_tag team.logo %></td>
       </tr>
     <% end %>
   </tbody>

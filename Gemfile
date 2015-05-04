@@ -31,3 +31,5 @@ end
 gem 'rails_admin'
 #uploader
 gem 'carrierwave'
+#flags
+gem 'world-flags'
