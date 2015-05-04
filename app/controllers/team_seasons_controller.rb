@@ -1,8 +1,8 @@
-class TeamsController < ApplicationController
+class TeamSeasonsController < ApplicationController
   before_action :set_team, only: [:show]
 
   def index
-    @teams = Team.all
+    @teams = TeamSeason.includes(:team).where(season: @current_season)
   end
 
   def show
@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
-      @team = Team.find(params[:id])
+      @team = TeamSeason.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
