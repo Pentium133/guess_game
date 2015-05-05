@@ -65,3 +65,8 @@ tm = Team.create code: 'TFR', short_name: 'TREK', country: 'US'
 TeamSeason.create season: s2015, team: tm, name: 'TREK FACTORY RACING', remote_logo_url: 'http://www.procyclingstats.com/shirts/2015-01/thumb/Trek-Factory-Racing-2015.jpg'
 
 puts 'Teams created'
+
+Race.create name: "Giro d'Italia", start_at: '2015-05-09', end_at: '2015-05-31', season: s2015
+Race.create name: "Tour de France", start_at: '2015-07-04', end_at: '2015-07-2', season: s2015
+
+puts 'Races created'
