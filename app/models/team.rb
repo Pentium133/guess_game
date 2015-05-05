@@ -11,4 +11,7 @@
 #
 
 class Team < ActiveRecord::Base
+  def name
+    short_name
+  end
 end
