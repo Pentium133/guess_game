@@ -1,0 +1,10 @@
+<h1>Import riders</h1>
+
+<%= form_tag import_team_season_path(@team) do |f| %>
+    <div class="control-group">
+      <div class="controls">
+        <%= text_area_tag :riders, params[:riders], size: "24x20", class: 'form-control' %>
+      </div>
+    </div>
+    <%= submit_tag("Import") %>
+<% end %>

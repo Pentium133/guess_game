@@ -3,5 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :team_seasons,  only: [:show, :index], path: '/teams'
+  resources :team_seasons,  only: [:show, :index], path: '/teams' do
+    member do
+      get :import
+      post :import
+    end
+  end
 end
