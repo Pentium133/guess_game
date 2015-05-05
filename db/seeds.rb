@@ -66,7 +66,10 @@ TeamSeason.create season: s2015, team: tm, name: 'TREK FACTORY RACING', remote_l
 
 puts 'Teams created'
 
-Race.create name: "Giro d'Italia", start_at: '2015-05-09', end_at: '2015-05-31', season: s2015
+r1 = Race.create name: "Giro d'Italia", start_at: '2015-05-09', end_at: '2015-05-31', season: s2015
+Stage.create name: 'San Lorenzo › Mare Sanremo', stage_number: 1, race: r1, stage_type: 'itt', start_at: '2015-05-09'
+Stage.create name: 'Albenga › Genova ', stage_number: 2, race: r1, stage_type: 'race', start_at: '2015-05-10'
+
 Race.create name: "Tour de France", start_at: '2015-07-04', end_at: '2015-07-2', season: s2015
 
 puts 'Races created'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505174657) do
+ActiveRecord::Schema.define(version: 20150505191717) do
 
   create_table "races", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20150505174657) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "stages", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.integer  "stage_number", limit: 4
+    t.integer  "race_id",      limit: 4
+    t.integer  "stage_type",   limit: 4,   default: 0
+    t.datetime "start_at"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "team_seasons", force: :cascade do |t|
