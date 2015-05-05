@@ -6,3 +6,9 @@
 <p>
   <img src="<%= @team.logo.url %>" alt="<%= @team.team.code %>"/>
 </p>
+
+<ul>
+<% @team.rider_team_seasons.each do |rider| %>
+  <li><%= rider.rider.first_name + ' ' + rider.rider.last_name %></li>
+<% end %>
+</ul>

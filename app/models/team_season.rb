@@ -14,6 +14,7 @@
 class TeamSeason < ActiveRecord::Base
   belongs_to :season
   belongs_to :team
+  has_many :rider_team_seasons
 
   mount_uploader :logo, TeamLogoUploader
 end

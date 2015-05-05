@@ -11,13 +11,13 @@ class TeamSeasonsController < ApplicationController
   def import
     if request.request_parameters[:riders].present?
       csv = CSV.parse(request.request_parameters[:riders], :headers => false)
-      counter = 0
+      counter = teamates = 0
       csv.each do |row|
-        unless Rider.find_by(last_name: row[0], first_name: row[1])
-          Rider.create last_name: row[0], first_name: row[1]
-          counter += 1
+        rider = Rider.find_or_create_by(last_name: row[0], first_name: row[1])
+        RiderTeamSeason.find_or_create_by(rider_id: rider.id, team_season_id: @team.id) do |tmp|
+          teamates += 1
         end
-        flash[:notice] = "#{counter} imported."
+        flash.now[:notice] = " #{teamates} teamates added."
       end
     end
   end
