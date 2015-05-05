@@ -3,9 +3,12 @@ class TeamSeasonsController < ApplicationController
 
   def index
     @teams = TeamSeason.includes(:team).where(season: @current_season)
+
+    @page_title = 'Teams'
   end
 
   def show
+    @page_title = @team.name
   end
 
   def import

@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Velo" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Velo" %>">
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link href="/fonts/font-awesome.min.css" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
@@ -12,9 +13,21 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <aside id="sidebar">
+      <%= render 'layouts/sidebar' %>
+    </aside>
+    <div class="dashboard-wrapper">
+      <div class="top-bar">
+        <div class="page-title"><%= @page_title %></div>
+      </div>
+      <div class="main-container">
+        <div class="container-fluid">
+          <div class="spacer">
+            <%= render 'layouts/messages' %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

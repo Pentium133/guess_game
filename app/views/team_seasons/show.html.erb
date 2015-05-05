@@ -1,14 +1,21 @@
-<p>
-  <strong>Short name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <img src="<%= @team.logo.url %>" alt="<%= @team.team.code %>"/>
-</p>
-
-<ul>
-<% @team.rider_team_seasons.each do |rider| %>
-  <li><%= rider.rider.first_name + ' ' + rider.rider.last_name %></li>
-<% end %>
-</ul>
+<div class="row">
+  <div class="col-md-2"><img src="<%= @team.logo.url %>" alt="<%= @team.team.code %>"/></div>
+  <div class="col-md-10">
+    <div class="blog">
+      <div class="blog-header">
+        <h5 class="blog-title">Riders</h5>
+      </div>
+      <div class="blog-body">
+        <table class="table table-condensed table-bordered no-margin">
+          <tbody>
+            <% @team.rider_team_seasons.each do |rider| %>
+            <tr>
+              <td><%= rider.rider.first_name + ' ' + rider.rider.last_name %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

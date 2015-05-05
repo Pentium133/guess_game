@@ -9,4 +9,6 @@ Rails.application.routes.draw do
       post :import
     end
   end
+
+  root :to => 'pages#dashboard'
 end
