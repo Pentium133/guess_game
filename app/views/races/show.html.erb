@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @race.name %>
-</p>
-
-<p>
-  <strong>Start at:</strong>
-  <%= @race.start_at %>
-</p>
-
-<p>
-  <strong>End at:</strong>
-  <%= @race.end_at %>
-</p>
-
-<%= link_to 'Edit', edit_race_path(@race) %> |
-<%= link_to 'Back', races_path %>
+<div class="blog">
+  <div class="blog-header">
+    <h4 class="blog-title"><%= @race.name %></h4>
+    <p class="date-time">
+        <span class="day">
+            <i class="fa fa-calendar"></i> <%= l @race.start_at %> — <%= l @race.end_at %>
+        </span>
+        <span class="day hidden-xs">
+            <i class="fa fa-comments"></i> 21 Stages
+        </span>
+    </p>
+  </div>
+  <div class="blog-body">
+    <div class="blog-content">
+      <table class="table table-condensed table-bordered no-margin">
+        <tbody>
+        <% @race.stages.each do |stage| %>
+        <tr>
+          <td class="col-md-1"><%= stage.stage_number %></td>
+          <td><%= stage.name %></td>
+          <td class="col-md-1"><%= stage.stage_type %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

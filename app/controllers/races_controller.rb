@@ -3,9 +3,12 @@ class RacesController < ApplicationController
 
   def index
     @races = Race.all
+
+    @page_title = 'Races'
   end
 
   def show
+    @page_title = @race.name
   end
 
   private

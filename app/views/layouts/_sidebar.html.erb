@@ -22,6 +22,13 @@
         <%= current_page_tag_if(action: 'dashboard') %>
       </a>
     </li>
+    <li class="<%= active_if(controller: 'races') %>">
+      <a href='<%= races_path %>'>
+        <i class="fa fa-trophy"></i>
+        <span>Races</span>
+        <%= current_page_tag_if(controller: 'races') %>
+      </a>
+    </li>
     <li class="<%= active_if(controller: 'team_seasons') %>">
       <a href='<%= team_seasons_path %>'>
         <i class="fa fa-users"></i>

@@ -1,31 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Races</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start at</th>
-      <th>End at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @races.each do |race| %>
-      <tr>
-        <td><%= race.name %></td>
-        <td><%= race.start_at %></td>
-        <td><%= race.end_at %></td>
-        <td><%= link_to 'Show', race %></td>
-        <td><%= link_to 'Edit', edit_race_path(race) %></td>
-        <td><%= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Race', new_race_path %>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="blog blog-success no-margin">
+      <div class="blog-header">
+        <h5 class="blog-title">Races</h5>
+      </div>
+      <div class="blog-body">
+        <div class="table-responsive">
+          <table class="table table-condensed table-bordered no-margin">
+            <tbody>
+            <% @races.each do |race| %>
+              <%= render race %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
