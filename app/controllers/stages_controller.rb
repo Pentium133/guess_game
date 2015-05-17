@@ -3,8 +3,8 @@ class StagesController < ApplicationController
 
   def show
     @page_title = @stage.name
-    add_breadcrumb 'Races', :races_path
-    add_breadcrumb @stage.race.name, race_stage_path(@stage.race, @stage)
+    add_breadcrumb 'Races', races_path
+    add_breadcrumb @stage.race.name, race_stage_path(@stage.race_id, @stage)
     add_breadcrumb @stage.name
   end
 

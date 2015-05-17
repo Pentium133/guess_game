@@ -37,3 +37,5 @@ gem 'carrierwave'
 gem 'world-flags'
 # for breadcrumbs
 gem 'breadcrumbs_on_rails'
+#auto
+gem 'devise'
