@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_season
 
+  add_breadcrumb '<i class="fa fa-home fa-2"></i>'.html_safe, :root_path
+
   def set_season
     @current_season = Season.find_by_name('2015')
   end

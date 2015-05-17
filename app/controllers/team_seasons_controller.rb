@@ -5,10 +5,13 @@ class TeamSeasonsController < ApplicationController
     @teams = TeamSeason.includes(:team).where(season: @current_season)
 
     @page_title = 'Teams'
+    add_breadcrumb 'Teams', :team_season_path
   end
 
   def show
     @page_title = @team.name
+    add_breadcrumb 'Teams', :team_season_path
+    add_breadcrumb @team.name
   end
 
   def import

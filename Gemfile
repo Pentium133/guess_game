@@ -35,3 +35,5 @@ gem 'rails_admin'
 gem 'carrierwave'
 #flags
 gem 'world-flags'
+# for breadcrumbs
+gem 'breadcrumbs_on_rails'

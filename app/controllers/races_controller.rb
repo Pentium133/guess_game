@@ -5,10 +5,13 @@ class RacesController < ApplicationController
     @races = Race.all
 
     @page_title = 'Races'
+    add_breadcrumb 'Races'
   end
 
   def show
     @page_title = @race.name
+    add_breadcrumb 'Races', :races_path
+    add_breadcrumb @race.name
   end
 
   private
