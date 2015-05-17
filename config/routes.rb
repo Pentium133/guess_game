@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :races
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
@@ -9,6 +8,10 @@ Rails.application.routes.draw do
       get :import
       post :import
     end
+  end
+
+  resources :races, only: [:show, :index] do
+    resources :stages,  only: [:show]
   end
 
   root :to => 'pages#dashboard'

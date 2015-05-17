@@ -17,7 +17,7 @@
         <tr>
           <td style="width: 35px;"><%= stage.stage_number %></td>
           <td class="col-md-2"><%= l stage.start_at, format: :short %></td>
-          <td><%= stage.name %></td>
+          <td><%= link_to stage.name, race_stage_path(@race, stage) %></td>
           <td class="col-md-1"><%= stage_type stage %></td>
         </tr>
         <% end %>
