@@ -1,15 +1,21 @@
 <h2>Stage result</h2>
 
-<%= form_for(race_stage_path(@stage.race_id, @stage), html: { class: "form-horizontal" }) do |f| %>
+<%= form_for(race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
 
-  <% @stage.stage_results.each do |result| %>
-    <% f.fields_for :stage_results do |rf| %>
-      <div class="control-group">
-        <%= rf.label :place, class: "control-label" %>
-        <div class="controls">
-          <%= rf.text_field :place, class: 'form-control span2' %>
+    <% @stage.stage_results.each do |result| %>
+      <%= f.fields_for :stage_results, result do |rf| %>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-1">
+        <%= rf.text_field :place, class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+        <%= rf.text_field :rider, class: 'form-control' %>
+          </div>
         </div>
       </div>
+      <% end %>
     <% end %>
-  <% end %>
+
+  <%= f.submit 'Save', class: 'btn btn-success' %>
 <% end %>
