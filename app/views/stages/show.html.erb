@@ -1,0 +1,15 @@
+<h2>Stage result</h2>
+
+<%= form_for(race_stage_path(@stage.race_id, @stage), html: { class: "form-horizontal" }) do |f| %>
+
+  <% @stage.stage_results.each do |result| %>
+    <% f.fields_for :stage_results do |rf| %>
+      <div class="control-group">
+        <%= rf.label :place, class: "control-label" %>
+        <div class="controls">
+          <%= rf.text_field :place, class: 'form-control span2' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
