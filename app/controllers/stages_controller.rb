@@ -4,12 +4,6 @@ class StagesController < ApplicationController
   def show
     raise 'Not correct result for stage' if @stage.stage_results.count > 6
 
-    i = 1;
-    while @stage.stage_results.count < 6 do
-      StageResult.find_or_create_by stage_id: @stage.id, place: i
-      i+=1
-    end
-
     @page_title = @stage.name
     race = @stage.race
     add_breadcrumb 'Races', races_path
@@ -29,10 +23,23 @@ class StagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stage
       @stage = Stage.find(params[:id])
+      if @stage.stage_type == 'ttt'
+        finisher_class = 'Team'
+        @autocomplete_path = autocomplete_team_season_name_team_seasons_path
+      else
+        finisher_class = 'Rider'
+        @autocomplete_path = autocomplete_rider_last_name_riders_path
+      end
+
+      i = 1;
+      while @stage.stage_results.count < 6 do
+        StageResult.find_or_create_by stage_id: @stage.id, place: i, finisher_type: finisher_class
+        i+=1
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stage_params
-      params.require(:stage).permit(:id, :race_id, :stage_results_attributes => [:id, :place, :rider_id])
+      params.require(:stage).permit(:id, :race_id, :stage_results_attributes => [:id, :place, :finisher_id, :finisher_type])
     end
 end

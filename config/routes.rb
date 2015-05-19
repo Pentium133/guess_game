@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :team_seasons,  only: [:show, :index], path: '/teams' do
+    get :autocomplete_team_season_name, :on => :collection
     member do
       get :import
       post :import
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   root :to => 'pages#dashboard'
+
 end

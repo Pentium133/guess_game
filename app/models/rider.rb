@@ -11,6 +11,8 @@
 #
 
 class Rider < ActiveRecord::Base
+  has_many :stage_results, as: :finisher
+
   def name
     "#{self.first_name} #{self.last_name}"
   end

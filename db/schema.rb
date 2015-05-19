@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517180528) do
+ActiveRecord::Schema.define(version: 20150519154516) do
 
   create_table "races", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -44,12 +44,15 @@ ActiveRecord::Schema.define(version: 20150517180528) do
   end
 
   create_table "stage_results", force: :cascade do |t|
-    t.integer  "stage_id",   limit: 4
-    t.integer  "rider_id",   limit: 4
-    t.integer  "place",      limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "stage_id",      limit: 4
+    t.integer  "place",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "finisher_id",   limit: 4
+    t.string   "finisher_type", limit: 255
   end
+
+  add_index "stage_results", ["finisher_type", "finisher_id"], name: "index_stage_results_on_finisher_type_and_finisher_id", using: :btree
 
   create_table "stages", force: :cascade do |t|
     t.string   "name",         limit: 255

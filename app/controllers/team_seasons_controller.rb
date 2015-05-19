@@ -1,6 +1,14 @@
 class TeamSeasonsController < ApplicationController
   before_action :set_team, only: [:show, :import]
 
+  autocomplete :team_season, :name, full: :true
+
+  def autocomplete_team_season_name
+    term = params[:term]
+    teams = TeamSeason.where('name LIKE ? and season_id = ?', "%#{term}%", @current_season.id).all
+    render :json => teams.map { |team| {:id => team.team_id, :label => team.name, :value => team.name} }
+  end
+
   def index
     @teams = TeamSeason.includes(:team).where(season: @current_season)
 

@@ -8,8 +8,9 @@
             <%= rf.text_field :place, class: 'form-control', readonly: true %>
           </div>
           <div class="col-md-6">
-            <%= rf.autocomplete_field :rider, autocomplete_rider_last_name_riders_path, :id_element => "#rider_id_#{rf.index}", class: 'form-control' %>
-            <%= rf.hidden_field :rider_id, id: "rider_id_#{rf.index}" %>
+            <%= rf.autocomplete_field :finisher, @autocomplete_path, :id_element => "#finisher_id_#{rf.index}", class: 'form-control' %>
+            <%= rf.hidden_field :finisher_id, id: "finisher_id_#{rf.index}" %>
+            <%= rf.hidden_field :finisher_type  %>
           </div>
         </div>
       </div>
