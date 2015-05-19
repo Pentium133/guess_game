@@ -1,17 +1,4 @@
-<div class="current-user">
-  <div class="user-avatar animated rubberBand">
-    <img src="/img/user4.jpg" alt="Current User">
-    <span class="busy"></span>
-  </div>
-  <div class="user-name">Welcome Mr. James</div>
-  <ul class="user-links">
-    <li>
-      <a href="<%= destroy_user_session_path %>" title="Sign out">
-        <i class="fa fa-sign-out text-danger"></i>
-      </a>
-    </li>
-  </ul>
-</div>
+<%= render 'layouts/users_links' %>
 
 <div id='menu'>
   <ul>

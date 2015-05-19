@@ -17,3 +17,7 @@
  *= require flags/flags32
  *= require_self
  */
+
+header .logo a img {
+  max-width: 400px;
+}

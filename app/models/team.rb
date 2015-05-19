@@ -12,6 +12,7 @@
 
 class Team < ActiveRecord::Base
   has_many :stage_results, as: :finisher
+  has_many :team_seasons
 
   def name
     short_name

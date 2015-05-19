@@ -52,7 +52,7 @@ TeamSeason.create season: s2015, team: tm, name: 'TEAM GIANT - ALPECIN', remote_
 tm = Team.create code: 'KAT', short_name: 'KATUSHA', country: 'RU'
 TeamSeason.create season: s2015, team: tm, name: 'TEAM KATUSHA', remote_logo_url: 'http://www.procyclingstats.com/shirts/2015-01/thumb/Team-Katusha-2015.jpg'
 
-tm = Team.create code: 'TLJ', short_name: 'LOTTO', country: 'NL'
+tm = Team.create code: 'TLJ', short_name: 'LOTTO NL', country: 'NL'
 TeamSeason.create season: s2015, team: tm, name: 'TEAM LOTTO NL-JUMBO', remote_logo_url: 'http://www.procyclingstats.com/shirts/2015-01/thumb/Team-LottoNL-Jumbo-2015.jpg'
 
 tm = Team.create code: 'SKY', short_name: 'SKY', country: 'GB'
