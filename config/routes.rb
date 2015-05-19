@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :races, only: [:show, :index] do
-    resources :stages,  only: [:show]
+    resources :stages,  only: [:show, :update]
   end
 
   root :to => 'pages#dashboard'

@@ -15,6 +15,7 @@
 class Stage < ActiveRecord::Base
   belongs_to :race
   has_many :stage_results
+  accepts_nested_attributes_for :stage_results
 
   enum stage_type: [ :race, :itt, :ttt ]
 

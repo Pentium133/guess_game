@@ -12,6 +12,10 @@
 
 class Rider < ActiveRecord::Base
   def name
-    first_name + ' ' + last_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  def to_s
+    self.name
   end
 end

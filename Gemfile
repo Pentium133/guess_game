@@ -41,3 +41,5 @@ gem 'breadcrumbs_on_rails'
 gem 'devise'
 #autocomplete
 gem 'rails-jquery-autocomplete'
+#html parser
+gem 'nokogiri'

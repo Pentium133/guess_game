@@ -1,5 +1,5 @@
 class StagesController < ApplicationController
-  before_action :set_stage, only: [:show]
+  before_action :set_stage, only: [:show, :update]
 
   def show
     raise 'Not correct result for stage' if @stage.stage_results.count > 6
@@ -11,9 +11,18 @@ class StagesController < ApplicationController
     end
 
     @page_title = @stage.name
+    race = @stage.race
     add_breadcrumb 'Races', races_path
-    add_breadcrumb @stage.race.name, race_stage_path(@stage.race_id, @stage)
+    add_breadcrumb @stage.race.name, race_path(@stage.race)
     add_breadcrumb @stage.name
+  end
+
+  def update
+    if @stage.update(stage_params)
+      redirect_to race_stage_path(@stage.race, @stage), notice: 'Stage result was successfully updated.'
+    else
+      render action: 'show'
+    end
   end
 
   private
@@ -24,6 +33,6 @@ class StagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stage_params
-      params.require(:stage).permit(:show)
+      params.require(:stage).permit(:id, :race_id, :stage_results_attributes => [:id, :place, :rider_id])
     end
 end
