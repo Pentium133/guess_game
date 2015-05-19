@@ -5,12 +5,12 @@ class TeamSeasonsController < ApplicationController
     @teams = TeamSeason.includes(:team).where(season: @current_season)
 
     @page_title = 'Teams'
-    add_breadcrumb 'Teams', :team_season_path
+    add_breadcrumb 'Teams'
   end
 
   def show
     @page_title = @team.name
-    add_breadcrumb 'Teams', :team_season_path
+    add_breadcrumb 'Teams', team_seasons_path
     add_breadcrumb @team.name
   end
 
@@ -25,6 +25,9 @@ class TeamSeasonsController < ApplicationController
         end
         flash.now[:notice] = " #{teamates} teamates added."
       end
+    end
+    if request.request_parameters[:url].present?
+
     end
   end
 

@@ -153,6 +153,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-jquery-autocomplete (1.0.0)
+      rails (>= 4.0)
     rails_admin (0.6.7)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
@@ -240,6 +242,7 @@ DEPENDENCIES
   pundit
   quiet_assets
   rails (= 4.2.1)
+  rails-jquery-autocomplete
   rails_admin
   rails_layout
   russian

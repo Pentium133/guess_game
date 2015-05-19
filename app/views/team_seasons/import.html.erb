@@ -1,10 +1,20 @@
 <h1>Import riders to <%= @team.name %></h1>
 
 <%= form_tag import_team_season_path(@team) do |f| %>
-    <div class="control-group">
-      <div class="controls">
-        <%= text_area_tag :riders, params[:riders], size: "24x20", class: 'form-control' %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-8">
+          <%= text_field_tag :url, params[:riders_url], class: 'form-control', placeholder: 'url to http://www.procyclingstats.com/' %>
+        </div>
       </div>
     </div>
-    <%= submit_tag("Import") %>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-8">
+          <%= text_area_tag :riders, params[:riders], size: "24x20", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <%= submit_tag 'Import', class: 'btn btn-success' %>
 <% end %>

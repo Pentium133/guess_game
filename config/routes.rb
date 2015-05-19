@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :riders, only: [] do
+    get :autocomplete_rider_last_name, :on => :collection
+  end
+
   resources :team_seasons,  only: [:show, :index], path: '/teams' do
     member do
       get :import

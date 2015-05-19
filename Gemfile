@@ -39,3 +39,5 @@ gem 'world-flags'
 gem 'breadcrumbs_on_rails'
 #auto
 gem 'devise'
+#autocomplete
+gem 'rails-jquery-autocomplete'
