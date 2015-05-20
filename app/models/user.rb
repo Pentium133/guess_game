@@ -22,6 +22,7 @@
 #  unconfirmed_email      :string(255)
 #  role                   :integer
 #  username               :string(255)
+#  avatar                 :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -30,6 +31,8 @@ class User < ActiveRecord::Base
   enum role: [:user, :admin]
 
   after_initialize :set_default_role, :if => :new_record?
+
+  mount_uploader :avatar, AvatarUploader
 
   def set_default_role
     self.role ||= :user

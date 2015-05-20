@@ -33,6 +33,7 @@ gem 'russian'
 gem 'rails_admin'
 #uploader
 gem 'carrierwave'
+gem 'mini_magick'
 #flags
 gem 'world-flags'
 # for breadcrumbs
