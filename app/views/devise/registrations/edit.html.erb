@@ -5,6 +5,10 @@
   <%= f.error_notification %>
 
   <div class="form-group">
+    <%= f.input :username, required: true %>
+  </div>
+
+  <div class="form-group">
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
