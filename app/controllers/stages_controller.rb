@@ -41,18 +41,42 @@ class StagesController < ApplicationController
         @autocomplete_path = autocomplete_rider_last_name_riders_path
       end
 
+      fill_results finisher_class
+
+      fill_predicts finisher_class
+
+      fill_scores
+    end
+
+    def fill_scores
+      logger.debug '=== Fill score'
+      @users = User.joins(:stage_predicts).where('stage_predicts.stage_id': @stage.id).distinct
+      @scores = Hash.new
+      @users.each do |user|
+        logger.debug "======= #{user.id}"
+        @stage.stage_predicts.where('user_id = ? and score > 0', user.id).each do |predict|
+          @scores[user.id] = Hash.new {|hash, key| hash[key] = predict}
+        end
+      end
+      logger.debug 'Fill score ======='
+    end
+
+    def fill_results(finisher_class)
+      logger.debug '=== Fill results'
       i = 1;
       while @stage.stage_results.count < 6 do
         StageResult.find_or_create_by stage_id: @stage.id, place: i, finisher_type: finisher_class
         i+=1
       end
+    end
 
+    def fill_predicts(finisher_class)
+      logger.debug '=== Fill predicts'
       p = 1;
-      while @stage.stage_predicts(user_id: current_user.id).count < 6 do
+      while @stage.stage_predicts.where(user_id: current_user.id).count < 6 do
         StagePredict.find_or_create_by user_id: current_user.id, stage_id: @stage.id, place: p, finisher_type: finisher_class
         p+=1
       end
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,15 @@
+<ul>
+<% @users.each do |user| %>
+  <li><%= user %>
+    <ul>
+    <% user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).each do |predict| %>
+    <li>
+      <%= '<b>'.html_safe if predict.guessed %>
+      <%= predict.finisher %> - <%= predict.score %>
+      <%= '</b>'.html_safe if predict.guessed %>
+    </li>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>

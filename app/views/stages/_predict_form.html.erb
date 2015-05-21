@@ -1,6 +1,6 @@
 <%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
 
-    <% @stage.stage_predicts.each do |predict| %>
+    <% @stage.stage_predicts.where(user_id: current_user.id).each do |predict| %>
       <%= f.fields_for :stage_predicts, predict do |rf| %>
       <div class="form-group">
         <div class="row">

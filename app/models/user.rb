@@ -28,6 +28,8 @@
 class User < ActiveRecord::Base
   attr_accessor :login
 
+  has_many :stage_predicts
+
   enum role: [:user, :admin]
 
   after_initialize :set_default_role, :if => :new_record?
@@ -43,6 +45,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
+
+  def to_s
+    username
+  end
 
   def login=(login)
     @login = login

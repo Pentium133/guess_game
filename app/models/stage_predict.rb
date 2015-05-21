@@ -17,6 +17,7 @@
 class StagePredict < ActiveRecord::Base
   belongs_to :stage
   belongs_to :finisher, polymorphic: true
+  belongs_to :user
 
   default_scope { order('place') }
 
