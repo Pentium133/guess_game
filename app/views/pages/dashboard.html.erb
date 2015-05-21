@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="blog no-margin">
+    <div class="blog blog-info no-margin">
       <div class="blog-header">
         <h5 class="blog-title">Races</h5>
       </div>
@@ -9,10 +9,7 @@
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
             <% @races.each do |race| %>
-            <tr>
-              <td class="col-md-3"><%= race.start_at %> - <%= race.end_at %></td>
-              <td><%= race.name %></td>
-            </tr>
+              <%= render race %>
             <% end %>
             </tbody>
           </table>
