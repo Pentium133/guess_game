@@ -1,4 +1,13 @@
 <%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
+    <% if policy(@stage).manage? %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-7">
+          <%= select(:user, :id, User.all.collect {|p| [ p.name, p.id ] }, { :selected => current_user.id}, class: 'form-control') %>
+        </div>
+      </div>
+    </div>
+    <% end %>
 
     <% @stage.stage_predicts.where(user_id: current_user.id).each do |predict| %>
       <%= f.fields_for :stage_predicts, predict do |rf| %>

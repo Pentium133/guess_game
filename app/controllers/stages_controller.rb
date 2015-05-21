@@ -16,11 +16,19 @@ class StagesController < ApplicationController
     my_params = stage_params
 
     if my_params['stage_predicts_attributes'].present?
-      my_params['stage_predicts_attributes'].map { |item, value| value['user_id'] = current_user.id }
+      if policy(@stage).manage?
+        user_id = params[:user][:id]
+      else
+        user_id = current_user.id
+      end
+      my_params['stage_predicts_attributes'].map { |item, value| value['user_id'] = user_id }
+      @stage.clear_predicts_for user_id
+      logger.debug "User id = #{user_id}"
     end
 
     if @stage.update(my_params)
       if my_params['stage_results_attributes'].present?
+        authorize @stage, :calculate?
         @stage.calculate_scores
       end
       redirect_to race_stage_path(@stage.race, @stage), notice: 'Stage result was successfully updated.'
@@ -47,10 +55,10 @@ class StagesController < ApplicationController
 
       fill_scores
 
-      fill_overalL_standing
+      fill_overall_standing
     end
 
-    def fill_overalL_standing
+    def fill_overall_standing
       logger.debug '=== Fill overal standing'
       @overall = @stage.get_overall
     end
@@ -86,6 +94,6 @@ class StagesController < ApplicationController
     def stage_params
       params.require(:stage).permit(:id, :race_id,
         :stage_results_attributes  => [:id, :place, :finisher_id, :finisher_type],
-        :stage_predicts_attributes => [:id, :place, :finisher_id, :finisher_type])
+        :stage_predicts_attributes => [:place, :finisher_id, :finisher_type])
     end
 end

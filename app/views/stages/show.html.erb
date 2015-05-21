@@ -4,9 +4,11 @@
       <li class="active">
         <a href="#predict" data-toggle="tab" data-original-title="" title="">Predict</a>
       </li>
+  <% if policy(@stage).calculate? %>
       <li class="">
         <a href="#result" data-toggle="tab" data-original-title="" title="">Result</a>
       </li>
+  <% end %>
       <li class="">
         <a href="#scores" data-toggle="tab" data-original-title="" title="">Scores</a>
       </li>
@@ -15,9 +17,11 @@
       <div class="tab-pane fade active in" id="predict">
         <%= render 'predict_form' %>
       </div>
+  <% if policy(@stage).calculate? %>
       <div class="tab-pane fade" id="result">
         <%= render 'result_form' %>
       </div>
+  <% end %>
       <div class="tab-pane fade" id="scores">
         <%= render 'scores_table' %>
       </div>

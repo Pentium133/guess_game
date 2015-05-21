@@ -53,4 +53,8 @@ class Stage < ActiveRecord::Base
     end
     return result
   end
+
+  def clear_predicts_for(user_id)
+    stage_predicts.where(user_id: user_id).delete_all
+  end
 end

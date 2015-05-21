@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   has_many :stage_predicts
 
-  enum role: [:user, :admin]
+  enum role: [:user, :manager, :admin]
 
   after_initialize :set_default_role, :if => :new_record?
 
@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
+
+  def name
+    username
+  end
 
   def to_s
     username

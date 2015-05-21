@@ -1,8 +1,24 @@
+<h3>Stage results</h3>
+<table class="table table-condensed table-bordered no-margin">
+  <tbody>
+    <% @stage.stage_results.each do |result| %>
+      <% unless result.finisher_id.nil? %>
+      <tr>
+        <td style="width: 30px;"><%= result.place %></td>
+        <td><%= result.finisher %></td>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Predict's scores</h3>
 <table class="table table-condensed table-bordered no-margin">
   <tbody>
     <% @users.each_with_index do |user, index| %>
     <tr>
-      <td><%= index+1 %></td>
+      <td style="width: 30px;"><%= index+1 %></td>
       <td><%= user %></td>
       <td><%= user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).sum(:score) %></td>
       <td>/
