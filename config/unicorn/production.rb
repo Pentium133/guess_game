@@ -1,5 +1,5 @@
 # paths
-app_path = "/home/hosting_pentium133/projects/predictions/current"
+app_path = "/home/hosting_pentium133/projects/predictions"
 working_directory "#{app_path}/current"
 pid "/var/run/unicorn/hosting_pentium133/predictions.pentium133.pid"
 
