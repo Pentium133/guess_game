@@ -1,1 +1,21 @@
-<p>Your predict</p>
+<%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
+
+    <% @stage.stage_predicts.each do |predict| %>
+      <%= f.fields_for :stage_predicts, predict do |rf| %>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-1">
+            <%= rf.text_field :place, class: 'form-control', readonly: true %>
+          </div>
+          <div class="col-md-6">
+            <%= rf.autocomplete_field :finisher, @autocomplete_path, :id_element => "#predict_id_#{rf.index}", class: 'form-control' %>
+            <%= rf.hidden_field :finisher_id, id: "predict_id_#{rf.index}" %>
+            <%= rf.hidden_field :finisher_type  %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+  <%= f.submit 'Save predict', class: 'btn btn-success' %>
+<% end %>

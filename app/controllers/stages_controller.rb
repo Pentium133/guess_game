@@ -1,4 +1,5 @@
 class StagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_stage, only: [:show, :update]
 
   def show
@@ -12,7 +13,16 @@ class StagesController < ApplicationController
   end
 
   def update
-    if @stage.update(stage_params)
+    my_params = stage_params
+
+    if my_params['stage_predicts_attributes'].present?
+      my_params['stage_predicts_attributes'].map { |item, value| value['user_id'] = current_user.id }
+    end
+
+    if @stage.update(my_params)
+      if my_params['stage_results_attributes'].present?
+        @stage.calculate_scores
+      end
       redirect_to race_stage_path(@stage.race, @stage), notice: 'Stage result was successfully updated.'
     else
       render action: 'show'
@@ -36,10 +46,19 @@ class StagesController < ApplicationController
         StageResult.find_or_create_by stage_id: @stage.id, place: i, finisher_type: finisher_class
         i+=1
       end
+
+      p = 1;
+      while @stage.stage_predicts(user_id: current_user.id).count < 6 do
+        StagePredict.find_or_create_by user_id: current_user.id, stage_id: @stage.id, place: p, finisher_type: finisher_class
+        p+=1
+      end
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stage_params
-      params.require(:stage).permit(:id, :race_id, :stage_results_attributes => [:id, :place, :finisher_id, :finisher_type])
+      params.require(:stage).permit(:id, :race_id,
+        :stage_results_attributes  => [:id, :place, :finisher_id, :finisher_type],
+        :stage_predicts_attributes => [:id, :place, :finisher_id, :finisher_type])
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520183600) do
+ActiveRecord::Schema.define(version: 20150520200451) do
 
   create_table "races", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -42,6 +42,20 @@ ActiveRecord::Schema.define(version: 20150520183600) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "stage_predicts", force: :cascade do |t|
+    t.integer  "stage_id",      limit: 4
+    t.integer  "user_id",       limit: 4
+    t.integer  "place",         limit: 4
+    t.integer  "score",         limit: 4,   default: 0
+    t.boolean  "guessed",       limit: 1,   default: false
+    t.integer  "finisher_id",   limit: 4
+    t.string   "finisher_type", limit: 255
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "stage_predicts", ["finisher_type", "finisher_id"], name: "index_stage_predicts_on_finisher_type_and_finisher_id", using: :btree
 
   create_table "stage_results", force: :cascade do |t|
     t.integer  "stage_id",      limit: 4
