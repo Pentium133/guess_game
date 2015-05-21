@@ -92,10 +92,10 @@ namespace :deploy do
 
   desc "Restart Application"
   task :restart do
-    #invoke 'unicorn:stop'
-    #invoke 'unicorn:start'
-    on roles :all do
-      execute "[ -f #{fetch(:unicorn_pid)} ] && kill -USR2 `cat #{fetch(:unicorn_pid)}` || #{fetch(:unicorn_start_cmd)}"
-    end
+    invoke 'deploy:stop'
+    invoke 'deploy:start'
+    #on roles :all do
+    #  execute "[ -f #{fetch(:unicorn_pid)} ] && kill -USR2 `cat #{fetch(:unicorn_pid)}` || #{fetch(:unicorn_start_cmd)}"
+    #end
   end
 end
