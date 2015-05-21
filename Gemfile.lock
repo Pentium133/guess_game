@@ -61,9 +61,14 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-db-tasks (0.4)
+      capistrano (>= 3.0.0)
     capistrano-rails (1.1.3)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -257,7 +262,9 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   capistrano (~> 3.1)
+  capistrano-db-tasks
   capistrano-rails (~> 1.1)
+  capistrano-rvm
   carrierwave
   coffee-rails (~> 4.1.0)
   devise

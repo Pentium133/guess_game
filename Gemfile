@@ -23,6 +23,8 @@ group :development do
   gem 'rails_layout'
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-db-tasks', require: false
+  gem 'capistrano-rvm'
 end
 group :development, :test do
   gem 'pry-rails'

@@ -1,3 +1,4 @@
+require 'capistrano-db-tasks'
 
 ## Чтобы не хранить database.yml в системе контроля версий, поместите
 ## dayabase.yml в shared-каталог проекта на сервере и раскомментируйте
@@ -36,12 +37,15 @@ set :shared_path,     "/home/#{fetch(:user)}/shared"
 set :unicorn_conf,    "/etc/unicorn/#{fetch(:application)}.#{fetch(:login)}.rb"
 set :unicorn_pid,     "/var/run/unicorn/#{fetch(:user)}/#{fetch(:application)}.#{fetch(:login)}.pid"
 set :bundle_dir,      File.join(fetch(:shared_path), 'gems')
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 role :web,            fetch(:deploy_server)
 role :app,            fetch(:deploy_server)
 role :db,             fetch(:deploy_server), :primary => true
 
 # Следующие строки необходимы, т.к. ваш проект использует rvm.
 set :rvm_ruby_string, "2.2.0"
+set :rvm_ruby_version,'2.2.0'
 set :rake,            "rvm use #{fetch(:rvm_ruby_string)} do bundle exec rake"
 set :bundle_cmd,      "rvm use #{fetch(:rvm_ruby_string)} do bundle"
 
