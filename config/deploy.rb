@@ -76,26 +76,26 @@ set :repo_url, "git@bitbucket.org:pentium133/velo-prognose.git"
 namespace :deploy do
   desc "Start application"
   task :start do
-    invoke 'unicorn:start'
-    #on roles :all do
-    #  execute "(cd #{fetch(:deploy_to)}/current; rvm use #{fetch(:rvm_ruby_string)} do bundle exec unicorn_rails -Dc #{fetch(:unicorn_conf)})"
-    #end
+    #invoke 'unicorn:start'
+    on roles :all do
+      execute "(cd #{fetch(:deploy_to)}/current; rvm use #{fetch(:rvm_ruby_string)} do bundle exec unicorn_rails -Dc #{fetch(:unicorn_conf)})"
+    end
   end
 
   desc "Stop application"
   task :stop do
-    invoke 'unicorn:stop'
-    #on roles :all do
-    #  execute "[ -f #{fetch(:unicorn_pid)} ] && kill -QUIT `cat #{fetch(:unicorn_pid)}`"
-    #end
+    #invoke 'unicorn:stop'
+    on roles :all do
+      execute "[ -f #{fetch(:unicorn_pid)} ] && kill -QUIT `cat #{fetch(:unicorn_pid)}`"
+    end
   end
 
   desc "Restart Application"
   task :restart do
-    invoke 'unicorn:stop'
-    invoke 'unicorn:start'
-    #on roles :all do
-    #  execute "[ -f #{fetch(:unicorn_pid)} ] && kill -USR2 `cat #{fetch(:unicorn_pid)}` || #{fetch(:unicorn_start_cmd)}"
-    #end
+    #invoke 'unicorn:stop'
+    #invoke 'unicorn:start'
+    on roles :all do
+      execute "[ -f #{fetch(:unicorn_pid)} ] && kill -USR2 `cat #{fetch(:unicorn_pid)}` || #{fetch(:unicorn_start_cmd)}"
+    end
   end
 end
