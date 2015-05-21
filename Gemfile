@@ -21,10 +21,15 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
 end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
+end
+group :production do
+  gem 'unicorn'
 end
 
 # support russian
@@ -38,8 +43,6 @@ gem 'mini_magick'
 gem 'world-flags'
 # for breadcrumbs
 gem 'breadcrumbs_on_rails'
-#auto
-gem 'devise'
 #autocomplete
 gem 'rails-jquery-autocomplete'
 #html parser
