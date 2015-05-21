@@ -42,6 +42,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 role :web,            fetch(:deploy_server)
 role :app,            fetch(:deploy_server)
 role :db,             fetch(:deploy_server), :primary => true
+set :pty, true
 
 # Следующие строки необходимы, т.к. ваш проект использует rvm.
 set :rvm_ruby_string, "2.2.0"
@@ -66,28 +67,35 @@ set :repo_url, "git@bitbucket.org:pentium133/velo-prognose.git"
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
-before 'deploy:finished', 'set_current_release'
-task :set_current_release do
-    set :current_release, latest_release
-end
-
-set :unicorn_start_cmd, "(cd #{fetch(:deploy_to)}/current; rvm use #{fetch(:rvm_ruby_string)} do bundle exec unicorn_rails -Dc #{fetch(:unicorn_conf)})"
-
+#before 'deploy:finished', 'set_current_release'
+#task :set_current_release do
+#    set :current_release, latest_release
+#end
 
 # - for unicorn - #
 namespace :deploy do
   desc "Start application"
   task :start do
-    run unicorn_start_cmd
+    invoke 'unicorn:start'
+    #on roles :all do
+    #  execute "(cd #{fetch(:deploy_to)}/current; rvm use #{fetch(:rvm_ruby_string)} do bundle exec unicorn_rails -Dc #{fetch(:unicorn_conf)})"
+    #end
   end
 
   desc "Stop application"
   task :stop do
-    run "[ -f #{fetch(:unicorn_pid)} ] && kill -QUIT `cat #{fetch(:unicorn_pid)}`"
+    invoke 'unicorn:stop'
+    #on roles :all do
+    #  execute "[ -f #{fetch(:unicorn_pid)} ] && kill -QUIT `cat #{fetch(:unicorn_pid)}`"
+    #end
   end
 
   desc "Restart Application"
   task :restart do
-    run "[ -f #{fetch(:unicorn_pid)} ] && kill -USR2 `cat #{fetch(:unicorn_pid)}` || #{fetch(:unicorn_start_cmd)}"
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
+    #on roles :all do
+    #  execute "[ -f #{fetch(:unicorn_pid)} ] && kill -USR2 `cat #{fetch(:unicorn_pid)}` || #{fetch(:unicorn_start_cmd)}"
+    #end
   end
 end

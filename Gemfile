@@ -25,6 +25,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-db-tasks', require: false
   gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
 end
 group :development, :test do
   gem 'pry-rails'
