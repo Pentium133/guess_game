@@ -20,7 +20,13 @@ class Stage < ActiveRecord::Base
   accepts_nested_attributes_for :stage_results
   accepts_nested_attributes_for :stage_predicts
 
+  after_initialize :set_default_type, :if => :new_record?
+
   enum stage_type: [ :race, :itt, :ttt ]
+
+  def set_default_type
+    self.stage_type ||= :race
+  end
 
   def stage_type_enum
     [ :race, :itt, :ttt ]
