@@ -25,3 +25,7 @@
       </table>
    </div>
 </div>
+
+<% content_for :sidebar do %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: 'Overall standing' } %>
+<% end %>

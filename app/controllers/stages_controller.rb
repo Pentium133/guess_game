@@ -46,19 +46,22 @@ class StagesController < ApplicationController
       fill_predicts finisher_class
 
       fill_scores
+
+      fill_overalL_standing
+    end
+
+    def fill_overalL_standing
+      logger.debug '=== Fill overal standing'
+      @overall = @stage.get_overall
     end
 
     def fill_scores
       logger.debug '=== Fill score'
-      @users = User.joins(:stage_predicts).where('stage_predicts.stage_id': @stage.id).distinct
-      @scores = Hash.new
-      @users.each do |user|
-        logger.debug "======= #{user.id}"
-        @stage.stage_predicts.where('user_id = ? and score > 0', user.id).each do |predict|
-          @scores[user.id] = Hash.new {|hash, key| hash[key] = predict}
-        end
-      end
-      logger.debug 'Fill score ======='
+      @users = User.select('`users`.*, sum(stage_predicts.score) as score_summ')
+        .joins(:stage_predicts)
+        .where('stage_predicts.stage_id': @stage.id)
+        .group('users.id')
+        .order('score_summ desc')
     end
 
     def fill_results(finisher_class)

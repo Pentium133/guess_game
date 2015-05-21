@@ -28,15 +28,29 @@ class Stage < ActiveRecord::Base
 
   def calculate_scores
     stage_results.each do |result|
-      logger.debug "Result: #{result.finisher_id}"
       unless result.finisher_id.to_s == ''
         stage_predicts.where(finisher_id: result.finisher_id, finisher_type: result.finisher_type).each do |predict|
           predict.score = StagePredict.score_table_6[predict.place-1][result.place-1]
-          logger.debug "Predict:#{predict.place} Result: #{result.place} Score: #{predict.score}"
           predict.guessed = predict.place == result.place
           predict.save
         end
       end
     end
+  end
+
+  def get_overall
+    sql = "SELECT users.id, users.username, sum(stage_predicts.score) as summscore FROM stage_predicts
+            JOIN users on user_id = users.id
+            JOIN stages on stage_id = stages.id
+            WHERE stages.start_at <= '#{self.start_at.strftime('%F')}'
+              AND stages.race_id = #{self.race_id}
+              AND stage_predicts.finisher_id IS NOT NULL
+            GROUP by stage_predicts.user_id
+            ORDER by summscore desc"
+    result = Array.new
+    ActiveRecord::Base.connection.execute(sql).each do |row|
+      result.push [row[0], row[1], row[2]]
+    end
+    return result
   end
 end

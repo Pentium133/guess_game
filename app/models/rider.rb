@@ -14,10 +14,10 @@ class Rider < ActiveRecord::Base
   has_many :stage_results, as: :finisher
 
   def name
-    "#{self.first_name} #{self.last_name}"
+    "#{self.last_name}"
   end
 
   def to_s
-    self.name
+    "#{self.first_name} #{self.last_name}"
   end
 end

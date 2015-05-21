@@ -20,12 +20,19 @@
       <div class="top-bar">
         <div class="page-title"><%= @page_title %></div>
       </div>
-      <%= render_breadcrumbs builder: VeloBreadcrumbsBuilder %>
       <div class="main-container">
+        <%= render_breadcrumbs builder: VeloBreadcrumbsBuilder %>
         <div class="container-fluid">
           <div class="spacer">
             <%= render 'layouts/messages' %>
             <%= yield %>
+          </div>
+        </div>
+      </div>
+      <div class="right-sidebar">
+        <div class="add-on clearfix">
+          <div class="add-on-wrapper">
+          <%= content_for?(:sidebar) ? yield(:sidebar) : '' %>
           </div>
         </div>
       </div>
