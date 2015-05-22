@@ -89,7 +89,7 @@ Rails.application.configure do
     password:             'gusly298y8',
     authentication:       'plain'
   }
-  config.action_mailer.default_options = {from: 'info@guessgames.net'}
+  config.action_mailer.default_options = {from: 'info@guessgames.net', reply_to: 'info@guessgames.net'}
   config.action_mailer.default_url_options = { :host => 'http://guessgames.net' }
 
 end
