@@ -16,9 +16,11 @@ class Stage < ActiveRecord::Base
   belongs_to :race
   has_many :stage_results
   has_many :stage_predicts
+  has_many :predict_results
 
   accepts_nested_attributes_for :stage_results
   accepts_nested_attributes_for :stage_predicts
+  accepts_nested_attributes_for :predict_results
 
   after_initialize :set_default_type, :if => :new_record?
 

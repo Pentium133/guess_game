@@ -23,7 +23,6 @@ class StagesController < ApplicationController
       end
       my_params['stage_predicts_attributes'].map { |item, value| value['user_id'] = user_id }
       @stage.clear_predicts_for user_id
-      logger.debug "User id = #{user_id}"
     end
 
     if @stage.update(my_params)

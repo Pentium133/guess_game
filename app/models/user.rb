@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :stage_predicts
+  has_many :predict_results
 
   enum role: [:user, :manager, :admin]
 

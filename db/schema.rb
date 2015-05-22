@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520200451) do
+ActiveRecord::Schema.define(version: 20150522205923) do
+
+  create_table "predict_results", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "stage_id",   limit: 4
+    t.boolean  "is_online",  limit: 1,     default: false
+    t.integer  "score",      limit: 4
+    t.text     "comment",    limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   create_table "races", force: :cascade do |t|
     t.string   "name",       limit: 255

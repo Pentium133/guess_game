@@ -26,5 +26,18 @@
       <% end %>
     <% end %>
 
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="1" name="stage[predict_result][is_online]" id="stage_predict_result_is_online">
+              Online?
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <%= f.submit 'Save predict', class: 'btn btn-success' %>
 <% end %>
