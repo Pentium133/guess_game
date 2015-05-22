@@ -55,6 +55,9 @@ set :bundle_cmd,      "rvm use #{fetch(:rvm_ruby_string)} do bundle"
 # нужно изменить значение scm.
 set :scm,             :git
 
+set :assets_dir, %w(public/uploads)
+set :local_assets_dir, 'public/uploads'
+
 # Предполагается, что вы размещаете репозиторий Git в вашем
 # домашнем каталоге в подкаталоге git/<имя проекта>.git.
 # Подробнее о создании репозитория читайте в нашем блоге
