@@ -1,0 +1,17 @@
+<% if stage_date > Time.now %>
+  Predictions possible up to <%= l stage_date, format: :short %>
+  <% between = TimeDifference.between(Time.now, stage_date) %>
+  <% if between.in_hours < 24 and between.in_hours >= 1 and stage_date > Time.now %>
+    , <span class="badge badge-warning">
+    left <%= between.in_hours.round %> hours</span>
+  <% end %>
+  <% if between.in_hours < 1 and stage_date > Time.now %>
+    , <span class="badge badge-danger">
+    left <%= between.in_minutes.round %> minutes</span>
+  <% end %>
+
+<% else %>
+
+Predictions is not possible
+
+<% end %>

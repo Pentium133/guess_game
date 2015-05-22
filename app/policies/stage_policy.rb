@@ -14,6 +14,10 @@ class StagePolicy
     user.admin?
   end
 
+  def predict?
+    record.start_at > Time.now or user.admin?
+  end
+
   def rails_admin?(action)
     user.manager? or user.admin?
   end
