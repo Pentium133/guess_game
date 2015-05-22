@@ -78,6 +78,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'http://predictions.pentium133.lclients.ru' }
+
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'mail.locum.ru',
+    port:                 25,
+    domain:               'guessgames.net',
+    user_name:            'pentium133@guessgames.net',
+    password:             'gusly298y8',
+    authentication:       'plain'
+  }
+  config.action_mailer.default_url_options = { :host => 'http://guessgames.net' }
 
 end
