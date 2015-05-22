@@ -51,3 +51,5 @@ gem 'breadcrumbs_on_rails'
 gem 'rails-jquery-autocomplete'
 #html parser
 gem 'nokogiri'
+#error by email
+gem 'exception_notification'

@@ -1,3 +1,10 @@
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[ERROR in GUESS] ",
+    :sender_address => %{"notifier" <info@guessgames.net>},
+    :exception_recipients => %w{velo@puhoff.com}
+  }
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
