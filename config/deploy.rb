@@ -72,6 +72,8 @@ set :repo_url, "git@bitbucket.org:pentium133/velo-prognose.git"
 #    set :current_release, latest_release
 #end
 
+after 'deploy:publishing', 'deploy:restart'
+
 # - for unicorn - #
 namespace :deploy do
   desc "Start application"
