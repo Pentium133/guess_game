@@ -23,6 +23,8 @@ class TeamSeasonsController < ApplicationController
   end
 
   def import
+    authorize @team, :import?
+
     add_breadcrumb 'Teams', team_seasons_path
     add_breadcrumb @team.name, team_season_path(@team)
     add_breadcrumb 'Import'

@@ -39,6 +39,7 @@ end
 gem 'russian'
 #adminka
 gem 'rails_admin'
+gem 'rails_admin_pundit', :github => 'sudosu/rails_admin_pundit'
 #uploader
 gem 'carrierwave'
 gem 'mini_magick'

@@ -1,4 +1,4 @@
-class StagePolicy
+class TeamSeasonPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -6,11 +6,7 @@ class StagePolicy
     @record = record
   end
 
-  def calculate?
-    user.manager? or user.admin?
-  end
-
-  def manage?
+  def import?
     user.admin?
   end
 
