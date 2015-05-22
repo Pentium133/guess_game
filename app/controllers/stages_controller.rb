@@ -68,6 +68,7 @@ class StagesController < ApplicationController
       @users = User.select('`users`.*, sum(stage_predicts.score) as score_summ')
         .joins(:stage_predicts)
         .where('stage_predicts.stage_id': @stage.id)
+        .where('stage_predicts.finisher_id IS NOT NULL')
         .group('users.id')
         .order('score_summ desc')
     end

@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
   def dashboard
-    @races = Race.where(season: @current_season).order(:start_at)
+    @stages_today    = Stage.where(:start_at => (Time.now.beginning_of_day..Time.now.end_of_day))
+    @stages_tomorrow = Stage.where(:start_at => (1.day.from_now.beginning_of_day..1.day.from_now.end_of_day))
+
+    @races_today    = Race.where('start_at < ? and end_at > ?', Time.now.end_of_day, Time.now.beginning_of_day)
+    @races_tomorrow = Race.where('start_at < ? and start_at > ?', Time.now + 6.day, Time.now.end_of_day)
+
 
     @page_title = 'Dashboard'
   end

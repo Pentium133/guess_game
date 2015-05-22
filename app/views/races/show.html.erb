@@ -6,7 +6,7 @@
             <i class="fa fa-calendar"></i> <%= l @race.start_at %> — <%= l @race.end_at %>
         </span>
         <span class="day hidden-xs">
-            <i class="fa fa-comments"></i> <%= @race.stages.count %> stages
+            <i class="fa fa-reorder"></i> <%= @race.stages.count %> stages
         </span>
     </p>
   </div>
@@ -16,9 +16,17 @@
         <% @race.stages.each do |stage| %>
         <tr>
           <td style="width: 35px;"><%= stage.stage_number %></td>
-          <td class="col-md-2"><%= l stage.start_at, format: :short %></td>
-          <td><%= link_to stage.name, race_stage_path(@race, stage) %></td>
-          <td class="col-md-1"><%= stage_type stage %></td>
+          <td class="col-md-2">
+            <%= l stage.start_at, format: :short %>
+            <% if stage.start_at.today? %>
+              <span class="badge badge-success">Today</span>
+            <% end %>
+          </td>
+          <td>
+            <%= stage_type stage %>
+            <%= link_to stage.name, race_stage_path(@race, stage) %>
+          </td>
+          <td class="col-md-1"></td>
         </tr>
         <% end %>
         </tbody>
