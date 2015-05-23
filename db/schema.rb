@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522205923) do
+ActiveRecord::Schema.define(version: 20150523215210) do
 
   create_table "predict_results", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150522205923) do
     t.text     "comment",    limit: 65535
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "place",      limit: 4
   end
 
   create_table "races", force: :cascade do |t|
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150522205923) do
     t.datetime "start_at"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "winner_id",    limit: 4
   end
 
   create_table "team_seasons", force: :cascade do |t|

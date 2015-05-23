@@ -10,6 +10,7 @@
 #  start_at     :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  winner_id    :integer
 #
 
 class Stage < ActiveRecord::Base
@@ -38,7 +39,7 @@ class Stage < ActiveRecord::Base
     stage_results.each do |result|
       unless result.finisher_id.to_s == ''
         stage_predicts.where(finisher_id: result.finisher_id, finisher_type: result.finisher_type).each do |predict|
-          predict.score = StagePredict.score_table_6[predict.place-1][result.place-1]
+          predict.score = StagePredict.score_table_6[result.place-1][predict.place-1]
           predict.guessed = predict.place == result.place
           predict.save
         end
