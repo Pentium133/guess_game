@@ -1,3 +1,9 @@
+<p><%= render partial: 'posible', locals: {stage_date: @stage.start_at } %></p>
+
+<% if prs = @stage.predict_results.where(user_id: current_user.id).first %>
+  <p>Predict was created at <%= l prs.updated_at, format: :short %></p>
+<% end %>
+
 <%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
     <% if policy(@stage).manage? %>
     <div class="form-group">
@@ -31,7 +37,7 @@
         <div class="col-md-12">
           <div class="checkbox">
             <label>
-              <input type="checkbox" value="1" name="stage[predict_result][is_online]" id="stage_predict_result_is_online">
+              <input type="checkbox" value="1" name="is_online" id="stage_predict_result_is_online">
               Online?
             </label>
           </div>

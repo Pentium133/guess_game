@@ -23,6 +23,11 @@ class StagesController < ApplicationController
       end
       my_params['stage_predicts_attributes'].map { |item, value| value['user_id'] = user_id }
       @stage.clear_predicts_for user_id
+
+      # predict_result
+      pr = PredictResult.find_or_create_by stage_id: @stage.id, user_id: user_id
+      pr.is_online = params[:is_online]
+      pr.save
     end
 
     if @stage.update(my_params)
@@ -64,6 +69,10 @@ class StagesController < ApplicationController
 
     def fill_scores
       logger.debug '=== Fill score'
+      @scores = PredictResult.where(stage_id: @stage.id)
+        .includes(:user)
+        .order(:updated_at)
+
       @users = User.select('`users`.*, sum(stage_predicts.score) as score_summ')
         .joins(:stage_predicts)
         .where('stage_predicts.stage_id': @stage.id)
@@ -94,6 +103,7 @@ class StagesController < ApplicationController
     def stage_params
       params.require(:stage).permit(:id, :race_id,
         :stage_results_attributes  => [:id, :place, :finisher_id, :finisher_type],
-        :stage_predicts_attributes => [:place, :finisher_id, :finisher_type])
+        :stage_predicts_attributes => [:place, :finisher_id, :finisher_type]
+      )
     end
 end

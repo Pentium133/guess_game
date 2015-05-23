@@ -44,6 +44,16 @@ class Stage < ActiveRecord::Base
         end
       end
     end
+
+    PredictResult.where(stage_id: self.id).each do |result|
+      sum = StagePredict.where(user_id: result.user_id, stage_id: self.id).sum(:score)
+      if result.is_online
+        result.score = sum / 2
+      else
+        result.score = sum
+      end
+      result.save
+    end
   end
 
   def get_overall

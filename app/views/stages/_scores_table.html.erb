@@ -16,13 +16,16 @@
 <h3>Predict's scores</h3>
 <table class="table table-condensed table-bordered no-margin">
   <tbody>
-    <% @users.each_with_index do |user, index| %>
+    <% @scores.each_with_index do |score, index| %>
     <tr>
       <td style="width: 30px;"><%= index+1 %></td>
-      <td><%= user %></td>
-      <td><%= user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).sum(:score) %></td>
+      <td>
+        <%= score.user %>
+        <%= '<span class="label label-info">online</span>'.html_safe if score.is_online %>
+      </td>
+      <td><%= score.score %></td>
       <td>/
-        <% user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).each do |predict| %>
+        <% score.user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).each do |predict| %>
           <%= '<b>'.html_safe if predict.guessed %>
           <%= predict.finisher.name %> - <%= predict.score %>
           <%= '</b>'.html_safe if predict.guessed %>

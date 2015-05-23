@@ -178,6 +178,8 @@ RailsAdmin.config do |config|
     end
     edit do
       field :username
+      field :password
+      field :password_confirmation
       field :email
       field :role
       field :avatar
