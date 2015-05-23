@@ -33,7 +33,9 @@
               <% end %>
             <% end %>
           </td>
-          <td class="col-md-1"></td>
+          <td class="col-md-2">
+            <%= stage.winner if stage.winner %>
+          </td>
         </tr>
         <% end %>
         </tbody>

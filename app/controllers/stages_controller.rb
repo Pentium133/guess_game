@@ -33,6 +33,7 @@ class StagesController < ApplicationController
     if @stage.update(my_params)
       if my_params['stage_results_attributes'].present?
         authorize @stage, :calculate?
+        logger.debug '=== Calculate score'
         @stage.calculate_scores
       end
       redirect_to race_stage_path(@stage.race, @stage), notice: 'Stage result was successfully updated.'
@@ -71,14 +72,8 @@ class StagesController < ApplicationController
       logger.debug '=== Fill score'
       @scores = PredictResult.where(stage_id: @stage.id)
         .includes(:user)
+        .order(score: :desc)
         .order(:updated_at)
-
-      @users = User.select('`users`.*, sum(stage_predicts.score) as score_summ')
-        .joins(:stage_predicts)
-        .where('stage_predicts.stage_id': @stage.id)
-        .where('stage_predicts.finisher_id IS NOT NULL')
-        .group('users.id')
-        .order('score_summ desc')
     end
 
     def fill_results(finisher_class)

@@ -16,9 +16,9 @@
 <h3>Predict's scores</h3>
 <table class="table table-condensed table-bordered no-margin">
   <tbody>
-    <% @scores.each_with_index do |score, index| %>
+    <% @scores.each do |score| %>
     <tr>
-      <td style="width: 30px;"><%= index+1 %></td>
+      <td style="width: 30px;"><%= score.place %></td>
       <td>
         <%= score.user %>
         <%= '<span class="label label-info">online</span>'.html_safe if score.is_online %>
