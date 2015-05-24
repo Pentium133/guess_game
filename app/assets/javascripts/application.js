@@ -16,3 +16,18 @@
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+  var s = 0;
+  $('.menu-toggle').click(function() {
+    if (s == 0) {
+      s = 1;
+      $( "#sidebar" ).animate({left: "-210px"}, 100 );
+      $('.dashboard-wrapper').animate({'margin-left': "0px"}, 100);
+    } else {
+      s = 0;
+      $('#sidebar').animate({left: "0px"}, 100);
+      $('.dashboard-wrapper').animate({'margin-left': "210px"}, 100);
+    }
+  });
+});

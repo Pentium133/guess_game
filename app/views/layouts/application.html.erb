@@ -14,14 +14,14 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <aside id="sidebar">
+    <aside id="sidebar" class="open">
       <%= render 'layouts/sidebar' %>
     </aside>
     <div class="dashboard-wrapper">
       <div class="top-bar">
         <div class="page-title"><%= @page_title %></div>
       </div>
-      <div class="main-container">
+      <div class="main-container-full">
         <%= render_breadcrumbs builder: VeloBreadcrumbsBuilder %>
         <div class="container-fluid">
           <div class="spacer">
@@ -30,13 +30,13 @@
           </div>
         </div>
       </div>
-      <div class="right-sidebar">
+      <!--div class="right-sidebar">
         <div class="add-on clearfix">
           <div class="add-on-wrapper">
           <%= content_for?(:sidebar) ? yield(:sidebar) : '' %>
           </div>
         </div>
-      </div>
+      </div-->
     </div>
   </body>
 </html>

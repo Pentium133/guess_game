@@ -609,6 +609,10 @@ ul#mini-nav {
   min-height: 100% !important;
   background: white; }
 
+  @media (max-width: 767px) {
+  .dashboard-wrapper {
+    margin-left: 0px; } }
+
 @media (max-width: 767px) {
   .dashboard-wrapper {
     margin-left: 0;
@@ -987,7 +991,7 @@ aside#sidebar {
   aside#sidebar .freebies {
     margin: 20px 15px; }
 
-@media (max-width: 767px) {
+  @media (max-width: 767px) {
   aside#sidebar {
     left: -250px;
     z-index: 1000;
