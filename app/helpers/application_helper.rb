@@ -35,7 +35,7 @@ module ApplicationHelper
     case stage.nomination
       when 'sprint'
         return '<span class="label label-danger">S</span>'.html_safe
-      when 'mountins'
+      when 'mountains'
         return '<span class="label label-success">M</span>'.html_safe
       else
         return ''
