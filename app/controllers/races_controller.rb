@@ -10,6 +10,8 @@ class RacesController < ApplicationController
 
   def show
     @overall = @race.get_overall
+    @overall_spriners = @race.get_overall_sprinters
+    @overall_mountains = @race.get_overall_mountains
 
     @page_title = @race.name
     add_breadcrumb 'Races', :races_path

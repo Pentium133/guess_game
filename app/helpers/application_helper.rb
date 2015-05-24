@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def stage_nomination_info(stage)
-    case stage.nomination
+    case stage.stage_type
       when 'sprint'
         niminat = '<span class="label label-danger">sprinters</span>'
       when 'mountains'
@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def stage_nomination(stage)
-    case stage.nomination
+    case stage.stage_type
       when 'sprint'
         return '<span class="label label-danger">S</span>'.html_safe
       when 'mountains'

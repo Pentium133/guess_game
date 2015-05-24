@@ -43,6 +43,10 @@
 </div>
 
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-<%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: 'Overall standing' } %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: 'General overall standing' } %>
+
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall_spriners, title: 'Sprinters overall standing' } %>
+
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall_mountains, title: 'Mountains overall standing' } %>
 </div>
 </div>
