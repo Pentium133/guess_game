@@ -39,7 +39,7 @@ class Race < ActiveRecord::Base
             FROM predict_results
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
-            WHERE stages.race_id = #{self.id} and stages.nomination = 3
+            WHERE stages.race_id = #{self.id} and stages.stage_type = 3
             GROUP by user_id
             ORDER by summscore desc, summplace asc"
     result = Array.new
@@ -56,7 +56,7 @@ class Race < ActiveRecord::Base
             FROM predict_results
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
-            WHERE stages.race_id = #{self.id} and stages.nomination = 4
+            WHERE stages.race_id = #{self.id} and stages.stage_type = 4
             GROUP by user_id
             ORDER by summscore desc, summplace asc"
     result = Array.new

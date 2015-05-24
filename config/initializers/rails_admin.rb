@@ -111,7 +111,6 @@ RailsAdmin.config do |config|
     show do
       field :stage_number
       field :name
-      field :nomination
       field :stage_type
       field :race
       field :start_at
@@ -121,7 +120,6 @@ RailsAdmin.config do |config|
     edit do
       field :stage_number
       field :name
-      field :nomination
       field :stage_type
       field :race
       field :start_at

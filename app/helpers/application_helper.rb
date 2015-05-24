@@ -14,6 +14,10 @@ module ApplicationHelper
         return '<span class="label label-info">ITT</span>'.html_safe
       when 'ttt'
         return '<span class="label label-info">TTT</span>'.html_safe
+      when 'sprint'
+        return '<span class="label label-danger">S</span>'.html_safe
+      when 'mountains'
+        return '<span class="label label-success">M</span>'.html_safe
       else
         return ''
     end
@@ -29,17 +33,6 @@ module ApplicationHelper
         return ''
     end
     "The stage has #{niminat} scores nomination".html_safe
-  end
-
-  def stage_nomination(stage)
-    case stage.stage_type
-      when 'sprint'
-        return '<span class="label label-danger">S</span>'.html_safe
-      when 'mountains'
-        return '<span class="label label-success">M</span>'.html_safe
-      else
-        return ''
-    end
   end
 
   def predict_status(stage)

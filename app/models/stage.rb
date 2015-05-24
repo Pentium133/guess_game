@@ -26,8 +26,7 @@ class Stage < ActiveRecord::Base
 
   after_initialize :set_default_type, :if => :new_record?
 
-  enum stage_type: [ :race, :itt, :ttt, :sprint2, :mountains2 ]
-  enum nomination: [ :default, :sprint, :mountains ]
+  enum stage_type: [ :race, :itt, :ttt, :sprint, :mountains ]
 
   def set_default_type
     self.stage_type ||= :race
