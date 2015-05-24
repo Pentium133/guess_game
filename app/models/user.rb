@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def role_enum
-    [:user, :manager, :admin]
+    User.roles
   end
 
   # Include default devise modules. Others available are:

@@ -36,10 +36,6 @@ class Stage < ActiveRecord::Base
     Stage.stage_types
   end
 
-  def nomination_enum
-    Stage.nominations
-  end
-
   def what_standing
     'Sprinters' if self.stage_type == 'sprint'
     'Mountains' if self.stage_type == 'mountains'

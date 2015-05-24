@@ -171,10 +171,11 @@ RailsAdmin.config do |config|
 
   config.model 'User' do
     list do
+      field :avatar
       field :username
       field :email
       field :role
-      field :avatar
+      field :last_sign_in_at
     end
     edit do
       field :username
