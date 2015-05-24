@@ -69,13 +69,12 @@ class Stage < ActiveRecord::Base
   end
 
   def get_overall
-    sql = "SELECT users.id, users.username, sum(stage_predicts.score) as summscore FROM stage_predicts
+    sql = "SELECT users.id, users.username, sum(predict_results.score) as summscore FROM predict_results
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
             WHERE stages.start_at <= '#{self.start_at}'
               AND stages.race_id = #{self.race_id}
-              AND stage_predicts.finisher_id IS NOT NULL
-            GROUP by stage_predicts.user_id
+            GROUP by predict_results.user_id
             ORDER by summscore desc"
     result = Array.new
     ActiveRecord::Base.connection.execute(sql).each do |row|
