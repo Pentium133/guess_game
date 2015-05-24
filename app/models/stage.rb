@@ -40,6 +40,11 @@ class Stage < ActiveRecord::Base
     Stage.nominations
   end
 
+  def what_standing
+    'Sprinters' if self.stage_type == 'sprint'
+    'Mountains' if self.stage_type == 'mountains'
+  end
+
   def calculate_scores
     stage_results.each do |result|
       unless result.finisher_id.to_s == ''
@@ -93,4 +98,43 @@ class Stage < ActiveRecord::Base
   def clear_predicts_for(user_id)
     stage_predicts.where(user_id: user_id).delete_all
   end
+
+  def get_overall_sprinters
+    sql = "SELECT users.id, users.username,
+                  sum(predict_results.score) as summscore,
+                  sum(predict_results.place) as summplace
+            FROM predict_results
+            JOIN users on user_id = users.id
+            JOIN stages on stage_id = stages.id
+            WHERE stages.start_at <= '#{self.start_at}'
+              AND stages.race_id = #{self.race_id}
+              AND stages.stage_type = 3
+            GROUP by predict_results.user_id
+            ORDER by summscore desc, summplace asc"
+    result = Array.new
+    ActiveRecord::Base.connection.execute(sql).each do |row|
+      result.push [row[0], row[1], row[2]]
+    end
+    return result
+  end
+
+  def get_overall_mountains
+    sql = "SELECT users.id, users.username,
+                  sum(predict_results.score) as summscore,
+                  sum(predict_results.place) as summplace
+            FROM predict_results
+            JOIN users on user_id = users.id
+            JOIN stages on stage_id = stages.id
+            WHERE stages.start_at <= '#{self.start_at}'
+              AND stages.race_id = #{self.race_id}
+              AND stages.stage_type = 4
+            GROUP by predict_results.user_id
+            ORDER by summscore desc, summplace asc"
+    result = Array.new
+    ActiveRecord::Base.connection.execute(sql).each do |row|
+      result.push [row[0], row[1], row[2]]
+    end
+    return result
+  end
+
 end

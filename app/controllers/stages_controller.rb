@@ -69,6 +69,12 @@ class StagesController < ApplicationController
     def fill_overall_standing
       logger.debug '=== Fill overal standing'
       @overall = @stage.get_overall
+      if @stage.stage_type == 'sprint'
+        @overall_addition = @stage.get_overall_sprinters
+      end
+      if @stage.stage_type == 'mountains'
+        @overall_addition = @stage.get_overall_mountains
+      end
     end
 
     def fill_scores
