@@ -1,48 +1,53 @@
-<div class="blog no-margin">
-  <div class="blog-header">
-    <h4 class="blog-title"><%= @race.name %></h4>
-    <p class="date-time">
-        <span class="day">
-            <i class="fa fa-calendar"></i> <%= l @race.start_at %> — <%= l @race.end_at %>
-        </span>
-        <span class="day hidden-xs">
-            <i class="fa fa-reorder"></i> <%= @race.stages.count %> stages
-        </span>
-    </p>
-  </div>
-  <div class="blog-body">
-      <table class="table table-condensed table-bordered no-margin">
-        <tbody>
-        <% @race.stages.each do |stage| %>
-        <tr>
-          <td style="width: 35px;"><%= stage.stage_number %></td>
-          <td class="col-md-2">
-            <%= l stage.start_at, format: :short %>
-            <% if stage.start_at.today? %>
-              <span class="badge badge-success">Today</span>
-            <% end %>
-          </td>
-          <td>
-            <%= stage_type stage %>
-            <%= link_to stage.name, race_stage_path(@race, stage) %>
-            <% if user_signed_in? %>
-              <% if stage.predict_results.where(user_id: current_user.id).any? %>
-                <i class="fa fa-check-circle green"></i>
-              <% else %>
-                <i class="fa fa-circle-thin red"></i>
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+  <div class="blog no-margin">
+    <div class="blog-header">
+      <h4 class="blog-title"><%= @race.name %></h4>
+      <p class="date-time">
+          <span class="day">
+              <i class="fa fa-calendar"></i> <%= l @race.start_at %> — <%= l @race.end_at %>
+          </span>
+          <span class="day hidden-xs">
+              <i class="fa fa-reorder"></i> <%= @race.stages.count %> stages
+          </span>
+      </p>
+    </div>
+    <div class="blog-body">
+        <table class="table table-condensed table-bordered no-margin">
+          <tbody>
+          <% @race.stages.each do |stage| %>
+          <tr>
+            <td style="width: 35px;">
+              <%= '<span class="badge badge-success">'.html_safe if stage.start_at.today? %>
+              <%= stage.stage_number %>
+              <%= '</span>'.html_safe if stage.start_at.today? %>
+            </td>
+            <td class="col-md-2">
+              <%= l stage.start_at, format: :short %>
+            </td>
+            <td>
+              <%= stage_type stage %>
+              <%= link_to stage.name, race_stage_path(@race, stage) %>
+              <% if user_signed_in? %>
+                <% if stage.predict_results.where(user_id: current_user.id).any? %>
+                  <i class="fa fa-check-circle green"></i>
+                <% else %>
+                  <i class="fa fa-circle-thin red"></i>
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-          <td class="col-md-2">
-            <%= stage.winner if stage.winner %>
-          </td>
-        </tr>
-        <% end %>
-        </tbody>
-      </table>
-   </div>
+            </td>
+            <td class="col-md-2">
+              <%= stage.winner if stage.winner %>
+            </td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+     </div>
+  </div>
 </div>
 
-<% content_for :sidebar do %>
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 <%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: 'Overall standing' } %>
-<% end %>
+</div>
+</div>

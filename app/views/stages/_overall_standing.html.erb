@@ -1,12 +1,19 @@
-<h5><%= title %></h5>
-<table class="table table-condensed no-margin">
-<tbody>
-<% overall.each_with_index do |item, index| %>
-  <tr>
-    <td><%= index+1 %></td>
-    <td><%= item[1] %></td>
-    <td><%= item[2] %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>
+<div class="blog">
+  <div class="blog-header">
+    <h5 class="blog-title"><%= title %></h5>
+  </div>
+
+  <div class="blog-body">
+    <table class="table table-condensed no-margin">
+    <tbody>
+    <% overall.each_with_index do |item, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= item[1] %></td>
+        <td><%= item[2] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+  </div>
+</div>
