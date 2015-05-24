@@ -9,7 +9,7 @@ class StagesController < ApplicationController
     race = @stage.race
     add_breadcrumb 'Races', races_path
     add_breadcrumb @stage.race.name, race_path(@stage.race)
-    add_breadcrumb @stage.name
+    add_breadcrumb "Stage #{@stage.stage_number}. @stage.name"
   end
 
   def update
