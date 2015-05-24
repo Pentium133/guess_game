@@ -28,13 +28,7 @@
             <td>
               <%= stage_type stage %>
               <%= link_to stage.name, race_stage_path(@race, stage) %>
-              <% if user_signed_in? %>
-                <% if stage.predict_results.where(user_id: current_user.id).any? %>
-                  <i class="fa fa-check-circle green"></i>
-                <% else %>
-                  <i class="fa fa-circle-thin red"></i>
-                <% end %>
-              <% end %>
+              <%= predict_status stage %>
             </td>
             <td class="col-md-2">
               <%= stage.winner if stage.winner %>

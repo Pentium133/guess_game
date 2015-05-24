@@ -13,7 +13,7 @@
               <tr>
                 <td><%= link_to stage.race.name, race_path(stage.race) %></td>
                 <td>
-                  <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %>
+                  <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
                 </td>
               </tr>
             <% end %>
@@ -27,7 +27,7 @@
               <tr>
                 <td><%= link_to stage.race.name, race_path(stage.race) %></td>
                 <td>
-                  <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %>
+                  <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
                 </td>
               </tr>
             <% end %>

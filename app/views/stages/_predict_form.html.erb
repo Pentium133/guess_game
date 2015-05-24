@@ -1,51 +1,91 @@
-<p><%= render partial: 'posible', locals: {stage_date: @stage.start_at } %></p>
+<% if @stage.start_at > Time.now %>
 
-<% if prs = @stage.predict_results.where(user_id: current_user.id).first %>
-  <p>Predict was created at <%= l prs.updated_at, format: :short %></p>
-<% end %>
+  <p><%= render partial: 'posible', locals: {stage_date: @stage.start_at } %></p>
 
-<%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
-    <% if policy(@stage).manage? %>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-7">
-          <%= select(:user, :id, User.all.collect {|p| [ p.name, p.id ] }, { :selected => current_user.id}, class: 'form-control') %>
-        </div>
-      </div>
-    </div>
-    <% end %>
+  <% if prs = @stage.predict_results.where(user_id: current_user.id).first %>
+    <p>Predict was created at <%= l prs.updated_at, format: :short %></p>
+  <% end %>
 
-    <% @stage.stage_predicts.where(user_id: current_user.id).each do |predict| %>
-      <%= f.fields_for :stage_predicts, predict do |rf| %>
+  <%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
+      <% if policy(@stage).manage? %>
       <div class="form-group">
         <div class="row">
-          <div class="col-md-1" style="width: 55px">
-            <%= rf.text_field :place, class: 'form-control', readonly: true %>
-          </div>
-          <div class="col-md-6">
-            <%= rf.autocomplete_field :finisher, @autocomplete_path, :id_element => "#predict_id_#{rf.index}", class: 'form-control' %>
-            <%= rf.hidden_field :finisher_id, id: "predict_id_#{rf.index}" %>
-            <%= rf.hidden_field :finisher_type  %>
+          <div class="col-md-7">
+            <%= select(:user, :id, User.all.collect {|p| [ p.name, p.id ] }, { :selected => current_user.id}, class: 'form-control') %>
           </div>
         </div>
       </div>
       <% end %>
-    <% end %>
 
-    <% if policy(@stage).manage? %>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="1" name="is_online" id="stage_predict_result_is_online">
-              Online?
-            </label>
+      <% @stage.stage_predicts.where(user_id: current_user.id).each do |predict| %>
+        <%= f.fields_for :stage_predicts, predict do |rf| %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-1" style="width: 55px">
+              <%= rf.text_field :place, class: 'form-control', readonly: true %>
+            </div>
+            <div class="col-md-6">
+              <%= rf.autocomplete_field :finisher, @autocomplete_path, :id_element => "#predict_id_#{rf.index}", class: 'form-control' %>
+              <%= rf.hidden_field :finisher_id, id: "predict_id_#{rf.index}" %>
+              <%= rf.hidden_field :finisher_type  %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+
+      <% if policy(@stage).manage? %>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="1" name="is_online" id="stage_predict_result_is_online">
+                Online?
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <% end %>
+      <% end %>
 
-  <%= f.submit 'Save predict', class: 'btn btn-success' %>
+    <%= f.submit 'Save predict', class: 'btn btn-success' %>
+  <% end %>
+
+  <hr/>
+  <h4>All predicts</h4>
+    <table class="table table-condensed table-bordered no-margin">
+    <tbody>
+    <% @stage.predict_results.order(:updated_at).each do |result| %>
+      <tr>
+        <td><%= result.user %></td>
+        <td>Ready at <%= l result.updated_at, format: :short %></td>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+<% else # PREDICT NOT AVAILABLE  %>
+
+<p>Predictions is not possible</p>
+<hr/>
+<h4>All predicts</h4>
+  <table class="table table-condensed table-bordered no-margin">
+  <tbody>
+  <% @stage.predict_results.order(:updated_at).each do |result| %>
+    <tr>
+      <td><%= result.user %></td>
+      <td>
+        <% @stage.stage_predicts.where(user_id: result.user_id).order(:place).each do |predict| %>
+          <%= "#{predict.finisher}, " unless predict.finisher_id.nil? %>
+        <% end %>
+      </td>
+      <td>at <%= l result.updated_at, format: :short %></td>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <% end %>

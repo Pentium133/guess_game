@@ -27,6 +27,7 @@ class StagesController < ApplicationController
       # predict_result
       pr = PredictResult.find_or_create_by stage_id: @stage.id, user_id: user_id
       pr.is_online = params[:is_online]
+      pr.touch
       pr.save
     end
 

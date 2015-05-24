@@ -19,6 +19,13 @@ module ApplicationHelper
     end
   end
 
-  def link_to_user(user)
+  def predict_status(stage)
+    if user_signed_in?
+      if stage.predict_results.where(user_id: current_user.id).any?
+        '<i class="fa fa-check-circle green"></i>'.html_safe
+      else
+        '<i class="fa fa-circle-thin red"></i>'.html_safe
+      end
+    end
   end
 end
