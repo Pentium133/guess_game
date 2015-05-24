@@ -55,7 +55,7 @@ class StagesController < ApplicationController
         @autocomplete_path = autocomplete_rider_last_name_riders_path
       end
 
-      @show_scores = (@stage.stage_results.where('finisher_id IS NOT NULL').count > 0) || policy(@stage).manage?
+      @show_scores = (@stage.stage_results.where('finisher_id IS NOT NULL').count > 0)
 
       fill_results finisher_class
 
