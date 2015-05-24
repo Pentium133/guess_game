@@ -58,3 +58,7 @@
     <% end %>
   </tbody>
 </table>
+
+<% if policy(@stage).calculate? %>
+  <%= render 'for_forum' %>
+<% end %>

@@ -1,0 +1,34 @@
+<br/><br/>
+<div class="panel-group no-margin" id="accordion">
+  <div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="text-danger collapsed">
+          For forum post
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+<textarea class="form-control" rows="8">
+[b]Результаты <%= @stage.stage_number %> этапа[/b]
+<% @stage.stage_results.each do |result| %>
+  <% unless result.finisher_id.nil? %>
+<%= result.place %>. <%= result.finisher %>
+  <% end %>
+<% end %>
+
+[b]Очки[/b]
+<% @scores.each do |score| %>
+<%= score.place %>. <%= score.user %><%= '[size=85]online[/size]' if score.is_online %> = [b]<%= score.score %>[/b] (<% score.user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).each do |predict| %><%= '[u]' if predict.guessed %><%= predict.finisher.name.capitalize %> - <%= predict.score %><%= '[/u]'if predict.guessed %>, <% end %>)
+<% end %>
+
+[b]Общий зачёт[/b]
+<% @overall.each_with_index do |item, index| %>
+<%= index+1 %>. <%= item[1] %> = [b]<%= item[2] %>[/b]
+<% end %>
+</textarea>
+      </div>
+    </div>
+  </div>
+</div>
