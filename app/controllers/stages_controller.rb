@@ -75,7 +75,7 @@ class StagesController < ApplicationController
       @scores = PredictResult.where(stage_id: @stage.id)
         .includes(:user)
         .order(score: :desc)
-        .order(:updated_at)
+        .order(:place)
       @predicts = @stage.stage_predicts.where(user_id: current_user.id).order(:place)
     end
 
