@@ -54,6 +54,8 @@ class StagesController < ApplicationController
         @autocomplete_path = autocomplete_rider_last_name_riders_path
       end
 
+      @show_scores = (@stage.stage_results.where('finisher_id IS NOT NULL').count > 0) || policy(@stage).manage?
+
       fill_results finisher_class
 
       fill_predicts finisher_class
@@ -74,6 +76,7 @@ class StagesController < ApplicationController
         .includes(:user)
         .order(score: :desc)
         .order(:updated_at)
+      @predicts = @stage.stage_predicts.where(user_id: current_user.id).order(:place)
     end
 
     def fill_results(finisher_class)

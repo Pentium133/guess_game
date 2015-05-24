@@ -1,30 +1,38 @@
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sx-12 col-sm-12">
     <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#predict" data-toggle="tab" data-original-title="" title="">Predict</a>
+      <% if @show_scores %>
+      <li class="<%= 'active' if @show_scores %>">
+        <a href="#scores" data-toggle="tab" title="Scores">Scores</a>
       </li>
-  <% if policy(@stage).calculate? %>
-      <li class="">
-        <a href="#result" data-toggle="tab" data-original-title="" title="">Result</a>
+      <% end %>
+  <% if policy(@stage).predict? %>
+      <li class="<%= 'active' unless @show_scores %>">
+        <a href="#predict" data-toggle="tab" title="Predict">Predict</a>
       </li>
   <% end %>
+  <% if policy(@stage).calculate? %>
       <li class="">
-        <a href="#scores" data-toggle="tab" data-original-title="" title="">Scores</a>
+        <a href="#result" data-toggle="tab" title="Result">Result</a>
       </li>
+  <% end %>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane fade active in" id="predict">
-        <%= render 'predict_form' if policy(@stage).predict? %>
+  <% if @show_scores %>
+      <div class="tab-pane fade <%= 'active in' if @show_scores %>" id="scores">
+        <%= render 'scores_table' %>
       </div>
+  <% end %>
+  <% if policy(@stage).predict? %>
+      <div class="tab-pane fade <%= 'active in' unless @show_scores %>" id="predict">
+        <%= render 'predict_form' %>
+      </div>
+  <% end %>
   <% if policy(@stage).calculate? %>
       <div class="tab-pane fade" id="result">
         <%= render 'result_form' %>
       </div>
   <% end %>
-      <div class="tab-pane fade" id="scores">
-        <%= render 'scores_table' %>
-      </div>
     </div>
 
   </div>

@@ -58,8 +58,8 @@ class Stage < ActiveRecord::Base
     end
 
     place = 1
-    PredictResult.where(stage_id: self.id).order(score: :desc).order(:updated_at).each do |result|
-      if place == 1
+    PredictResult.where(stage_id: self.id,).order(score: :desc).order(:updated_at).each do |result|
+      if place == 1 and result.score > 0
         self.winner_id = result.user_id
         self.save
       end

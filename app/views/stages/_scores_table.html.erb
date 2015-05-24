@@ -1,19 +1,41 @@
-<h3>Stage results</h3>
-<table class="table table-condensed table-bordered no-margin">
-  <tbody>
-    <% @stage.stage_results.each do |result| %>
-      <% unless result.finisher_id.nil? %>
-      <tr>
-        <td style="width: 30px;"><%= result.place %></td>
-        <td><%= result.finisher %></td>
-        </td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
 
-<h3>Predict's scores</h3>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <h4>Stage results</h4>
+  <table class="table table-condensed table-bordered no-margin">
+    <tbody>
+      <% @stage.stage_results.each do |result| %>
+        <% unless result.finisher_id.nil? %>
+        <tr>
+          <td style="width: 30px;"><%= result.place %></td>
+          <td><%= result.finisher %></td>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <h4>Your predict</h4>
+  <table class="table table-condensed table-bordered no-margin">
+    <tbody>
+      <% @predicts.each do |predict| %>
+        <tr>
+          <td style="width: 30px;"><%= predict.place %></td>
+          <td><%= predict.finisher %></td>
+          <td><%= predict.score %></td>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<h4>Predict's scores</h4>
 <table class="table table-condensed table-bordered no-margin">
   <tbody>
     <% @scores.each do |score| %>
