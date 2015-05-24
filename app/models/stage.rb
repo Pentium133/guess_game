@@ -50,7 +50,7 @@ class Stage < ActiveRecord::Base
     PredictResult.where(stage_id: self.id).each do |result|
       sum = StagePredict.where(user_id: result.user_id, stage_id: self.id).sum(:score)
       if result.is_online
-        result.update_column(:score, sum / 2)
+        result.update_column(:score, (sum / 2.0).round)
       else
         result.update_column(:score, sum )
       end
