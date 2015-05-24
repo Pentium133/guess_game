@@ -19,6 +19,18 @@ module ApplicationHelper
     end
   end
 
+  def stage_nomination_info(stage)
+    case stage.nomination
+      when 'sprint'
+        niminat = '<span class="label label-danger">sprinters</span>'
+      when 'mountains'
+        niminat = '<span class="label label-success">mountains</span>'
+      else
+        return ''
+    end
+    "The stage has #{niminat} scores nomination".html_safe
+  end
+
   def stage_nomination(stage)
     case stage.nomination
       when 'sprint'
