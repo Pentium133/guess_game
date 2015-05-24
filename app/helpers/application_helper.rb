@@ -19,6 +19,17 @@ module ApplicationHelper
     end
   end
 
+  def stage_nomination(stage)
+    case stage.nomination
+      when 'sprint'
+        return '<span class="label label-danger">S</span>'.html_safe
+      when 'mountins'
+        return '<span class="label label-success">M</span>'.html_safe
+      else
+        return ''
+    end
+  end
+
   def predict_status(stage)
     if user_signed_in?
       if stage.predict_results.where(user_id: current_user.id).any?
