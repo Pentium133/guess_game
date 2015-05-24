@@ -27,13 +27,18 @@ class Stage < ActiveRecord::Base
   after_initialize :set_default_type, :if => :new_record?
 
   enum stage_type: [ :race, :itt, :ttt ]
+  enum nomination: [ :default, :sprint, :mountins ]
 
   def set_default_type
     self.stage_type ||= :race
   end
 
   def stage_type_enum
-    [ :race, :itt, :ttt ]
+    Stage.stage_types
+  end
+
+  def nomination_enum
+    Stage.nominations
   end
 
   def calculate_scores
