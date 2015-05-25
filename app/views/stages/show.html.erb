@@ -37,8 +37,8 @@
   </div>
 
   <div class="col-lg-4 col-md-4 col-sx-12 col-sm-12">
-    <%= render partial: 'overall_standing', locals: { overall: @overall, title: 'Overall standing after stage' } %>
+    <%= render partial: 'overall_standing', locals: { overall: @overall, title: 'Overall classifications after stage' } %>
 
-    <%= render partial: 'overall_standing', locals: { overall: @overall_addition, title: "#{@stage.what_standing} overall standing after stage" } if @overall_addition.present? %>
+    <%= render partial: 'overall_standing', locals: { overall: @overall_addition, title: "#{@stage.what_standing} classifications after stage" } if @overall_addition.present? %>
   </div>
 </div>
