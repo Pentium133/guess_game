@@ -59,7 +59,7 @@
     <% @stage.predict_results.order(:updated_at).each do |result| %>
       <tr>
         <td><%= result.user %></td>
-        <td>Ready at <%= l result.updated_at, format: :short %></td>
+        <td>Was ready at <%= l result.updated_at, format: :short %></td>
         </td>
       </tr>
     <% end %>
