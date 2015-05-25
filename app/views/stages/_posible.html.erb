@@ -1,4 +1,4 @@
-Predictions possible up to <%= l stage_date, format: :short %>
+Predictions are accepted until <%= l stage_date, format: :short %>
 <% between = TimeDifference.between(Time.now, stage_date) %>
 <% if between.in_hours < 24 and between.in_hours >= 1 and stage_date > Time.now %>
   , <span class="badge badge-warning">
