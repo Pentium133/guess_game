@@ -13,7 +13,11 @@
               <tr>
                 <td><%= link_to stage.race.name, race_path(stage.race) %></td>
                 <td>
+                <% unless stage.rest_day? %>
                   <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
+                <% else %>
+                  <%= 'Rest day' %>
+                <% end %>
                 </td>
               </tr>
             <% end %>

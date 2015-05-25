@@ -1,0 +1,28 @@
+<tr>
+  <td style="width: 35px;">
+    <% unless stage.rest_day? %>
+      <%= '<span class="badge badge-success">'.html_safe if stage.start_at.today? %>
+      <%= stage.stage_number %>
+      <%= '</span>'.html_safe if stage.start_at.today? %>
+    <% end %>
+  </td>
+  <td class="col-md-2">
+  <% unless stage.rest_day? %>
+    <%= l stage.start_at, format: :short %>
+  <% else %>
+    <%= l stage.start_at, format: '%d %b' %>
+  <% end  %>
+  </td>
+  <td>
+  <% unless stage.rest_day? %>
+    <%= stage_type stage %>
+    <%= link_to stage.name, race_stage_path(@race, stage) %>
+    <%= predict_status stage %>
+  <% else %>
+    <%= 'Rest day' %>
+  <% end %>
+  </td>
+  <td class="col-md-2">
+    <%= stage.winner if stage.winner %>
+  </td>
+</tr>

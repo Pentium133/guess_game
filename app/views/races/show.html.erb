@@ -15,25 +15,8 @@
     <div class="blog-body">
         <table class="table table-condensed table-bordered no-margin">
           <tbody>
-          <% @race.stages.each do |stage| %>
-          <tr>
-            <td style="width: 35px;">
-              <%= '<span class="badge badge-success">'.html_safe if stage.start_at.today? %>
-              <%= stage.stage_number %>
-              <%= '</span>'.html_safe if stage.start_at.today? %>
-            </td>
-            <td class="col-md-2">
-              <%= l stage.start_at, format: :short %>
-            </td>
-            <td>
-              <%= stage_type stage %>
-              <%= link_to stage.name, race_stage_path(@race, stage) %>
-              <%= predict_status stage %>
-            </td>
-            <td class="col-md-2">
-              <%= stage.winner if stage.winner %>
-            </td>
-          </tr>
+          <% @race.stages.order(:start_at).each do |stage| %>
+            <%= render stage %>
           <% end %>
           </tbody>
         </table>
