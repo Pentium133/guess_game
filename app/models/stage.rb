@@ -11,6 +11,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  winner_id    :integer
+#  slug         :string(255)
 #
 
 class Stage < ActiveRecord::Base

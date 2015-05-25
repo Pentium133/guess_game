@@ -1,4 +1,11 @@
 <tr>
   <td class="col-md-3"><%= l race.start_at, format: '%d %b %Y' %> - <%= l race.end_at, format: '%d %b %Y' %></td>
-  <td><%= link_to race.name, race_path(race) %></td>
+  <td>
+    <%= link_to_if race.is_ready, race.name, race_path(race) %>
+    <%= link_to 'view', race_path(race) if user_signed_in? and current_user.admin? and not race.is_ready %>
+    <div class="pull-right">
+      <%= race_status_for race %>
+      <%= race_type_for race %>
+    </div>
+  </td>
 </tr>

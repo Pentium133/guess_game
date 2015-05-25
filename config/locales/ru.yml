@@ -21,6 +21,7 @@ ru:
     mountains_classifications_after_stage: Горная квалификация после этапа
     sprinters: спринтерской
     mountains: горной
+    not_ready_for_predictions: Ещё не готово для прогнозов
 
   pages:
     dashboard:

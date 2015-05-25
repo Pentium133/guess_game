@@ -21,6 +21,7 @@ en:
     Mountains_classifications_after_stage: Mountains classifications after stage
     sprinters: sprinters
     mountains: mountains
+    not_ready_for_predictions: Not ready for predictions yet
 
   pages:
     dashboard:

@@ -9,6 +9,9 @@
 #  end_at     :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string(255)
+#  race_type  :integer          default(0)
+#  is_ready   :boolean          default(FALSE)
 #
 
 class Race < ActiveRecord::Base
@@ -17,6 +20,12 @@ class Race < ActiveRecord::Base
 
   belongs_to :season
   has_many :stages
+
+  enum race_type: { grand_tour: 0, word_tour: 1, classics_tour: 2 }
+
+  def race_type_enum
+    Race.race_types
+  end
 
   def name_and_season
     "#{name} #{season.name}"

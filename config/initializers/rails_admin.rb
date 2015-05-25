@@ -38,6 +38,8 @@ RailsAdmin.config do |config|
   config.model 'Race' do
     list do
       field :name
+      field :race_type
+      field :is_ready
       field :season
       field :start_at
       field :end_at
@@ -45,13 +47,17 @@ RailsAdmin.config do |config|
     show do
       field :name
       field :season
+      field :race_type
+      field :is_ready
       field :start_at
       field :end_at
       field :created_at
       field :updated_at
     end
     edit do
+      field :is_ready
       field :name
+      field :race_type
       field :season
       field :start_at
       field :end_at
