@@ -14,6 +14,9 @@
 #
 
 class Stage < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name_and_race, use: :slugged
+
   belongs_to :race
   belongs_to :winner, :class_name => User
   has_many :stage_results
@@ -34,6 +37,10 @@ class Stage < ActiveRecord::Base
 
   def stage_type_enum
     Stage.stage_types
+  end
+
+  def name_and_race
+    "#{race.name} #{race.season.name} #{name}"
   end
 
   def what_standing

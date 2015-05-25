@@ -7,4 +7,21 @@ namespace :import do
       puts item.text
     end
   end
+
+  desc "Slugable stage and races"
+  task :slug => :environment do
+    Stage.includes(:race).all.each do |stage|
+      stage.touch
+      stage.save
+      print '.'
+    end
+
+    Race.includes(:season).all.each do |race|
+      race.touch
+      race.save
+      print '.'
+    end
+  end
+
+
 end

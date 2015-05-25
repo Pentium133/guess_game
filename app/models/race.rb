@@ -12,8 +12,15 @@
 #
 
 class Race < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name_and_season, use: :slugged
+
   belongs_to :season
   has_many :stages
+
+  def name_and_season
+    "#{name} #{season.name}"
+  end
 
   def get_overall
     sql = "SELECT users.id, users.username,

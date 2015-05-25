@@ -5,7 +5,7 @@ class StagesController < ApplicationController
   def show
     raise 'Not correct result for stage' if @stage.stage_results.count > 6
 
-    @page_title = @stage.name
+    @page_title = "Stage #{@stage.stage_number} - #{@stage.name}"
     race = @stage.race
     add_breadcrumb 'Races', races_path
     add_breadcrumb @stage.race.name, race_path(@stage.race)
@@ -46,7 +46,7 @@ class StagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stage
-      @stage = Stage.find(params[:id])
+      @stage = Stage.friendly.find(params[:id])
       raise ActiveRecord::RecordNotFound if @stage.rest_day?
 
       if @stage.stage_type == 'ttt'
