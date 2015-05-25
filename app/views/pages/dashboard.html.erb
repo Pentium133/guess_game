@@ -7,6 +7,7 @@
       <div class="blog-body">
         <div class="table-responsive">
           <h5>Today stages</h5>
+          <% if @stages_today.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
             <% @stages_today.each do |stage| %>
@@ -23,8 +24,12 @@
             <% end %>
             </tbody>
           </table>
+          <% else %>
+            <p>No any stage today</p>
+          <% end %>
 
           <h5>Tomorow stages</h5>
+          <% if @stages_tomorrow.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
             <% @stages_tomorrow.each do |stage| %>
@@ -37,6 +42,9 @@
             <% end %>
             </tbody>
           </table>
+          <% else %>
+            <p>No any stage tomorow</p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -50,6 +58,7 @@
       <div class="blog-body">
         <div class="table-responsive">
           <h5>Today races</h5>
+          <% if @races_today.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
             <% if @races_today.each do |race| %>
@@ -66,8 +75,13 @@
             <% end %>
             </tbody>
           </table>
+          <% else %>
+            <p>No any race today</p>
+          <% end %>
+
 
           <h5>Coming soon races</h5>
+          <% if @races_tomorrow.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
             <% @races_tomorrow.each do |race| %>
@@ -81,6 +95,9 @@
             <% end %>
             </tbody>
           </table>
+          <% else %>
+            <p>No any race comming soon</p>
+          <% end %>
         </div>
       </div>
     </div>
