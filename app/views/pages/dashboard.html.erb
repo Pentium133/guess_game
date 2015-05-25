@@ -11,7 +11,7 @@
             <tbody>
             <% @stages_today.each do |stage| %>
               <tr>
-                <td><%= link_to stage.race.name, race_path(stage.race) %></td>
+                <td class="col-lg-3"><%= link_to stage.race.name, race_path(stage.race) %></td>
                 <td>
                 <% unless stage.rest_day? %>
                   <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
@@ -29,7 +29,7 @@
             <tbody>
             <% @stages_tomorrow.each do |stage| %>
               <tr>
-                <td><%= link_to stage.race.name, race_path(stage.race) %></td>
+                <td class="col-lg-3"><%= link_to stage.race.name, race_path(stage.race) %></td>
                 <td>
                   <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
                 </td>
@@ -54,10 +54,10 @@
             <tbody>
             <% if @races_today.each do |race| %>
               <tr>
-                <td>
+                <td class="col-lg-6">
                   <i class="fa fa-calendar"></i> <%= l race.start_at %> — <%= l race.end_at %>
                 </td>
-                <td><%= link_to race.name, race_path(race) %></td>
+                <td class="col-lg-4"><%= link_to race.name, race_path(race) %></td>
                 <td><%= race.stages.count %> stages</td>
               </tr>
               <% end %>
@@ -72,10 +72,10 @@
             <tbody>
             <% @races_tomorrow.each do |race| %>
               <tr>
-                <td>
+                <td class="col-lg-6">
                   <i class="fa fa-calendar"></i> <%= l race.start_at %> — <%= l race.end_at %>
                 </td>
-                <td><%= link_to race.name, race_path(race) %></td>
+                <td class="col-lg-4"><%= link_to race.name, race_path(race) %></td>
                 <td><%= race.stages.count %> stages</td>
               </tr>
             <% end %>
