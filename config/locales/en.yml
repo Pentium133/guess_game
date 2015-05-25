@@ -1,23 +1,72 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  menu:
+    dashboard: Dashboard
+    races: Races
+    teams: Teams
+
+  layouts:
+    users_links:
+      sign_up: Sign up
+      login: Log in
+      user_profile: User profile
+      sign_out: Sign out
+
+  message:
+    rest_day: Rest day
+    overall_classifications: Overall classifications
+    overall_classifications_after_stage: Overall classifications after stage
+    sprinters_classifications: Sprinters classifications
+    Sprinters_classifications_after_stage: Sprinters classifications after stage
+    mountains_classifications: Mountains classifications
+    Mountains_classifications_after_stage: Mountains classifications after stage
+    sprinters: sprinters
+    mountains: mountains
+
+  pages:
+    dashboard:
+      stages: Stages
+      today_stages: Today stages
+      no_any_stage_today: Тo any stage today
+      tomorow_stages: Tomorow stages
+      no_any_stage_tomorow: Тo any stage tomorow
+      races: Races
+      today_races: Today races
+      no_any_race_today: No any race today
+      coming_soon_races: Coming soon races
+      no_any_race_comming_soon: No any race comming soon
+
+  races:
+    index:
+      races: Races
+      races_season: "Races - сезон %{season}"
+    show:
+      stage_count:
+        one: '%{count} stage'
+        other: '%{count} stages'
+
+  stages:
+    scores_information: "The stage has %{niminat} scores nomination"
+    posible:
+      predictions_are_accepted_until: Predict is accepted unti
+      left_hours:
+        one: 'left %{count} hour'
+        other: 'left %{count} hours'
+      left_minutes:
+        one: 'left %{count} minute'
+        other: 'left %{count} minutes'
+    predict_form:
+      predict_was_created_at: Your predict was created at
+      all_predicts: All predicts
+      send_predict: Send predict
+      was_ready_on: Sent predict on
+      predictions_are_not_accepted: Predictions are not accepted
+    result_form:
+      save_result: Save result
+    show:
+      scores: Scores
+      predict: Predict
+      result: Result
+    scores_table:
+      stage_result: Stage result
+      your_predict: Your predict
+      predicts_scores: "Predict's scores"

@@ -1,0 +1,78 @@
+ru:
+  menu:
+    dashboard: Dashboard
+    races: Гонки
+    teams: Teams
+
+  layouts:
+    users_links:
+      sign_up: Регистрация
+      login: Вход
+      user_profile: Профиль
+      sign_out: Выход
+
+  message:
+    rest_day: День отдыха
+    overall_classifications: Генеральная квалификация
+    overall_classifications_after_stage: Генеральная квалификация после этапа
+    sprinters_classifications: Спринтерская квалификация
+    sprint_classifications_after_stage: Спринтерская квалификация после этапа
+    mountains_classifications: Горная квалификация
+    mountains_classifications_after_stage: Горная квалификация после этапа
+    sprinters: спринтерской
+    mountains: горной
+
+  pages:
+    dashboard:
+      stages: Этапы
+      today_stages: Сегодня
+      no_any_stage_today: Сегодня нет никаких этапов
+      tomorow_stages: Завтра
+      no_any_stage_tomorow: Завтра нет никаких этапов
+      races: Гонки
+      today_races: Сегодня
+      no_any_race_today: Сегодня нет никаких гонок
+      coming_soon_races: В ближайшее время
+      no_any_race_comming_soon: Нет гонок в ближайшее время
+
+  races:
+    index:
+      races: Гонки
+      races_season: "Гонки - сезон %{season}"
+    show:
+      stage_count:
+        one: '%{count} этап'
+        few: '%{count} этапа'
+        many: '%{count} этапов'
+        other: '%{count} этапа'
+
+  stages:
+    scores_information: "Этап приносит очки в %{niminat} номинации"
+    posible:
+      predictions_are_accepted_until: Прогноз принимается до
+      left_hours:
+        one: 'осталось %{count} час'
+        few: 'осталось %{count} часа'
+        many: 'осталось %{count} часов'
+        other: 'осталось %{count} часа'
+      left_minutes:
+        one: 'осталось %{count} минута'
+        few: 'осталось %{count} минуты'
+        many: 'осталось %{count} минут'
+        other: 'осталось %{count} минуты'
+    predict_form:
+      predict_was_created_at: Ваш прогноз был сделан
+      all_predicts: Все прогнозы
+      send_predict: Отправить прогноз
+      was_ready_on: Сделал прогноз
+      predictions_are_not_accepted: Прогнозы уже не принимаются
+    result_form:
+      save_result: Сохранить результат
+    show:
+      scores: Очки
+      predict: Прогноз
+      result: Результат
+    scores_table:
+      stage_result: Результаты этапа
+      your_predict: Ваш прогноз
+      predicts_scores: Очки за прогнозы

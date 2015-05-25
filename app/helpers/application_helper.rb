@@ -26,13 +26,13 @@ module ApplicationHelper
   def stage_nomination_info(stage)
     case stage.stage_type
       when 'sprint'
-        niminat = '<span class="label label-danger">sprinters</span>'
+        niminat = '<span class="label label-danger">' + I18n.t('message.sprinters') + '</span>'
       when 'mountains'
-        niminat = '<span class="label label-success">mountains</span>'
+        niminat = '<span class="label label-success">' + I18n.t('message.mountains') + '</span>'
       else
         return ''
     end
-    "The stage has #{niminat} scores nomination".html_safe
+    I18n.t('stages.scores_information', niminat: niminat).html_safe
   end
 
   def predict_status(stage)

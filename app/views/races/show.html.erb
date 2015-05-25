@@ -9,7 +9,7 @@
               <i class="fa fa-calendar"></i> <%= l @race.start_at %> — <%= l @race.end_at %>
           </span>
           <span class="day hidden-xs">
-              <i class="fa fa-reorder"></i> <%= @race.stages.count %> stages
+            <i class="fa fa-reorder"></i> <%= t '.stage_count', count: @race.stages.only_race.count %>
           </span>
       </p>
     </div>
@@ -26,10 +26,10 @@
 </div>
 
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-<%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: 'Overall classifications' } %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: t('message.overall_classifications') } %>
 
-<%= render partial: 'stages/overall_standing', locals: { overall: @overall_spriners, title: 'Sprinters classifications' } %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall_spriners, title: t('message.sprinters_classifications') } %>
 
-<%= render partial: 'stages/overall_standing', locals: { overall: @overall_mountains, title: 'Mountains classifications' } %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall_mountains, title: t('message.mountains_classifications') } %>
 </div>
 </div>

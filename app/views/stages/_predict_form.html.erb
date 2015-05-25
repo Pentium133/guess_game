@@ -3,7 +3,7 @@
   <p><%= render partial: 'posible', locals: {stage_date: @stage.start_at } %></p>
 
   <% if prs = @stage.predict_results.where(user_id: current_user.id).first %>
-    <p>Predict was created at <%= l prs.updated_at, format: :short %></p>
+    <p><%= t '.predict_was_created_at' %> <%= l prs.updated_at, format: :short %></p>
   <% end %>
 
   <%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
@@ -49,17 +49,17 @@
       </div>
       <% end %>
 
-    <%= f.submit 'Save predict', class: 'btn btn-success' %>
+    <%= f.submit t('.send_predict'), class: 'btn btn-success' %>
   <% end %>
 
   <hr/>
-  <h4>All predicts</h4>
+  <h4><%= t '.all_predicts' %></h4>
     <table class="table table-condensed table-bordered no-margin">
     <tbody>
     <% @stage.predict_results.order(:updated_at).each do |result| %>
       <tr>
         <td><%= result.user %></td>
-        <td>Was ready on <%= l result.updated_at, format: :short %></td>
+        <td><%= t '.was_ready_on'%> <%= l result.updated_at, format: :short %></td>
         </td>
       </tr>
     <% end %>
@@ -68,9 +68,9 @@
 
 <% else # PREDICT NOT AVAILABLE  %>
 
-<p>Predictions are not accepted</p>
+<h5><%= t '.predictions_are_not_accepted' %></h5>
 <hr/>
-<h4>All predicts</h4>
+<h4><%= t '.all_predicts' %></h4>
   <table class="table table-condensed table-bordered no-margin">
   <tbody>
   <% @stage.predict_results.order(:updated_at).each do |result| %>
@@ -81,7 +81,7 @@
           <%= "#{predict.finisher}, " unless predict.finisher_id.nil? %>
         <% end %>
       </td>
-      <td>at <%= l result.updated_at, format: :short %></td>
+      <td><%= l result.updated_at, format: :short %></td>
       </td>
     </tr>
   <% end %>

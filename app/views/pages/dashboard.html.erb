@@ -2,11 +2,11 @@
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <div class="blog blog-info no-margin">
       <div class="blog-header">
-        <h5 class="blog-title">Stages</h5>
+        <h5 class="blog-title"><%= t '.stages' %></h5>
       </div>
       <div class="blog-body">
         <div class="table-responsive">
-          <h5>Today stages</h5>
+          <h5><%= t '.today_stages' %></h5>
           <% if @stages_today.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
@@ -17,7 +17,7 @@
                 <% unless stage.rest_day? %>
                   <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
                 <% else %>
-                  <%= 'Rest day' %>
+                  <%= t 'message.rest_day' %>
                 <% end %>
                 </td>
               </tr>
@@ -25,10 +25,10 @@
             </tbody>
           </table>
           <% else %>
-            <p>No any stage today</p>
+            <p><%= t '.no_any_stage_today' %></p>
           <% end %>
 
-          <h5>Tomorow stages</h5>
+          <h5><%= t '.tomorow_stages' %></h5>
           <% if @stages_tomorrow.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
@@ -43,7 +43,7 @@
             </tbody>
           </table>
           <% else %>
-            <p>No any stage tomorow</p>
+            <p><%= t '.no_any_stage_tomorow' %></p>
           <% end %>
         </div>
       </div>
@@ -53,15 +53,15 @@
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <div class="blog blog-success no-margin">
       <div class="blog-header">
-        <h5 class="blog-title">Races</h5>
+        <h5 class="blog-title"><%= t '.races' %></h5>
       </div>
       <div class="blog-body">
         <div class="table-responsive">
-          <h5>Today races</h5>
+          <h5><%= t '.today_races' %></h5>
           <% if @races_today.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
-            <% if @races_today.each do |race| %>
+            <% @races_today.each do |race| %>
               <tr>
                 <td class="col-lg-6">
                   <i class="fa fa-calendar"></i> <%= l race.start_at %> — <%= l race.end_at %>
@@ -70,17 +70,14 @@
                 <td><%= race.stages.count %> stages</td>
               </tr>
               <% end %>
-            <% else %>
-              <tr><td>Nothing</td></tr>
-            <% end %>
             </tbody>
           </table>
           <% else %>
-            <p>No any race today</p>
+            <p><%= t '.no_any_race_today' %></p>
           <% end %>
 
 
-          <h5>Coming soon races</h5>
+          <h5><%= t '.coming_soon_races' %></h5>
           <% if @races_tomorrow.any? %>
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
@@ -96,7 +93,7 @@
             </tbody>
           </table>
           <% else %>
-            <p>No any race comming soon</p>
+            <p><%= t '.no_any_race_comming_soon' %></p>
           <% end %>
         </div>
       </div>

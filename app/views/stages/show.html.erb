@@ -6,15 +6,15 @@
     <ul class="nav nav-tabs">
       <% if @show_scores %>
       <li class="<%= 'active' if @show_scores %>">
-        <a href="#scores" data-toggle="tab" title="Scores">Scores</a>
+        <a href="#scores" data-toggle="tab" title="Scores"><%= t '.scores' %></a>
       </li>
       <% end %>
       <li class="<%= 'active' unless @show_scores %>">
-        <a href="#predict" data-toggle="tab" title="Predict">Predict</a>
+        <a href="#predict" data-toggle="tab" title="Predict"><%= t '.predict' %></a>
       </li>
   <% if policy(@stage).calculate? %>
       <li class="">
-        <a href="#result" data-toggle="tab" title="Result">Result</a>
+        <a href="#result" data-toggle="tab" title="Result"><%= t '.result' %></a>
       </li>
   <% end %>
     </ul>
@@ -37,8 +37,8 @@
   </div>
 
   <div class="col-lg-4 col-md-4 col-sx-12 col-sm-12">
-    <%= render partial: 'overall_standing', locals: { overall: @overall, title: 'Overall classifications after stage' } %>
+    <%= render partial: 'overall_standing', locals: { overall: @overall, title: t('message.overall_classifications_after_stage') } %>
 
-    <%= render partial: 'overall_standing', locals: { overall: @overall_addition, title: "#{@stage.what_standing} classifications after stage" } if @overall_addition.present? %>
+    <%= render partial: 'overall_standing', locals: { overall: @overall_addition, title: t("message.#{@stage.stage_type}_classifications_after_stage") } if @overall_addition.present? %>
   </div>
 </div>

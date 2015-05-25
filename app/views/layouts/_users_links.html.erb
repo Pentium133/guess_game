@@ -11,12 +11,12 @@
   <div class="user-name">Welcome <%= current_user.username %></div>
   <ul class="user-links">
     <li>
-      <a href="<%= edit_user_registration_path %>" title="User profile">
+      <a href="<%= edit_user_registration_path %>" title="<%= t '.user_profile' %>">
         <i class="fa fa-sliders text-info"></i>
       </a>
     </li>
     <li>
-      <a href="<%= destroy_user_session_path %>" title="Sign out">
+      <a href="<%= destroy_user_session_path %>" title="<%= t '.sign_out' %>">
         <i class="fa fa-sign-out text-danger"></i>
       </a>
     </li>
@@ -24,7 +24,7 @@
 </div>
 <% else %>
 <div class="current-user" style="padding-left: 10px; padding-top: 15px">
-  <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-info' %>
-  <%= link_to 'Login', new_user_session_path, class: 'btn btn-default' %>
+  <%= link_to t('.sign_up'), new_user_registration_path, class: 'btn btn-info' %>
+  <%= link_to t('.login'), new_user_session_path, class: 'btn btn-default' %>
 </div>
 <% end %>

@@ -31,6 +31,8 @@ class Stage < ActiveRecord::Base
 
   enum stage_type: { race: 0, itt: 1, ttt: 2, sprint: 3, mountains: 4, rest_day: 100 }
 
+  scope :only_race, -> { where('stage_type <> 100') }
+
   def set_default_type
     self.stage_type ||= :race
   end

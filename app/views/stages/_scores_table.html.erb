@@ -1,7 +1,7 @@
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-  <h4>Stage results</h4>
+  <h4><%= t '.stage_result' %></h4>
   <table class="table table-condensed table-bordered no-margin">
     <tbody>
       <% @stage.stage_results.each do |result| %>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-  <h4>Your predict</h4>
+  <h4><%= t '.your_predict' %></h4>
   <table class="table table-condensed table-bordered no-margin">
     <tbody>
       <% @predicts.each do |predict| %>
@@ -35,7 +35,7 @@
 
 </div>
 
-<h4>Predict's scores</h4>
+<h4><%= t '.predicts_scores' %></h4>
 <table class="table table-condensed table-bordered no-margin">
   <tbody>
     <% @scores.each do |score| %>
@@ -49,7 +49,7 @@
       <td>/
         <% score.user.stage_predicts.where('stage_id = ? and score > 0', @stage.id).each do |predict| %>
           <%= '<b>'.html_safe if predict.guessed %>
-          <%= predict.finisher.name %> - <%= predict.score %>
+          <%= predict.finisher.name.capitalize %> - <%= predict.score %>
           <%= '</b>'.html_safe if predict.guessed %>
           /
         <% end %>

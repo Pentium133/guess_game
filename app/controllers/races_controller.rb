@@ -4,8 +4,8 @@ class RacesController < ApplicationController
   def index
     @races = Race.all
 
-    @page_title = 'Races'
-    add_breadcrumb 'Races'
+    @page_title = I18n.t 'menu.races'
+    add_breadcrumb @page_title
   end
 
   def show
@@ -14,7 +14,7 @@ class RacesController < ApplicationController
     @overall_mountains = @race.get_overall_mountains
 
     @page_title = @race.name
-    add_breadcrumb 'Races', :races_path
+    add_breadcrumb I18n.t 'menu.races', :races_path
     add_breadcrumb @race.name
   end
 

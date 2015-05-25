@@ -1,10 +1,10 @@
-Predictions are accepted until <%= l stage_date, format: :short %>
+<%= t '.predictions_are_accepted_until' %> <%= l stage_date, format: :short %>
 <% between = TimeDifference.between(Time.now, stage_date) %>
 <% if between.in_hours < 24 and between.in_hours >= 1 and stage_date > Time.now %>
   , <span class="badge badge-warning">
-  left <%= between.in_hours.round %> hours</span>
+  <%= t '.left_hours', count: between.in_hours.round %></span>
 <% end %>
 <% if between.in_hours < 1 and stage_date > Time.now %>
   , <span class="badge badge-danger">
-  left <%= between.in_minutes.round %> minutes</span>
+  <%= t '.left_minutes', count: between.in_minutes.round %></span>
 <% end %>

@@ -5,23 +5,25 @@
     <li class="<%= active_if(action: 'dashboard') %>">
       <a href='<%= root_path %>'>
         <i class="fa fa-desktop"></i>
-        <span>Dashboard</span>
+        <span><%= t 'menu.dashboard' %></span>
         <%= current_page_tag_if(action: 'dashboard') %>
       </a>
     </li>
     <li class="<%= active_if(controller: 'races') %>">
       <a href='<%= races_path %>'>
         <i class="fa fa-trophy"></i>
-        <span>Races</span>
+        <span><%= t 'menu.races' %></span>
         <%= current_page_tag_if(controller: 'races') %>
       </a>
     </li>
+    <% if user_signed_in? and current_user.admin? %>
     <li class="<%= active_if(controller: 'team_seasons') %>">
       <a href='<%= team_seasons_path %>'>
         <i class="fa fa-users"></i>
-        <span>Teams</span>
+        <span><%= t 'menu.teams' %></span>
         <%= current_page_tag_if(controller: 'team_seasons') %>
       </a>
     </li>
+    <% end %>
   </ul>
 </div>

@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= @page_title.present? ? @page_title + ' | Guess Games' : 'Guess Games - Pro Cycling Predictions' %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Velo" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pro Cycling Predictions Games Конкурс прогнозов велсопорт" %>">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link href="/fonts/font-awesome.min.css" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
@@ -30,13 +30,6 @@
           </div>
         </div>
       </div>
-      <!--div class="right-sidebar">
-        <div class="add-on clearfix">
-          <div class="add-on-wrapper">
-          <%= content_for?(:sidebar) ? yield(:sidebar) : '' %>
-          </div>
-        </div>
-      </div-->
     </div>
   </body>
 </html>
