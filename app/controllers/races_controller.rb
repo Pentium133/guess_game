@@ -14,7 +14,7 @@ class RacesController < ApplicationController
     @overall_mountains = @race.get_overall_mountains
 
     @page_title = @race.name
-    add_breadcrumb I18n.t 'menu.races', :races_path
+    add_breadcrumb I18n.t('menu.races'), :races_path
     add_breadcrumb @race.name
   end
 

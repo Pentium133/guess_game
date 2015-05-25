@@ -6,8 +6,7 @@ class StagesController < ApplicationController
     raise 'Not correct result for stage' if @stage.stage_results.count > 6
 
     @page_title = "Stage #{@stage.stage_number} - #{@stage.name}"
-    race = @stage.race
-    add_breadcrumb 'Races', races_path
+    add_breadcrumb I18n.t('menu.races'), races_path
     add_breadcrumb @stage.race.name, race_path(@stage.race)
     add_breadcrumb "Stage #{@stage.stage_number} - #{@stage.name}"
   end
