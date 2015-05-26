@@ -38,6 +38,7 @@ class StagesController < ApplicationController
       end
       redirect_to race_stage_path(@stage.race, @stage), notice: 'Stage result was successfully updated.'
     else
+      flash.now[:alert] = 'Stage result was not updated.'
       render action: 'show'
     end
   end
