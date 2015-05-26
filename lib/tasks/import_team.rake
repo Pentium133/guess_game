@@ -11,12 +11,13 @@ namespace :import do
   desc "Slugable stage and races"
   task :slug => :environment do
     Stage.includes(:race).all.each do |stage|
-      stage.touch
+      stage.slug = nil
       stage.save
       print '.'
     end
 
     Race.includes(:season).all.each do |race|
+      race.slug = nil
       race.touch
       race.save
       print '.'

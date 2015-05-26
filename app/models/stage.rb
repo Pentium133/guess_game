@@ -43,7 +43,7 @@ class Stage < ActiveRecord::Base
   end
 
   def name_and_race
-    "#{race.name} #{race.season.name} #{name}"
+    "#{stage_number} #{race.name} #{race.season.name} #{name}"
   end
 
   def what_standing
