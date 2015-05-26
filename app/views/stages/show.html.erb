@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sx-12 col-sm-12">
     <% if @stage.profile.present? %>
-      <a href="<%= @stage.profile.url %>">
-        <%= image_tag @stage.profile.url(:thumb), 'data-lightbox': 'stage_profile', 'data-title': "Stage profile" %>
+      <a href="<%= @stage.profile.url %>" data-lightbox="stage_profile" data-title="Stage profile">
+        <%= image_tag @stage.profile.url(:thumb) %>
       </a>
     <% end %>
 
