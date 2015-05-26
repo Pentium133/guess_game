@@ -1,14 +1,14 @@
-<% if @stage.profile.present? %>
-  <a href="<%= @stage.profile.url %>">
-    <%= image_tag @stage.profile.url(:thumb), 'data-lightbox': 'stage_profile', 'data-title': "Stage profile" %>
-  </a>
-<% end %>
-
-<h5><%= stage_nomination_info @stage %></h5>
-<br/>
-
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sx-12 col-sm-12">
+    <% if @stage.profile.present? %>
+      <a href="<%= @stage.profile.url %>">
+        <%= image_tag @stage.profile.url(:thumb), 'data-lightbox': 'stage_profile', 'data-title': "Stage profile" %>
+      </a>
+    <% end %>
+
+    <h5><%= stage_nomination_info @stage %></h5>
+    <br/>
+
     <ul class="nav nav-tabs">
       <% if @show_scores %>
       <li class="<%= 'active' if @show_scores %>">
