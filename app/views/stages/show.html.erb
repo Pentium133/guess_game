@@ -1,3 +1,9 @@
+<% if @stage.profile.present? %>
+  <a href="<%= @stage.profile.url %>">
+    <%= image_tag @stage.profile.url(:thumb), 'data-lightbox': 'stage_profile', 'data-title': "Stage profile" %>
+  </a>
+<% end %>
+
 <h5><%= stage_nomination_info @stage %></h5>
 <br/>
 

@@ -117,6 +117,7 @@ RailsAdmin.config do |config|
     show do
       field :stage_number
       field :name
+      field :profile
       field :stage_type
       field :race
       field :start_at
@@ -128,6 +129,8 @@ RailsAdmin.config do |config|
       field :name
       field :stage_type
       field :race
+      field :profile
+      field :remote_profile_url
       field :start_at
     end
   end

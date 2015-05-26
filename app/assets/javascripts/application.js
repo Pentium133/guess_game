@@ -15,6 +15,7 @@
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
 //= require bootstrap-sprockets
+//= require lightbox
 //= require_tree .
 
 $(function() {

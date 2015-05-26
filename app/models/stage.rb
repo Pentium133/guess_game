@@ -12,6 +12,7 @@
 #  updated_at   :datetime         not null
 #  winner_id    :integer
 #  slug         :string(255)
+#  profile      :string(255)
 #
 
 class Stage < ActiveRecord::Base
@@ -33,6 +34,9 @@ class Stage < ActiveRecord::Base
   enum stage_type: { race: 0, itt: 1, ttt: 2, sprint: 3, mountains: 4, rest_day: 100 }
 
   scope :only_race, -> { where('stage_type <> 100') }
+
+  mount_uploader :profile, StageProfileUploader
+
 
   def set_default_type
     self.stage_type ||= :race

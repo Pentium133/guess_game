@@ -134,6 +134,8 @@ GEM
       activesupport (>= 3.0.0)
     kgio (2.9.3)
     libv8 (3.16.14.7)
+    lightbox2-rails (2.7.1)
+      railties (>= 3.1)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -292,6 +294,7 @@ DEPENDENCIES
   friendly_id
   jbuilder (~> 2.0)
   jquery-rails
+  lightbox2-rails
   mini_magick
   mysql2
   nokogiri
