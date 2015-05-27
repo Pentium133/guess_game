@@ -1,5 +1,16 @@
 <div class="row">
   <div class="col-lg-8 col-md-8 col-sx-12 col-sm-12">
+    <% if @next_stage.present? or @prev_stage.present? %>
+    <ul class="pager no-margin">
+    <% if @prev_stage.present? %>
+      <li class="previous"><a href="<%= race_stage_path(@prev_stage.race_id, @prev_stage) %>" title="<%= @prev_stage.name %>">← Stage <%= @prev_stage.stage_number %></a></li>
+    <% end %>
+    <% if @next_stage.present? %>
+      <li class="next"><a href="<%= race_stage_path(@next_stage.race_id, @next_stage) %>" title="<%= @next_stage.name %>">Stage <%= @next_stage.stage_number %> →</a></li>
+    <% end %>
+    </ul>
+    <% end %>
+
     <% if @stage.profile.present? %>
       <a href="<%= @stage.profile.url %>" data-lightbox="stage_profile" data-title="Stage profile">
         <%= image_tag @stage.profile.url(:thumb) %>

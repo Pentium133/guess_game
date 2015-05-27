@@ -32,7 +32,7 @@ module ApplicationHelper
       when 'ttt'
         return '<i class="fa fa-clock-o"></i> Team time trial'.html_safe
       when 'itt'
-        return '<i class="fa fa-clock-o"></i> Individual time trial'.html_safe
+        return '<i class="fa fa-clock-o "></i> Individual time trial'.html_safe
       else
         return ''
     end
