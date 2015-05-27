@@ -29,6 +29,10 @@ module ApplicationHelper
         niminat = '<span class="label label-danger">' + I18n.t('message.sprinters') + '</span>'
       when 'mountains'
         niminat = '<span class="label label-success">' + I18n.t('message.mountains') + '</span>'
+      when 'ttt'
+        return '<i class="fa fa-clock-o"></i> Team time trial'.html_safe
+      when 'itt'
+        return '<i class="fa fa-clock-o"></i> Individual time trial'.html_safe
       else
         return ''
     end
