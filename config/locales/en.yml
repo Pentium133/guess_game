@@ -60,6 +60,7 @@ en:
       all_predicts: All predicts
       send_predict: Send predict
       was_ready_on: Sent predict on
+      signup_for_prediction: "<a href='%{url}'>Sign</a> in for prediction"
       predictions_are_not_accepted: Predictions are not accepted
     result_form:
       save_result: Save result

@@ -1,5 +1,5 @@
 class StagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:update]
   before_action :set_stage, only: [:show, :update]
 
   def show
@@ -61,7 +61,7 @@ class StagesController < ApplicationController
 
       fill_results finisher_class
 
-      fill_predicts finisher_class
+      fill_predicts finisher_class if user_signed_in?
 
       fill_scores
 
@@ -85,7 +85,10 @@ class StagesController < ApplicationController
         .includes(:user)
         .order(score: :desc)
         .order(:place)
-      @predicts = @stage.stage_predicts.where(user_id: current_user.id).order(:place)
+
+      if user_signed_in?
+        @predicts = @stage.stage_predicts.where(user_id: current_user.id).order(:place)
+      end
     end
 
     def fill_results(finisher_class)

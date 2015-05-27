@@ -17,6 +17,7 @@
   </table>
 </div>
 
+<% if user_signed_in? %>
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
   <h4><%= t '.your_predict' %></h4>
   <table class="table table-condensed table-bordered no-margin">
@@ -32,6 +33,7 @@
     </tbody>
   </table>
 </div>
+<% end %>
 
 </div>
 
@@ -59,6 +61,6 @@
   </tbody>
 </table>
 
-<% if policy(@stage).calculate? %>
+<% if user_signed_in? && policy(@stage).calculate? %>
   <%= render 'for_forum' %>
 <% end %>

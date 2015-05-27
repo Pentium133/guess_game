@@ -66,6 +66,7 @@ ru:
       all_predicts: Все прогнозы
       send_predict: Отправить прогноз
       was_ready_on: Сделал прогноз
+      signup_for_prediction: "<a href='%{url}'>Войдите</a> для подачи прогноза"
       predictions_are_not_accepted: Прогнозы уже не принимаются
     result_form:
       save_result: Сохранить результат

@@ -1,4 +1,4 @@
-<% if @stage.start_at > Time.now %>
+<% if user_signed_in? && @stage.start_at > Time.now %>
 
   <p><%= render partial: 'posible', locals: {stage_date: @stage.start_at } %></p>
 
@@ -68,7 +68,8 @@
 
 <% else # PREDICT NOT AVAILABLE  %>
 
-<h5><%= t '.predictions_are_not_accepted' %></h5>
+<h5><%= t '.predictions_are_not_accepted' if user_signed_in? %></h5>
+<h5><%= t('.signup_for_prediction', url: new_user_session_path).html_safe unless user_signed_in? %></h5>
 <hr/>
 <h4><%= t '.all_predicts' %></h4>
   <table class="table table-condensed table-bordered no-margin">

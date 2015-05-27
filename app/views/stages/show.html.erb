@@ -18,7 +18,7 @@
       <li class="<%= 'active' unless @show_scores %>">
         <a href="#predict" data-toggle="tab" title="Predict"><%= t '.predict' %></a>
       </li>
-  <% if policy(@stage).calculate? %>
+  <% if user_signed_in? && policy(@stage).calculate? %>
       <li class="">
         <a href="#result" data-toggle="tab" title="Result"><%= t '.result' %></a>
       </li>
@@ -33,7 +33,7 @@
       <div class="tab-pane fade <%= 'active in' unless @show_scores %>" id="predict">
         <%= render 'predict_form' %>
       </div>
-  <% if policy(@stage).calculate? %>
+  <% if user_signed_in? && policy(@stage).calculate? %>
       <div class="tab-pane fade" id="result">
         <%= render 'result_form' %>
       </div>
