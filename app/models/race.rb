@@ -49,6 +49,7 @@ class Race < ActiveRecord::Base
   end
 
   def get_overall_sprinters
+    return nil unless grand_tour?
     sql = "SELECT users.id, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace
@@ -66,6 +67,7 @@ class Race < ActiveRecord::Base
   end
 
   def get_overall_mountains
+    return nil unless grand_tour?
     sql = "SELECT users.id, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace

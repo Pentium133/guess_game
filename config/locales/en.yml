@@ -73,3 +73,5 @@ en:
       stage_result: Stage result
       your_predict: Your predict
       predicts_scores: "Predict's scores"
+    overall_standing:
+      no_results_yet: No results yet

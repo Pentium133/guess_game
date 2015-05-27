@@ -79,3 +79,5 @@ ru:
       stage_result: Результаты этапа
       your_predict: Ваш прогноз
       predicts_scores: Очки за прогнозы
+    overall_standing:
+      no_results_yet: Ещё нет результатов

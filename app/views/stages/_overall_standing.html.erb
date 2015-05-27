@@ -4,6 +4,7 @@
   </div>
 
   <div class="blog-body">
+    <% if overall.any? %>
     <table class="table table-condensed no-margin">
     <tbody>
     <% overall.each_with_index do |item, index| %>
@@ -15,5 +16,8 @@
     <% end %>
     </tbody>
     </table>
+    <% else %>
+     <%= t '.no_results_yet' %>
+    <% end %>
   </div>
 </div>
