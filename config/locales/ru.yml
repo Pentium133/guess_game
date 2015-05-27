@@ -74,6 +74,7 @@ ru:
       scores: Очки
       predict: Прогноз
       result: Результат
+      stage: Этап
     scores_table:
       stage_result: Результаты этапа
       your_predict: Ваш прогноз

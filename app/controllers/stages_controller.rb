@@ -5,10 +5,10 @@ class StagesController < ApplicationController
   def show
     raise 'Not correct result for stage' if @stage.stage_results.count > 6
 
-    @page_title = "Stage #{@stage.stage_number} - #{@stage.name}"
+    @page_title = "#{I18n.t('stages.show.stage')} #{@stage.stage_number} - #{@stage.name}"
     add_breadcrumb I18n.t('menu.races'), races_path
     add_breadcrumb @stage.race.name, race_path(@stage.race)
-    add_breadcrumb "Stage #{@stage.stage_number} - #{@stage.name}"
+    add_breadcrumb "#{I18n.t('stages.show..stage')} #{@stage.stage_number} - #{@stage.name}"
   end
 
   def update

@@ -68,6 +68,7 @@ en:
       scores: Scores
       predict: Predict
       result: Result
+      stage: Stage
     scores_table:
       stage_result: Stage result
       your_predict: Your predict

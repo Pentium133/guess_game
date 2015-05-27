@@ -11,7 +11,7 @@
     <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
 <textarea class="form-control" rows="8">
-[b]Результаты <%= @stage.stage_number %> этапа[/b]
+[url=<%= race_stage_url(@stage.race, @stage) %>][b]Результаты <%= @stage.stage_number %> этапа[/b][/url]
 <% @stage.stage_results.each do |result| %>
   <% unless result.finisher_id.nil? %>
 <%= result.place %>. <%= result.finisher %>
