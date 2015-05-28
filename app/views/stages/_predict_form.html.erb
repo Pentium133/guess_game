@@ -70,23 +70,26 @@
 
 <h5><%= t '.predictions_are_not_accepted' if user_signed_in? %></h5>
 <h5><%= t('.signup_for_prediction', url: new_user_session_path).html_safe unless user_signed_in? %></h5>
-<hr/>
-<h4><%= t '.all_predicts' %></h4>
-  <table class="table table-condensed table-bordered no-margin">
-  <tbody>
-  <% @stage.predict_results.order(:updated_at).each do |result| %>
-    <tr>
-      <td><%= result.user %></td>
-      <td>
-        <% @stage.stage_predicts.where(user_id: result.user_id).order(:place).each do |predict| %>
-          <%= "#{predict.finisher}, " unless predict.finisher_id.nil? %>
-        <% end %>
-      </td>
-      <td><%= l result.updated_at, format: :short %></td>
-      </td>
-    </tr>
+
+  <% if @stage.start_at < Time.now %>
+    <hr/>
+    <h4><%= t '.all_predicts' %></h4>
+      <table class="table table-condensed table-bordered no-margin">
+      <tbody>
+      <% @stage.predict_results.order(:updated_at).each do |result| %>
+        <tr>
+          <td><%= result.user %></td>
+          <td>
+            <% @stage.stage_predicts.where(user_id: result.user_id).order(:place).each do |predict| %>
+              <%= "#{predict.finisher}, " unless predict.finisher_id.nil? %>
+            <% end %>
+          </td>
+          <td><%= l result.updated_at, format: :short %></td>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   <% end %>
-  </tbody>
-</table>
 
 <% end %>
