@@ -67,7 +67,7 @@
                   <i class="fa fa-calendar"></i> <%= l race.start_at %> — <%= l race.end_at %>
                 </td>
                 <td class="col-lg-4"><%= link_to race.name, race_path(race) %></td>
-                <td><%= race.stages.count %> stages</td>
+                <td><%= race.stages.only_race.count %> stages</td>
               </tr>
               <% end %>
             </tbody>
