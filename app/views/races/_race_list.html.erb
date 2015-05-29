@@ -1,0 +1,7 @@
+<table class="table table-condensed table-bordered no-margin">
+  <tbody>
+  <% @race.stages.order(:start_at).each do |stage| %>
+    <%= render stage %>
+  <% end %>
+  </tbody>
+</table>
