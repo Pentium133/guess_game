@@ -6,7 +6,7 @@
     <p><%= t '.predict_was_created_at' %> <%= l prs.updated_at, format: :short %></p>
   <% end %>
 
-  <%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
+  <%= form_for(@stage, url: race_stage_path(@stage.race, @stage), html: { novalidate: 'novalidate' }) do |f| %>
       <% if policy(@stage).manage? %>
       <div class="form-group">
         <div class="row">

@@ -1,4 +1,4 @@
-<%= form_for(@stage, url: race_stage_path(@stage.race_id, @stage), html: { novalidate: 'novalidate' }) do |f| %>
+<%= form_for(@stage, url: race_stage_path(@stage.race, @stage), html: { novalidate: 'novalidate' }) do |f| %>
 
     <% @stage.stage_results.each do |result| %>
       <%= f.fields_for :stage_results, result do |rf| %>

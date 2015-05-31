@@ -3,10 +3,10 @@
     <% if @next_stage.present? or @prev_stage.present? %>
     <ul class="pager no-margin">
     <% if @prev_stage.present? %>
-      <li class="previous"><a href="<%= race_stage_path(@prev_stage.race_id, @prev_stage) %>" title="<%= @prev_stage.name %>">← <%= t('.stage') %> <%= @prev_stage.stage_number %></a></li>
+      <li class="previous"><a href="<%= race_stage_path(@prev_stage.race, @prev_stage) %>" title="<%= @prev_stage.name %>">← <%= t('.stage') %> <%= @prev_stage.stage_number %></a></li>
     <% end %>
     <% if @next_stage.present? %>
-      <li class="next"><a href="<%= race_stage_path(@next_stage.race_id, @next_stage) %>" title="<%= @next_stage.name %>"><%= t('.stage') %> <%= @next_stage.stage_number %> →</a></li>
+      <li class="next"><a href="<%= race_stage_path(@next_stage.race, @next_stage) %>" title="<%= @next_stage.name %>"><%= t('.stage') %> <%= @next_stage.stage_number %> →</a></li>
     <% end %>
     </ul>
     <% end %>
