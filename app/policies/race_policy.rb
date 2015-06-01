@@ -6,6 +6,10 @@ class RacePolicy
     @record = record
   end
 
+  def calculate?
+    user.present? and (user.manager? or user.admin?)
+  end
+
   def rails_admin?(action)
     user.manager? or user.admin?
   end

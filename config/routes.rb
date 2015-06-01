@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :races, only: [:show, :index] do
+    member do
+      get :calculate
+    end
     resources :stages,  only: [:show, :update]
   end
 

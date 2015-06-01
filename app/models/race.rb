@@ -20,6 +20,7 @@ class Race < ActiveRecord::Base
 
   belongs_to :season
   has_many :stages
+  has_many :race_results
 
   enum race_type: { grand_tour: 0, word_tour: 1, classics_tour: 2 }
 

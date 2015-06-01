@@ -1,5 +1,5 @@
 class RacesController < ApplicationController
-  before_action :set_race, only: [:show]
+  before_action :set_race, only: [:show, :calculate]
 
   def index
     @races = Race.order(:start_at).all
@@ -9,13 +9,40 @@ class RacesController < ApplicationController
   end
 
   def show
-    @overall = @race.get_overall
-    @overall_spriners = @race.get_overall_sprinters
-    @overall_mountains = @race.get_overall_mountains
+    if @race.race_results.any?
+      @result_ready = true
+    else
+      @result_ready = false
+      @overall = @race.get_overall
+      @overall_spriners = @race.get_overall_sprinters
+      @overall_mountains = @race.get_overall_mountains
+    end
 
     @page_title = @race.name
     add_breadcrumb I18n.t('menu.races'), :races_path
     add_breadcrumb @race.name
+  end
+
+  def calculate
+    @race.get_overall.each do |user|
+      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 0
+      rr.score = user[2]
+      rr.save
+    end
+
+    @race.get_overall_sprinters.each do |user|
+      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 1
+      rr.score = user[2]
+      rr.save
+    end
+
+    @race.get_overall_mountains.each do |user|
+      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 2
+      rr.score = user[2]
+      rr.save
+    end
+
+    redirect_to @race
   end
 
   private

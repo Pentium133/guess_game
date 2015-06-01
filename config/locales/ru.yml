@@ -42,6 +42,7 @@ ru:
       races: Гонки
       races_season: "Гонки - сезон %{season}"
     show:
+      caclulate_race: Завершить гонку
       stage_count:
         one: '%{count} этап'
         few: '%{count} этапа'

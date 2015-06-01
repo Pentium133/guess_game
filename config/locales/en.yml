@@ -42,6 +42,7 @@ en:
       races: Races
       races_season: "Races - сезон %{season}"
     show:
+      caclulate_race: Caclulate race
       stage_count:
         one: '%{count} stage'
         other: '%{count} stages'

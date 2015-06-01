@@ -40,10 +40,16 @@
 </div>
 
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+<% unless @result_ready %>
 <%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: t('message.overall_classifications') } %>
 
 <%= render partial: 'stages/overall_standing', locals: { overall: @overall_spriners, title: t('message.sprinters_classifications') } if @overall_spriners %>
 
 <%= render partial: 'stages/overall_standing', locals: { overall: @overall_mountains, title: t('message.mountains_classifications') } if @overall_mountains %>
+<% end %>
+
+  <% if @race.end_at < Time.now and policy(@race).calculate? %>
+    <a href="<%= calculate_race_path @race %>" class="btn btn-default"><%= t '.caclulate_race' %></a>
+  <% end %>
 </div>
 </div>
