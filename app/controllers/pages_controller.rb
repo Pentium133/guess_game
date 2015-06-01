@@ -6,7 +6,6 @@ class PagesController < ApplicationController
     @races_today    = Race.where('start_at < ? and end_at > ? and is_ready = 1', Time.now.end_of_day, Time.now.beginning_of_day)
     @races_tomorrow = Race.where('start_at < ? and start_at > ? and is_ready = 1', Time.now + 6.day, Time.now.end_of_day)
 
-
     @page_title = 'Dashboard'
   end
 end
