@@ -31,7 +31,8 @@ class Stage < ActiveRecord::Base
 
   after_initialize :set_default_type, :if => :new_record?
 
-  enum stage_type: { race: 0, itt: 1, ttt: 2, sprint: 3, mountains: 4, rest_day: 100 }
+  enum stage_type: { race: 0, itt: 1, ttt: 2, sprint: 3, mountains: 4,
+                     general_predict: 50, rest_day: 100 }
 
   scope :only_race, -> { where('stage_type <> 100') }
 
@@ -72,6 +73,9 @@ class Stage < ActiveRecord::Base
         result.update_column(:score, (sum / 2.0).round)
       else
         result.update_column(:score, sum )
+      end
+      if general_predict?
+        result.update_column(:score, sum * 2 )
       end
       result.save
     end

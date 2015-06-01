@@ -59,8 +59,10 @@ class StagesController < ApplicationController
 
       @show_scores = (@stage.stage_results.where('finisher_id IS NOT NULL').count > 0)
 
-      @next_stage = Stage.where('race_id = ? and stage_number = ?', @stage.race_id, @stage.stage_number + 1).first
-      @prev_stage = Stage.where('race_id = ? and stage_number = ? and stage_number <> 0', @stage.race_id, @stage.stage_number - 1).first
+      if @stage.stage_number.to_i > 0
+        @next_stage = Stage.where('race_id = ? and stage_number = ?', @stage.race_id, @stage.stage_number + 1).first
+        @prev_stage = Stage.where('race_id = ? and stage_number = ? and stage_number <> 0', @stage.race_id, @stage.stage_number - 1).first
+      end
 
       fill_results finisher_class
 

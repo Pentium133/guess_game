@@ -13,15 +13,16 @@ ru:
 
   message:
     rest_day: День отдыха
-    overall_classifications: Генеральная квалификация
-    overall_classifications_after_stage: Генеральная квалификация после этапа
-    sprinters_classifications: Спринтерская квалификация
-    sprint_classifications_after_stage: Спринтерская квалификация после этапа
-    mountains_classifications: Горная квалификация
-    mountains_classifications_after_stage: Горная квалификация после этапа
+    overall_classifications: Генеральная классификация
+    overall_classifications_after_stage: Генеральная классификация после этапа
+    sprinters_classifications: Спринтерская классификация
+    sprint_classifications_after_stage: Спринтерская классификация после этапа
+    mountains_classifications: Горная классификация
+    mountains_classifications_after_stage: Горная классификация после этапа
     sprinters: спринтерской
     mountains: горной
     not_ready_for_predictions: Ещё не готово для прогнозов
+    general_predict: Прогноз на генеральную классификацию
 
   pages:
     dashboard:
