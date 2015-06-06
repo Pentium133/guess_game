@@ -48,6 +48,11 @@ en:
       stage_count:
         one: '%{count} stage'
         other: '%{count} stages'
+    statistics:
+      statistics: Statistics
+      wins_on_stages: Wins on stages
+      accurate_predictions: Accurate predictions
+      max_scores: Max scores
 
   stages:
     scores_information: "The stage has %{niminat} scores nomination"

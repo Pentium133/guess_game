@@ -34,7 +34,7 @@ class Stage < ActiveRecord::Base
   enum stage_type: { race: 0, itt: 1, ttt: 2, sprint: 3, mountains: 4,
                      general_predict: 50, rest_day: 100 }
 
-  scope :only_race, -> { where('stage_type <> 100') }
+  scope :only_race, -> { where('stage_type < 10') }
 
   mount_uploader :profile, StageProfileUploader
 

@@ -1,0 +1,30 @@
+<h5><%= t '.statistics' %></h5>
+<div class="blog">
+  <div class="blog-header">
+    <h5 class="blog-title"><%= t '.wins_on_stages' %></h5>
+  </div>
+
+  <div class="blog-body">
+    <%= render 'stat_table', overall: @race.get_win_count %>
+  </div>
+</div>
+
+<div class="blog">
+  <div class="blog-header">
+    <h5 class="blog-title"><%= t '.accurate_predictions' %></h5>
+  </div>
+
+  <div class="blog-body">
+    <%= render 'stat_table', overall: @race.get_accurate_prediction %>
+  </div>
+</div>
+
+<div class="blog">
+  <div class="blog-header">
+    <h5 class="blog-title"><%= t '.max_scores' %></h5>
+  </div>
+
+  <div class="blog-body">
+    <%= render 'stat_table', overall: @race.get_max_score %>
+  </div>
+</div>

@@ -50,6 +50,11 @@ ru:
         few: '%{count} этапа'
         many: '%{count} этапов'
         other: '%{count} этапа'
+    statistics:
+      statistics: Статистика
+      wins_on_stages: Победы на этапах
+      accurate_predictions: Точных прогнозов
+      max_scores: Максимум очков
 
   stages:
     scores_information: "Этап приносит очки в %{niminat} номинации"
