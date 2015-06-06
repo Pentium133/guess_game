@@ -17,23 +17,27 @@
     <div class="blog-body">
 
       <ul class="nav nav-tabs">
+        <% if @result_ready %>
         <li class="active">
-          <a href="#stages" data-toggle="tab" title="Stages">Stages</a>
+          <a href="#result" data-toggle="tab" title="Result"><%= t '.results' %></a>
         </li>
-        <li class="">
-          <a href="#predict" data-toggle="tab" title="Predict">Predict</a>
+        <% end %>
+
+        <li class="<%= 'active' unless @result_ready %>">
+          <a href="#stages" data-toggle="tab" title="Stages"><%= t '.stages' %></a>
         </li>
       </ul>
 
       <div class="tab-content">
-        <div class="tab-pane fade active in" id="stages">
+        <% if @result_ready %>
+        <div class="tab-pane fade active in" id="result">
+          <%= render 'race_result' %>
+        </div>
+        <% end %>
+<a href=""></a>
+        <div class="tab-pane fade <%= 'active in' unless @result_ready %>" id="stages">
           <%= render 'race_list' %>
         </div>
-
-        <div class="tab-pane fade" id="predict">
-
-        </div>
-
       </div>
      </div>
   </div>

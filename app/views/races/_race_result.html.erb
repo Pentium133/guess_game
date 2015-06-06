@@ -1,0 +1,12 @@
+<% if @overall.present? %>
+  <h3><%= t 'message.overall_classifications' %></h3>
+  <%= render 'overall', overall: @overall %>
+<% end %>
+<% if @overall_spriners.present? %>
+  <h3><%= t 'message.sprinters_classifications' %></h3>
+  <%= render 'overall', overall: @overall_spriners %>
+<% end %>
+<% if @overall_mountains.present? %>
+  <h3><%= t 'message.mountains_classifications' %></h3>
+  <%= render 'overall', overall: @overall_mountains %>
+<% end %>

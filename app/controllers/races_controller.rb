@@ -11,6 +11,9 @@ class RacesController < ApplicationController
   def show
     if @race.race_results.any?
       @result_ready = true
+      @overall = @race.get_overall_result 0
+      @overall_spriners = @race.get_overall_result 1
+      @overall_mountains = @race.get_overall_result 2
     else
       @result_ready = false
       @overall = @race.get_overall
@@ -24,21 +27,24 @@ class RacesController < ApplicationController
   end
 
   def calculate
-    @race.get_overall.each do |user|
+    @race.get_overall.each_with_index do |user, index|
       rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 0
       rr.score = user[2]
+      rr.place = index+1
       rr.save
     end
 
-    @race.get_overall_sprinters.each do |user|
+    @race.get_overall_sprinters.each_with_index do |user, index|
       rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 1
       rr.score = user[2]
+      rr.place = index+1
       rr.save
     end
 
-    @race.get_overall_mountains.each do |user|
+    @race.get_overall_mountains.each_with_index do |user, index|
       rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 2
       rr.score = user[2]
+      rr.place = index+1
       rr.save
     end
 

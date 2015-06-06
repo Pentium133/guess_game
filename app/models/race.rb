@@ -32,6 +32,10 @@ class Race < ActiveRecord::Base
     "#{name} #{season.name}"
   end
 
+  def get_overall_result(result_type)
+    race_results.joins(:user).where('result_type = ?', result_type).order(:place)
+  end
+
   def get_overall
     sql = "SELECT users.id, users.username,
                   sum(predict_results.score) as summscore,

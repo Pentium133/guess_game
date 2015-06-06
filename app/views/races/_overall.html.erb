@@ -1,0 +1,11 @@
+<table class="table table-condensed no-margin">
+<tbody>
+<% overall.each do |item| %>
+  <tr>
+    <td class="col-md-1"><%= item.place %></td>
+    <td><%= item.user %></td>
+    <td><%= item.score %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
