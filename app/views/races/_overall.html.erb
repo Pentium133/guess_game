@@ -1,10 +1,12 @@
 <table class="table table-condensed no-margin">
 <tbody>
 <% overall.each do |item| %>
+  <% max_score = overall[0].score %>
   <tr>
     <td class="col-md-1"><%= item.place %></td>
     <td><%= item.user %></td>
-    <td><%= item.score %></td>
+    <td class="col-md-1"><%= item.score %></td>
+    <td class="col-md-1"><%= "(#{item.score - max_score})" if item.score != max_score %></td>
   </tr>
 <% end %>
 </tbody>
