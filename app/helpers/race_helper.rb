@@ -17,5 +17,4 @@ module RaceHelper
       "<span class=\"label label-danger\">#{str}</span>".html_safe
     end
   end
-
 end

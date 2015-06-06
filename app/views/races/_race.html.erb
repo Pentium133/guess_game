@@ -3,6 +3,7 @@
   <td>
     <%= link_to_if race.is_ready, race.name, race_path(race) %>
     <%= link_to 'view', race_path(race) if user_signed_in? and current_user.admin? and not race.is_ready %>
+    <%= '<i class="fa fa-check-circle green"></i>'.html_safe if race.race_results.any? %>
     <div class="pull-right">
       <%= race_type_for race %>
     </div>
