@@ -15,7 +15,11 @@
                 <td class="col-lg-3"><%= link_to stage.race.name, race_path(stage.race) %></td>
                 <td>
                 <% unless stage.rest_day? %>
-                  <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race, stage) %> <%= predict_status stage %>
+                  <% if stage.general_predict? %>
+                    <span class="badge badge-warning">G</span> <%= link_to t('message.general_predict'), race_stage_path(stage.race, stage) %>
+                  <% else %>
+                    <%= stage.stage_number %>. <%= stage_type stage %> <%= link_to stage.name, race_stage_path(stage.race,   stage) %> <%= predict_status stage %>
+                  <% end %>
                 <% else %>
                   <%= t 'message.rest_day' %>
                 <% end %>

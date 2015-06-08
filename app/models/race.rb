@@ -54,7 +54,7 @@ class Race < ActiveRecord::Base
   end
 
   def get_overall_sprinters
-    return nil unless grand_tour?
+    return Array.new unless grand_tour?
     sql = "SELECT users.id, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace
@@ -72,7 +72,7 @@ class Race < ActiveRecord::Base
   end
 
   def get_overall_mountains
-    return nil unless grand_tour?
+    return Array.new unless grand_tour?
     sql = "SELECT users.id, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace
@@ -111,7 +111,7 @@ class Race < ActiveRecord::Base
             FROM stage_predicts pr
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
-            WHERE stages.race_id = 1
+            WHERE stages.race_id = #{self.id}
                   AND guessed = 1
                   AND score > 0
             GROUP by user_id
@@ -127,6 +127,7 @@ class Race < ActiveRecord::Base
     sql = "SELECT user_id, u.username, max(score) maxs FROM predict_results
             JOIN users u on user_id = u.id
             JOIN stages s on stage_id = s.id and s.stage_type < 10
+            WHERE s.race_id = #{self.id}
             GROUP BY user_id
             ORDER BY maxs desc"
     result = Array.new
