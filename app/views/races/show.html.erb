@@ -49,9 +49,9 @@
 <% else %>
 <%= render partial: 'stages/overall_standing', locals: { overall: @overall, title: t('message.overall_classifications') } %>
 
-<%= render partial: 'stages/overall_standing', locals: { overall: @overall_spriners, title: t('message.sprinters_classifications') } if @overall_spriners %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall_spriners, title: t('message.sprinters_classifications') } if @overall_spriners.any? %>
 
-<%= render partial: 'stages/overall_standing', locals: { overall: @overall_mountains, title: t('message.mountains_classifications') } if @overall_mountains %>
+<%= render partial: 'stages/overall_standing', locals: { overall: @overall_mountains, title: t('message.mountains_classifications') } if @overall_mountains.any? %>
 <% end %>
 
   <% if @race.end_at < Time.now and policy(@race).calculate? %>
