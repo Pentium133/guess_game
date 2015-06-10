@@ -36,6 +36,7 @@ ru:
       no_any_race_today: Сегодня нет никаких гонок
       coming_soon_races: В ближайшее время
       no_any_race_comming_soon: Нет гонок в ближайшее время
+      today_results: Сегодняшние результаты
 
   races:
     index:

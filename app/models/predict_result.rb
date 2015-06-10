@@ -16,4 +16,11 @@
 class PredictResult < ActiveRecord::Base
   belongs_to :user
   belongs_to :stage
+
+  def self.get_scores_for_stage(stage)
+    where(stage_id: stage.id)
+      .includes(:user)
+      .order(score: :desc)
+      .order(:place)
+  end
 end

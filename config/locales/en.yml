@@ -36,6 +36,7 @@ en:
       no_any_race_today: No any race today
       coming_soon_races: Coming soon races
       no_any_race_comming_soon: No any race comming soon
+      today_results: Today results
 
   races:
     index:

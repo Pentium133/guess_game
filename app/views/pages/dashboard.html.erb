@@ -104,3 +104,37 @@
     </div>
   </div>
 </div>
+
+<br/>
+<% if @show_result %>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="blog blog-danger no-margin">
+      <div class="blog-header">
+        <h5 class="blog-title"><%= t '.today_results' %></h5>
+      </div>
+      <div class="blog-body">
+        <% @stages_today.each do |stage| %>
+          <% if stage.stage_results.any? %>
+            <h4><%= link_to(stage.name, race_stage_path(stage.race, stage)) %></h4>
+            <table class="table table-condensed table-bordered no-margin">
+              <tbody>
+                <%  PredictResult.get_scores_for_stage(stage).each do |score| %>
+                  <tr>
+                    <td style="width: 30px;"><%= score.place %></td>
+                    <td>
+                      <%= score.user %>
+                      <%= '<span class="label label-info">online</span>'.html_safe if score.is_online %>
+                    </td>
+                    <td><%= score.score %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
