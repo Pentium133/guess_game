@@ -19,6 +19,7 @@ class StagePredict < ActiveRecord::Base
   belongs_to :finisher, polymorphic: true
   belongs_to :user
 
+  scope :guessed_predict, -> { where(guessed: 1) }
   default_scope { order('place') }
 
   def StagePredict.score_table_6

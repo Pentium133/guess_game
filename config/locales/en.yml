@@ -86,3 +86,10 @@ en:
       predicts_scores: "Predict's scores"
     overall_standing:
       no_results_yet: No results yet
+
+  users:
+    show:
+      predicts: Predicts
+      guessed: Guessed
+      wins: Wins
+      prize_jersey: Jersey

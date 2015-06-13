@@ -2,11 +2,7 @@
 <% if user_signed_in? %>
 <div class="current-user">
   <div class="user-avatar animated rubberBand">
-    <% if current_user.avatar? %>
-      <%= image_tag(current_user.avatar.url(:thumb)) %>
-    <% else %>
-      <%= image_tag '/img/user.png' %>
-    <% end %>
+    <%= image_tag(current_user.avatar.url(:thumb)) %>
   </div>
   <div class="user-name">Welcome <%= current_user.username %></div>
   <ul class="user-links">

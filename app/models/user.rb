@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
 
   has_many :stage_predicts
   has_many :predict_results
+  has_many :race_results
 
   enum role: [:user, :manager, :admin]
 

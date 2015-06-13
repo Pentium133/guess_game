@@ -15,4 +15,6 @@
 class RaceResult < ActiveRecord::Base
   belongs_to :user
   enum result_type: { overall: 0, sprinter: 1, mountains: 2 }
+
+  scope :won, -> { where(place: 1) }
 end

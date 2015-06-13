@@ -17,6 +17,8 @@ class PredictResult < ActiveRecord::Base
   belongs_to :user
   belongs_to :stage
 
+  scope :won, -> { where(place: 1) }
+
   def self.get_scores_for_stage(stage)
     where(stage_id: stage.id)
       .includes(:user)
