@@ -2,6 +2,7 @@ en:
   menu:
     dashboard: Dashboard
     races: Races
+    users: Users
     teams: Teams
 
   layouts:

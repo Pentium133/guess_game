@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
+  resources :users,  only: [:show]
 
   resources :riders, only: [] do
     get :autocomplete_rider_last_name, :on => :collection

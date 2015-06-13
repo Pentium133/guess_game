@@ -26,6 +26,9 @@
 #
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   attr_accessor :login
 
   has_many :stage_predicts
@@ -57,6 +60,10 @@ class User < ActiveRecord::Base
 
   def to_s
     username
+  end
+
+  def normalize_friendly_id(string)
+    string.to_slug.normalize.to_s
   end
 
   def login=(login)

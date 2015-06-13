@@ -4,7 +4,7 @@
   <% max_score = overall[0].score %>
   <tr>
     <td class="col-md-1"><%= item.place %></td>
-    <td><%= item.user %></td>
+    <td><%= link_to item.user, user_path(item.user) %></td>
     <td class="col-md-1"><%= item.score %></td>
     <td class="col-md-1"><%= "(#{item.score - max_score})" if item.score != max_score %></td>
   </tr>

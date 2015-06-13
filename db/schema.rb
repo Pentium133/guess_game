@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606132422) do
+ActiveRecord::Schema.define(version: 20150613075218) do
 
   create_table "predict_results", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20150606132422) do
     t.integer  "role",                   limit: 4
     t.string   "username",               limit: 255
     t.string   "avatar",                 limit: 255
+    t.string   "slug",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

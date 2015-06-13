@@ -24,5 +24,13 @@ namespace :import do
     end
   end
 
+  desc "Slugable users"
+  task :users_slug => :environment do
+    User.all.each do |user|
+      user.slug = nil
+      user.save
+      print '.'
+    end
+  end
 
 end

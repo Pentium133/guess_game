@@ -40,6 +40,7 @@ end
 gem 'russian'
 # for url
 gem 'friendly_id'
+gem 'babosa'
 #adminka
 gem 'rails_admin'
 gem 'rails_admin_pundit', :github => 'sudosu/rails_admin_pundit'

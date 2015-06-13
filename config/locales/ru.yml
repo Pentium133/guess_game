@@ -2,6 +2,7 @@ ru:
   menu:
     dashboard: Dashboard
     races: Гонки
+    users: Участники
     teams: Teams
 
   layouts:

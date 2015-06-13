@@ -37,7 +37,7 @@ class Race < ActiveRecord::Base
   end
 
   def get_overall
-    sql = "SELECT users.id, users.username,
+    sql = "SELECT users.slug, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace
             FROM predict_results
@@ -55,7 +55,7 @@ class Race < ActiveRecord::Base
 
   def get_overall_sprinters
     return Array.new unless grand_tour?
-    sql = "SELECT users.id, users.username,
+    sql = "SELECT users.slug, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace
             FROM predict_results
@@ -73,7 +73,7 @@ class Race < ActiveRecord::Base
 
   def get_overall_mountains
     return Array.new unless grand_tour?
-    sql = "SELECT users.id, users.username,
+    sql = "SELECT users.slug, users.username,
                   sum(predict_results.score) as summscore,
                   sum(predict_results.place) as summplace
             FROM predict_results
@@ -90,7 +90,7 @@ class Race < ActiveRecord::Base
   end
 
   def get_win_count
-    sql = "SELECT users.id, users.username, sum(pr.place) cpl
+    sql = "SELECT users.slug, users.username, sum(pr.place) cpl
             FROM predict_results pr
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
