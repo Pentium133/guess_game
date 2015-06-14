@@ -11,11 +11,11 @@
               <div class="col-md-6 col-md-offset-3">
                   <div class="row">
                       <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
-                          <h3><%= @user.stage_predicts.count %></h3>
+                          <h3><%= @user.stage_predicts.active.count %></h3>
                           <small><%= t '.predicts' %></small>
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">
-                          <h3><%= @user.stage_predicts.guessed_predict.count %></h3>
+                          <h3><%= @user.stage_predicts.active.guessed_predict.count %></h3>
                           <small><%= t '.guessed' %></small>
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-3 center-align-text">

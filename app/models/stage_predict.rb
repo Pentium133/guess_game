@@ -20,6 +20,7 @@ class StagePredict < ActiveRecord::Base
   belongs_to :user
 
   scope :guessed_predict, -> { where(guessed: 1) }
+  scope :active, -> { where('finisher_id IS NOT NULL') }
   default_scope { order('place') }
 
   def StagePredict.score_table_6
