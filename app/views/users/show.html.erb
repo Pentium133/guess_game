@@ -32,3 +32,43 @@
       </div>
   </div>
 </div>
+
+<div class="col-md-12 col-sm-12 col-sx-12">
+
+<div class="timeline animated no-padding">
+
+  <% @user.race_results.group(:race_id).order(created_at: :desc).each do |result| %>
+
+  <div class="timeline-row active">
+    <div class="timeline-time">
+      <%= l result.created_at, format: '%d %b' %><small><%= l result.created_at, format: '%Y' %></small>
+    </div>
+    <div class="timeline-icon">
+      <div class="">
+        <i class="fa fa-trophy"></i>
+      </div>
+    </div>
+    <div class="panel timeline-content">
+      <div class="panel-body">
+        <h2><%= link_to result.race.name, result.race %></h2>
+        <% @user.race_results.where(race_id: result.race_id).order(:result_type).each do |one_result| %>
+
+          <table class="table table-condensed no-margin">
+          <tbody>
+            <tr>
+              <td class="col-md-1 center"><%= image_for_classification one_result %></td>
+              <td><%= name_for_classification one_result %></td>
+            </tr>
+          </tbody>
+          </table>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+</div>
+
+</div>

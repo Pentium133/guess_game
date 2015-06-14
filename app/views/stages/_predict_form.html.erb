@@ -78,7 +78,7 @@
       <tbody>
       <% @stage.predict_results.order(:updated_at).each do |result| %>
         <tr>
-          <td><%= result.user %></td>
+          <td><%= link_to_user result.user %></td>
           <td>
             <% @stage.stage_predicts.where(user_id: result.user_id).order(:place).each do |predict| %>
               <%= "#{predict.finisher}, " unless predict.finisher_id.nil? %>

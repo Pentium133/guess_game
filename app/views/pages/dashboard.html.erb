@@ -123,7 +123,7 @@
                   <tr>
                     <td style="width: 30px;"><%= score.place %></td>
                     <td>
-                      <%= score.user %>
+                      <%= link_to_user score.user %>
                       <%= '<span class="label label-info">online</span>'.html_safe if score.is_online %>
                     </td>
                     <td><%= score.score %></td>
