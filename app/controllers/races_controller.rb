@@ -28,21 +28,21 @@ class RacesController < ApplicationController
 
   def calculate
     @race.get_overall.each_with_index do |user, index|
-      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 0
+      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[3], result_type: 0
       rr.score = user[2]
       rr.place = index+1
       rr.save
     end
 
     @race.get_overall_sprinters.each_with_index do |user, index|
-      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 1
+      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[3], result_type: 1
       rr.score = user[2]
       rr.place = index+1
       rr.save
     end
 
     @race.get_overall_mountains.each_with_index do |user, index|
-      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[0], result_type: 2
+      rr = RaceResult.find_or_create_by race_id: @race.id, user_id: user[3], result_type: 2
       rr.score = user[2]
       rr.place = index+1
       rr.save

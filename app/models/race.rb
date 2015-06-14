@@ -39,7 +39,8 @@ class Race < ActiveRecord::Base
   def get_overall
     sql = "SELECT users.slug, users.username,
                   sum(predict_results.score) as summscore,
-                  sum(predict_results.place) as summplace
+                  sum(predict_results.place) as summplace,
+                  users.id
             FROM predict_results
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
@@ -48,7 +49,7 @@ class Race < ActiveRecord::Base
             ORDER by summscore desc, summplace asc"
     result = Array.new
     ActiveRecord::Base.connection.execute(sql).each do |row|
-      result.push [row[0], row[1], row[2]]
+      result.push [row[0], row[1], row[2], row[4]]
     end
     return result
   end
@@ -57,7 +58,8 @@ class Race < ActiveRecord::Base
     return Array.new unless grand_tour?
     sql = "SELECT users.slug, users.username,
                   sum(predict_results.score) as summscore,
-                  sum(predict_results.place) as summplace
+                  sum(predict_results.place) as summplace,
+                  users.id
             FROM predict_results
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
@@ -66,7 +68,7 @@ class Race < ActiveRecord::Base
             ORDER by summscore desc, summplace asc"
     result = Array.new
     ActiveRecord::Base.connection.execute(sql).each do |row|
-      result.push [row[0], row[1], row[2]]
+      result.push [row[0], row[1], row[2], row[4]]
     end
     return result
   end
@@ -75,7 +77,8 @@ class Race < ActiveRecord::Base
     return Array.new unless grand_tour?
     sql = "SELECT users.slug, users.username,
                   sum(predict_results.score) as summscore,
-                  sum(predict_results.place) as summplace
+                  sum(predict_results.place) as summplace,
+                  users.id
             FROM predict_results
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
@@ -84,7 +87,7 @@ class Race < ActiveRecord::Base
             ORDER by summscore desc, summplace asc"
     result = Array.new
     ActiveRecord::Base.connection.execute(sql).each do |row|
-      result.push [row[0], row[1], row[2]]
+      result.push [row[0], row[1], row[2], row[4]]
     end
     return result
   end
