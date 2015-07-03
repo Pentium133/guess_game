@@ -45,6 +45,7 @@ class Race < ActiveRecord::Base
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
             WHERE stages.race_id = #{self.id}
+              AND predict_results.score IS NOT NULl
             GROUP by user_id
             ORDER by summscore desc, summplace asc"
     result = Array.new
@@ -64,6 +65,7 @@ class Race < ActiveRecord::Base
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
             WHERE stages.race_id = #{self.id} and stages.stage_type = 3
+              AND predict_results.score IS NOT NULl
             GROUP by user_id
             ORDER by summscore desc, summplace asc"
     result = Array.new
@@ -83,6 +85,7 @@ class Race < ActiveRecord::Base
             JOIN users on user_id = users.id
             JOIN stages on stage_id = stages.id
             WHERE stages.race_id = #{self.id} and stages.stage_type = 4
+              AND predict_results.score IS NOT NULl
             GROUP by user_id
             ORDER by summscore desc, summplace asc"
     result = Array.new
