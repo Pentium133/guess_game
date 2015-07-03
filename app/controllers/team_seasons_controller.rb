@@ -10,7 +10,7 @@ class TeamSeasonsController < ApplicationController
   end
 
   def index
-    @teams = TeamSeason.includes(:team).where(season: @current_season)
+    @teams = TeamSeason.includes(:team).where(season: @current_season).order(:name)
 
     @page_title = 'Teams'
     add_breadcrumb 'Teams'
