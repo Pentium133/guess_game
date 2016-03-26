@@ -2,7 +2,8 @@ class RacesController < ApplicationController
   before_action :set_race, only: [:show, :calculate]
 
   def index
-    @races = Race.order(:start_at).all
+    @seasones = Season.order(name: :desc).all
+    #@races = Race.order(:start_at).all
 
     @page_title = I18n.t 'menu.races'
     add_breadcrumb @page_title

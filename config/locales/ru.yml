@@ -42,7 +42,7 @@ ru:
   races:
     index:
       races: Гонки
-      races_season: "Гонки - сезон %{season}"
+      races_season: "Сезон %{season}"
     show:
       results: Результаты
       stages: Этапы

@@ -1,14 +1,15 @@
+<% @seasones.each do |seasone| %>
 <div class="row">
   <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
     <div class="blog blog-info no-margin">
       <div class="blog-header">
-        <h5 class="blog-title"><%= t '.races_season', season: @current_season.name %></h5>
+        <h5 class="blog-title"><%= t '.races_season', season: seasone.name %></h5>
       </div>
       <div class="blog-body">
         <div class="table-responsive">
           <table class="table table-condensed table-bordered no-margin">
             <tbody>
-            <% @races.each do |race| %>
+            <% seasone.races.each do |race| %>
               <%= render race %>
             <% end %>
             </tbody>
@@ -18,3 +19,5 @@
     </div>
   </div>
 </div>
+<br/>
+<% end %>

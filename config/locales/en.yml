@@ -42,7 +42,7 @@ en:
   races:
     index:
       races: Races
-      races_season: "Races - сезон %{season}"
+      races_season: "Season %{season}"
     show:
       results: Results
       stages: Stages
