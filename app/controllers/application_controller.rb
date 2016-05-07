@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_season
-    @current_season = Season.find_by_name('2015')
+    @current_season = Season.find_by_name(Time.now.year)
   end
 
   def set_locale
