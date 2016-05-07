@@ -14,7 +14,7 @@ class StagesController < ApplicationController
   def update
     my_params = stage_params
 
-    if my_params['stage_predicts_attributes'].present?
+    if my_params['stage_predicts_attributes'].present? and @stage.start_at > Time.now
       if policy(@stage).manage?
         user_id = params[:user][:id]
       else
