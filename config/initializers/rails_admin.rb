@@ -175,6 +175,7 @@ RailsAdmin.config do |config|
       field :team
       field :season
       field :logo
+      field :remote_logo_url
     end
   end
 
