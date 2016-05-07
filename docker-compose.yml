@@ -1,0 +1,22 @@
+version: '2'
+services:
+  fir_web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/guess
+    ports:
+      - "3000:3000"
+    depends_on:
+      - guess_db
+
+  guess_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+      MYSQL_DATABASE: 'guess_development'
+    volumes:
+      - ../../data/guess:/var/lib/mysql
+      - ../../data/dumps/guess:/docker-entrypoint-initdb.d      
+    ports:
+      - "3306:3306"
