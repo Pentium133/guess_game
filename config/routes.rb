@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :stages,  only: [:show, :update]
   end
 
+  resources :tournaments, only: [:show, :index]
+
   root :to => 'pages#dashboard'
 
 end

@@ -4,6 +4,8 @@ ru:
     races: Гонки
     users: Участники
     teams: Teams
+    football: Футбол
+    tournaments: Футбольные турниры
 
   layouts:
     users_links:

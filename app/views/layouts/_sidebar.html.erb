@@ -25,6 +25,13 @@
       </a>
     </li>
     <% end %>
+    <li class="<%= active_if(controller: 'tournaments') %>">
+      <a href='<%= tournaments_path %>'>
+        <i class="fa fa-futbol-o"></i>
+        <span><%= t 'menu.football' %></span>
+        <%= current_page_tag_if(controller: 'tournaments') %>
+      </a>
+    </li>
   </ul>
 
 <br/>

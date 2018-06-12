@@ -4,6 +4,8 @@ en:
     races: Races
     users: Users
     teams: Teams
+    football: Sooccer
+    tournaments: Sooccer tournaments
 
   layouts:
     users_links:
