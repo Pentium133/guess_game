@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612110700) do
+ActiveRecord::Schema.define(version: 20180612112812) do
 
   create_table "predict_results", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20180612110700) do
     t.string   "last_name",  limit: 255
     t.string   "first_name", limit: 255
     t.string   "country",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.date     "start_at"
+    t.integer  "multiplier", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
