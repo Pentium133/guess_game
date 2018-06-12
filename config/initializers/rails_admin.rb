@@ -209,6 +209,46 @@ RailsAdmin.config do |config|
       field :updated_at
     end
   end
+
+  config.model 'Tournament' do
+    list do
+      field :name
+      field :start_at
+      field :end_at
+    end
+    show do
+      field :name
+      field :start_at
+      field :end_at
+      field :created_at
+      field :updated_at
+    end
+    edit do
+      field :name
+      field :start_at
+      field :end_at
+    end
+  end
+
+  config.model 'Round' do
+    list do
+      field :name
+      field :start_at
+      field :multiplier
+    end
+    show do
+      field :name
+      field :start_at
+      field :multiplier
+      field :created_at
+      field :updated_at
+    end
+    edit do
+      field :name
+      field :multiplier
+      field :start_at
+    end
+  end
 end
 
 
