@@ -62,11 +62,12 @@ ActiveRecord::Schema.define(version: 20180612112812) do
   end
 
   create_table "rounds", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.integer  "tournament_id", limit: 4
+    t.string   "name",          limit: 255
     t.date     "start_at"
-    t.integer  "multiplier", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "multiplier",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20180612112812) do
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
     t.date     "start_at"
     t.date     "end_at"
     t.datetime "created_at",             null: false

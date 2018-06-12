@@ -8,9 +8,11 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    @page_title = @race.name
-    add_breadcrumb I18n.t('menu.races'), :races_path
-    add_breadcrumb @race.name
+    @tournament = Tournament.friendly.find(params[:id])
+    @page_title = @tournament.name
+
+    add_breadcrumb I18n.t('menu.tournaments'), :tournaments_path
+    add_breadcrumb @tournament.name
   end
 
 end

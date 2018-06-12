@@ -233,11 +233,13 @@ RailsAdmin.config do |config|
   config.model 'Round' do
     list do
       field :name
+      field :tournament
       field :start_at
       field :multiplier
     end
     show do
       field :name
+      field :tournament
       field :start_at
       field :multiplier
       field :created_at
@@ -245,6 +247,7 @@ RailsAdmin.config do |config|
     end
     edit do
       field :name
+      field :tournament
       field :multiplier
       field :start_at
     end

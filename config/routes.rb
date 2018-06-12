@@ -28,7 +28,9 @@ Rails.application.routes.draw do
     resources :stages,  only: [:show, :update]
   end
 
-  resources :tournaments, only: [:show, :index]
+  resources :tournaments, only: [:show, :index] do
+    resources :rounds,  only: [:show, :update]
+  end
 
   root :to => 'pages#dashboard'
 

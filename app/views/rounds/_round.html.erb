@@ -1,0 +1,10 @@
+<tr>
+  <td class="col-md-3"><%= l round.start_at, format: '%d %b %Y' %></td>
+  <td>
+    <%= link_to round.name, tournament_round_path(round.tournament, round) %>
+    <%#= link_to 'view', tournament_round_path(round.tournament, round) if user_signed_in? and current_user.admin? and not round.is_ready %>
+    <%#= '<i class="fa fa-check-circle green"></i>'.html_safe if round.round_results.any? %>
+    <div class="pull-right">
+    </div>
+  </td>
+</tr>
