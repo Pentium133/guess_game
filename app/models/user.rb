@@ -23,6 +23,7 @@
 #  role                   :integer
 #  username               :string(255)
 #  avatar                 :string(255)
+#  slug                   :string(255)
 #
 
 class User < ActiveRecord::Base
