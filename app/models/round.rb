@@ -5,6 +5,7 @@
 #  id            :integer          not null, primary key
 #  tournament_id :integer
 #  name          :string(255)
+#  slug          :string(255)
 #  start_at      :date
 #  multiplier    :integer
 #  created_at    :datetime         not null

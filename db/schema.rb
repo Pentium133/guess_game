@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613091554) do
+ActiveRecord::Schema.define(version: 20180613181800) do
+
+  create_table "match_predicts", force: :cascade do |t|
+    t.integer  "match_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "score1",     limit: 4
+    t.integer  "score2",     limit: 4
+    t.integer  "score",      limit: 4
+    t.integer  "guessed",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.integer  "round_id",   limit: 4
