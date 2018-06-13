@@ -49,3 +49,18 @@ h5 {
 .center {
   text-align: center;
 }
+
+.border-score-nol {
+  width:50%;
+  border-left: none!important;
+}
+
+.border-score-nor {
+  width:50%;
+  border-right: none!important;
+}
+
+h5.match-date {
+  margin-top: 4px;
+  margin-bottom: 0px;
+}

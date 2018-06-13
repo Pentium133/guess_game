@@ -15,4 +15,20 @@
 
 class Match < ActiveRecord::Base
   belongs_to :round
+
+  def score1_str
+    if score1 == -1
+      '-'
+    else
+      score1
+    end
+  end
+
+  def score2_str
+    if score2 == -1
+      '-'
+    else
+      score2
+    end
+  end
 end

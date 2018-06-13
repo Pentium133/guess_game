@@ -1,0 +1,22 @@
+<table class="table table-condensed table-bordered no-margin">
+<tbody>
+  <% prev_date = 100.years.ago %>
+  <% @round.matches.order(:start_at).each do |match| %>
+    <% # заголовок с датой %>
+    <% if prev_date.to_date != match.start_at.to_date %>
+    <tr>
+      <td colspan="2" class="center-align-text"><h5 class="match-date"><%= l match.start_at, format: '%d %b %Y' %></h5></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class="border-score-nor">
+        <h4 class="right-align-text"><%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b></h4>
+      </td>
+      <td class="border-score-nol">
+        <h4 class="left-align-text"><b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %></h4>
+      </td>
+    </tr>
+    <% prev_date = match.start_at %>
+  <% end %>
+</tbody>
+</table>
