@@ -12,6 +12,9 @@
 #
 
 class Round < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :tournament
   has_many :matches
 end

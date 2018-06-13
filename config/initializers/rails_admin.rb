@@ -252,6 +252,36 @@ RailsAdmin.config do |config|
       field :start_at
     end
   end
+
+  config.model 'Match' do
+    list do
+      field :start_at
+      field :team1
+      field :score1
+      field :team2
+      field :score2
+      field :round
+    end
+    show do
+      field :round
+      field :start_at
+      field :team1
+      field :score1
+      field :team2
+      field :score2
+      field :created_at
+      field :updated_at
+    end
+    edit do
+      field :round
+      field :start_at
+      field :team1
+      field :score1
+      field :team2
+      field :score2
+    end
+  end
+
 end
 
 

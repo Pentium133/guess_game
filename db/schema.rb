@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180613091554) do
     t.integer  "score1",     limit: 4,   default: -1
     t.string   "team2",      limit: 255
     t.integer  "score2",     limit: 4,   default: -1
-    t.date     "start_at"
+    t.datetime "start_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180613091554) do
   create_table "rounds", force: :cascade do |t|
     t.integer  "tournament_id", limit: 4
     t.string   "name",          limit: 255
+    t.string   "slug",          limit: 255
     t.date     "start_at"
     t.integer  "multiplier",    limit: 4
     t.datetime "created_at",                null: false

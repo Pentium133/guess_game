@@ -3,6 +3,7 @@ class CreateRounds < ActiveRecord::Migration
     create_table :rounds do |t|
       t.integer :tournament_id
       t.string :name
+      t.string :slug
       t.date :start_at
       t.integer :multiplier
 

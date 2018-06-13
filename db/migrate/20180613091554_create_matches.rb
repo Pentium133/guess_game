@@ -6,7 +6,7 @@ class CreateMatches < ActiveRecord::Migration
       t.integer :score1, default: -1
       t.string :team2
       t.integer :score2, default: -1
-      t.date :start_at
+      t.datetime :start_at
 
       t.timestamps null: false
     end
