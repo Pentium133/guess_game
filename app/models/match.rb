@@ -15,6 +15,7 @@
 
 class Match < ActiveRecord::Base
   belongs_to :round
+  has_many :match_predicts
 
   def score1_str
     if score1 == -1
@@ -29,6 +30,15 @@ class Match < ActiveRecord::Base
       '-'
     else
       score2
+    end
+  end
+
+  def predict_ready_for?(user)
+    pr = match_predicts.where(user_id: user.id).first
+    if pr.present? && pr.score1.present? && pr.score2.present?
+      true
+    else
+      false
     end
   end
 end

@@ -95,6 +95,14 @@ ru:
     overall_standing:
       no_results_yet: Ещё нет результатов
 
+  rounds:
+    show:
+      send: Отправить
+
+  matches:
+    predicts:
+      successful: Прогноз сохранён
+
   users:
     show:
       predicts: Прогнозов

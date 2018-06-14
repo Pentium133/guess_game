@@ -11,15 +11,20 @@
     <tr style="border-bottom: none">
       <td style="border-bottom: none">
         <h4 class="teams">
-          <span class="badge badge-success matchtime"><%= l match.start_at, format: '%H:%M' %></span>
+          <span class="badge badge-<%= match_time_class(match, current_user) %> matchtime"><%= l match.start_at, format: '%H:%M' %></span>
           <%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b>:<b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %>
         </h4>
       </td>
     </tr>
-    <%= form_for(match, url: '', html: { novalidate: 'novalidate' }) do |f| %>
+    <% match_predict = MatchPredict.find_or_create_by(user_id: current_user.id, match_id: match.id) %>
+    <%= form_for(match_predict, url: predicts_match_path(match), html: { novalidate: 'novalidate' }) do |f| %>
       <tr style="border-top: none">
         <td style="border-top: none">
-          <p>Ваш прогноз: <%= f.text_field :score1, size: 2 %>:<%= f.text_field :score2, size: 2 %></p>
+          <p>
+            <%= match_predict_status match %>
+            Ваш прогноз: <%= f.text_field :score1, size: 2, style: 'text-align:right' %>:<%= f.text_field :score2, size: 2 %>&nbsp;&nbsp;
+            <%= f.submit t('.send'), class: 'btn btn-default btn-xs predict-btn' %>
+          </p>
         </td>
       </tr>
     <% end %>

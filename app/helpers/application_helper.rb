@@ -48,4 +48,24 @@ module ApplicationHelper
       end
     end
   end
+
+  def match_predict_status(match)
+    if user_signed_in?
+      if match.predict_ready_for? current_user
+        '<i class="fa fa-check-circle green"></i>'.html_safe
+      else
+        '<i class="fa fa-circle-thin red"></i>'.html_safe
+      end
+    end
+  end
+
+  def match_time_class(match, user)
+    if match.predict_ready_for? user
+      'success'
+    elsif match.start_at.to_date == Time.now.to_date
+      'warning'
+    else
+      'default'
+    end
+  end
 end

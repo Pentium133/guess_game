@@ -89,6 +89,14 @@ en:
     overall_standing:
       no_results_yet: No results yet
 
+  rounds:
+    show:
+      send: Send
+
+  matches:
+    predicts:
+      successful: The predicts was save
+
   users:
     show:
       predicts: Predicts

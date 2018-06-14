@@ -17,7 +17,7 @@ class MatchPredict < ActiveRecord::Base
   belongs_to :match
   belongs_to :user
 
-  enum guessed: { none: 0, sprinter: 1, mountains: 2 }
+  enum guessed: { noguessed: 0, result: 1, draw: 2, score: 3 }
 
 
 end
