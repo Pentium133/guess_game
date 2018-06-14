@@ -19,5 +19,11 @@ class MatchPredict < ActiveRecord::Base
 
   enum guessed: { noguessed: 0, result: 1, draw: 2, score: 3 }
 
-
+  def scores_str
+    if match.is_started?
+      score1.to_s + ' : ' + score2.to_s
+    else
+      'X : X'
+    end
+  end
 end

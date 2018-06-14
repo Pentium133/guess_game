@@ -1,0 +1,9 @@
+<% if match.match_predicts.where('user_id <> ?', current_user.id).count > 0 %>
+<table class="table table-condensed table-bordered no-margin">
+  <tbody>
+    <% match.match_predicts.where('user_id <> ?', current_user.id).order(:updated_at).each do |predict| %>
+      <%= render predict %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

@@ -96,7 +96,7 @@ ru:
       no_results_yet: Ещё нет результатов
 
   rounds:
-    show:
+    predict_form:
       send: Отправить
 
   matches:

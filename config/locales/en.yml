@@ -90,7 +90,7 @@ en:
       no_results_yet: No results yet
 
   rounds:
-    show:
+    predict_form:
       send: Send
 
   matches:

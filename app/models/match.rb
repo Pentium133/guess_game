@@ -41,4 +41,8 @@ class Match < ActiveRecord::Base
       false
     end
   end
+
+  def is_started?
+    start_at < Time.now
+  end
 end
