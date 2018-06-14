@@ -1,9 +1,17 @@
 class MatchesController < ApplicationController
 
   def predicts
-    match_predict = MatchPredict.find_or_create_by(match_id: params[:id], user_id: current_user.id)
+    match = Match.find params[:id]
 
-    if match_predict.update(match_predicts_params)
+    if policy(match).manage?
+      user_id = params[:user][:id]
+    else
+      user_id = current_user.id
+    end
+
+    match_predict = MatchPredict.find_or_create_by(match_id: params[:id], user_id: user_id)
+
+    if policy(match_predict.match).predict? && match_predict.update(match_predicts_params)
       redirect_to tournament_round_path(match_predict.match.round.tournament_id, match_predict.match.round_id), notice: t('.successful')
     end
   end

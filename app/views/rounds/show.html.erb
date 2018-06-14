@@ -16,31 +16,13 @@
         </h4>
       </td>
     </tr>
-    <% match_predict = MatchPredict.find_or_create_by(user_id: current_user.id, match_id: match.id) %>
-    <%= form_for(match_predict, url: predicts_match_path(match), html: { novalidate: 'novalidate' }) do |f| %>
-      <tr style="border-top: none">
-        <td style="border-top: none">
 
-          <% if match.match_predicts.where('user_id <> ?', current_user.id).count > 0 %>
-          <p>
-          <table class="table table-condensed table-bordered no-margin">
-          <tbody>
-            <% match.match_predicts.where('user_id <> ?', current_user.id).order(:updated_at).each do |predict| %>
-              <%= render predict %>
-            <% end %>
-          </tbody>
-          </table>
-          </p>
-          <% end %>
-
-          <p>
-            <%= match_predict_status match %>
-            Ваш прогноз: <%= f.text_field :score1, size: 2, style: 'text-align:right' %>:<%= f.text_field :score2, size: 2 %>&nbsp;&nbsp;
-            <%= f.submit t('.send'), class: 'btn btn-default btn-xs predict-btn' %>
-          </p>
-        </td>
-      </tr>
-    <% end %>
+    <tr style="border-top: none">
+      <td style="border-top: none">
+        <%= render partial: 'predict_list', locals: { match: match } %>
+        <%= render partial: 'predict_form', locals: { match: match } %>
+      </td>
+    </tr>
     <% prev_date = match.start_at %>
   <% end %>
 </tbody>

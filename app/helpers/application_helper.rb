@@ -60,10 +60,12 @@ module ApplicationHelper
   end
 
   def match_time_class(match, user)
-    if match.predict_ready_for? user
-      'success'
+    if match.start_at < Time.now
+      'info'
     elsif match.start_at.to_date == Time.now.to_date
       'warning'
+    elsif user_signed_in? && match.predict_ready_for?(user)
+      'success'
     else
       'default'
     end
