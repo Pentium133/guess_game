@@ -5,17 +5,24 @@
     <% # заголовок с датой %>
     <% if prev_date.to_date != match.start_at.to_date %>
     <tr>
-      <td colspan="2" class="center-align-text"><h5 class="match-date"><%= l match.start_at, format: '%d %b %Y' %></h5></td>
+      <td colspan="2"><h5 class="match-date"><%= l match.start_at, format: '%d %b %Y' %></h5></td>
     </tr>
     <% end %>
-    <tr>
-      <td class="border-score-nor">
-        <h4 class="right-align-text"><%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b></h4>
-      </td>
-      <td class="border-score-nol">
-        <h4 class="left-align-text"><b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %></h4>
+    <tr style="border-bottom: none">
+      <td style="border-bottom: none">
+        <h4 class="teams">
+          <span class="badge badge-success matchtime"><%= l match.start_at, format: '%H:%M' %></span>
+          <%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b>:<b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %>
+        </h4>
       </td>
     </tr>
+    <%= form_for(match, url: '', html: { novalidate: 'novalidate' }) do |f| %>
+      <tr style="border-top: none">
+        <td style="border-top: none">
+          <p>Ваш прогноз: <%= f.text_field :score1, size: 2 %>:<%= f.text_field :score2, size: 2 %></p>
+        </td>
+      </tr>
+    <% end %>
     <% prev_date = match.start_at %>
   <% end %>
 </tbody>
