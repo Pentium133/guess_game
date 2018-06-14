@@ -1,13 +1,19 @@
-<% unless match.is_started? %>
-<p>
-  <% match_predict = MatchPredict.find_or_create_by(user_id: current_user.id, match_id: match.id) %>
-  <%= form_for(match_predict, url: predicts_match_path(match), html: { novalidate: 'novalidate' }) do |f| %>
+<% if user_signed_in? %>
+  <% if !match.is_started? || policy(match).manage? %>
+  <p>
+    <% match_predict = MatchPredict.find_or_create_by(user_id: current_user.id, match_id: match.id) %>
+    <%= form_for(match_predict, url: predicts_match_path(match), html: { novalidate: 'novalidate' }) do |f| %>
 
-  <%= match_predict_status match %>
-  Ваш прогноз: <%= f.text_field :score1, size: 2, class: 'predict-score' %>:<%= f.text_field :score2, size: 2, class: 'predict-score' %>&nbsp;&nbsp;
-  <%= f.submit t('.send'), class: 'btn btn-default btn-xs predict-btn' %>
+    <%= match_predict_status match %>
+    Ваш прогноз: <%= f.text_field :score1, size: 2, class: 'predict-score' %>:<%= f.text_field :score2, size: 2, class: 'predict-score' %>&nbsp;&nbsp;
+    <%= f.submit t('.send'), class: 'btn btn-default btn-xs predict-btn' %>
+    <% if policy(match).manage? %>
+      <%= select(:user, :id, User.all.collect {|p| [ p.name, p.id ] }, { :selected => current_user.id}) %>
+    <% end %>
+
+    <% end %>
+  </p>
+  <% else %>
+    <p>Прогнозы уже не принимаются</p>
   <% end %>
-</p>
-<% else %>
-  <p>Прогнозы уже не принимаются</p>
 <% end %>

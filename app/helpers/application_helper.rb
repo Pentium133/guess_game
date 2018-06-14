@@ -64,7 +64,7 @@ module ApplicationHelper
       'info'
     elsif match.start_at.to_date == Time.now.to_date
       'warning'
-    elsif match.predict_ready_for? user
+    elsif user_signed_in? && match.predict_ready_for?(user)
       'success'
     else
       'default'
