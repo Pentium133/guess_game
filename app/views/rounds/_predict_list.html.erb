@@ -1,9 +1,4 @@
-<% if user_signed_in? %>
-  <% pr = match.match_predicts.where('user_id <> ?', current_user.id).order(:updated_at) %>
-<% else %>
-  <% pr = match.match_predicts.order(:updated_at) %>
-<% end %>
-
+<% pr = match.match_predicts.order(:updated_at) %>
 <% if pr.count > 0 %>
 <table class="table table-condensed table-bordered no-margin">
   <tbody>
