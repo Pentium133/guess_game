@@ -4,6 +4,8 @@ ru:
     races: Гонки
     users: Участники
     teams: Teams
+    football: Футбол
+    tournaments: Футбольные турниры
 
   layouts:
     users_links:
@@ -92,6 +94,14 @@ ru:
       predicts_scores: Очки за прогнозы
     overall_standing:
       no_results_yet: Ещё нет результатов
+
+  rounds:
+    show:
+      send: Отправить
+
+  matches:
+    predicts:
+      successful: Прогноз сохранён
 
   users:
     show:

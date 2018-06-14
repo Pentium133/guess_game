@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613075218) do
+ActiveRecord::Schema.define(version: 20180613181800) do
+
+  create_table "match_predicts", force: :cascade do |t|
+    t.integer  "match_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "score1",     limit: 4
+    t.integer  "score2",     limit: 4
+    t.integer  "score",      limit: 4
+    t.integer  "guessed",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "round_id",   limit: 4
+    t.string   "team1",      limit: 255
+    t.integer  "score1",     limit: 4,   default: -1
+    t.string   "team2",      limit: 255
+    t.integer  "score2",     limit: 4,   default: -1
+    t.datetime "start_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "predict_results", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -59,6 +81,16 @@ ActiveRecord::Schema.define(version: 20150613075218) do
     t.string   "country",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "tournament_id", limit: 4
+    t.string   "name",          limit: 255
+    t.string   "slug",          limit: 255
+    t.date     "start_at"
+    t.integer  "multiplier",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -118,6 +150,15 @@ ActiveRecord::Schema.define(version: 20150613075218) do
     t.string   "code",       limit: 255
     t.string   "short_name", limit: 255
     t.string   "country",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.date     "start_at"
+    t.date     "end_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <div class="blog blog-info no-margin">
+      <div class="blog-header">
+        <h5 class="blog-title"><%= t 'menu.tournaments' %></h5>
+      </div>
+      <div class="blog-body">
+        <div class="table-responsive">
+          <table class="table table-condensed table-bordered no-margin">
+            <tbody>
+            <% @tournaments.each do |tournament| %>
+              <%= render tournament %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>

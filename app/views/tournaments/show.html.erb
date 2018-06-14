@@ -1,0 +1,7 @@
+<table class="table table-condensed table-bordered no-margin">
+  <tbody>
+  <% @tournament.rounds.order(:start_at).each do |round| %>
+    <%= render round %>
+  <% end %>
+  </tbody>
+</table>

@@ -5,8 +5,7 @@ class CreateStages < ActiveRecord::Migration
       t.integer :stage_number
       t.integer :race_id
       t.integer :stage_type, default: 0
-      t.datetime :start_at
-
+      t.date :start_at
       t.timestamps null: false
     end
   end

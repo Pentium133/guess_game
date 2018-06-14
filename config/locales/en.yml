@@ -4,6 +4,8 @@ en:
     races: Races
     users: Users
     teams: Teams
+    football: Sooccer
+    tournaments: Sooccer tournaments
 
   layouts:
     users_links:
@@ -86,6 +88,14 @@ en:
       predicts_scores: "Predict's scores"
     overall_standing:
       no_results_yet: No results yet
+
+  rounds:
+    show:
+      send: Send
+
+  matches:
+    predicts:
+      successful: The predicts was save
 
   users:
     show:
