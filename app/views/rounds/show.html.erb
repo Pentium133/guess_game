@@ -6,7 +6,7 @@
     <% if prev_date.to_date != match.start_at.to_date %>
     <tr>
       <td colspan="2">
-        <% if prev_date.to_date == Time.now.to_date %>
+        <% if match.start_at.to_date == Time.now.to_date %>
           <a name="today"></a>
         <% end %>
         <h5 class="match-date"><%= l match.start_at, format: '%d %b %Y' %></h5>
