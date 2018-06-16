@@ -98,10 +98,14 @@ ru:
   rounds:
     predict_form:
       send: Отправить
+    result_form:
+      save: Сохранить
 
   matches:
     predicts:
       successful: Прогноз сохранён
+    updates:
+      successful: Результат сохранён
 
   users:
     show:

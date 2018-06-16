@@ -1,5 +1,14 @@
 class MatchesController < ApplicationController
 
+  def update
+    match = Match.find params[:id]
+    if policy(match).manage?
+      if match.update(match_params)
+        redirect_to tournament_round_path(match.round.tournament_id, match.round_id), notice: t('.successful')
+      end
+    end
+  end
+
   def predicts
     match = Match.find params[:id]
 
@@ -20,5 +29,9 @@ class MatchesController < ApplicationController
 
   def match_predicts_params
     params.require(:match_predict).permit(:score1, :score2)
+  end
+
+  def match_params
+    params.require(:match).permit(:score1, :score2)
   end
 end

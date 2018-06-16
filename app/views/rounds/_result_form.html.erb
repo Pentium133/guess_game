@@ -1,0 +1,6 @@
+<% if user_signed_in? && policy(match).manage? %>
+  <%= form_for(match, url: match_path(match) + "#match#{match.id.to_s}", html: { novalidate: 'novalidate' }) do |f| %>
+  Результат: <%= f.text_field :score1, size: 2, class: 'predict-score' %>:<%= f.text_field :score2, size: 2, class: 'predict-score' %>&nbsp;&nbsp;
+  <%= f.submit t('.save'), class: 'btn btn-default btn-xs predict-btn' %>
+  <% end %>
+<% end %>

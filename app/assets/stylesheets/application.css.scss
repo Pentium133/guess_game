@@ -68,10 +68,11 @@ h5.match-date {
 h4.teams {
   margin-top: 0px;
   margin-bottom: 0px;
+  display: inline;
 }
 
 .matchtime {
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 .predict-btn {
@@ -90,4 +91,9 @@ td.predict-time {
 
 input.predict-score {
   text-align: center;
+}
+
+form.edit_match {
+  display: inline;
+  margin-left: 30px;
 }

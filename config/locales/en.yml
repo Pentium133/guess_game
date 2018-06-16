@@ -92,10 +92,14 @@ en:
   rounds:
     predict_form:
       send: Send
+    result_form:
+      save: Сохранить
 
   matches:
     predicts:
       successful: The predicts was save
+    updates:
+      successful: Match was saved
 
   users:
     show:

@@ -20,6 +20,7 @@
           <span class="badge badge-<%= match_time_class(match, current_user) %> matchtime"><%= l match.start_at, format: '%H:%M' %></span>
           <%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b>:<b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %>
         </h4>
+        <%= render partial: 'result_form', locals: { match: match } %>
       </td>
     </tr>
 
