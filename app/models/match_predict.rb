@@ -17,7 +17,7 @@ class MatchPredict < ActiveRecord::Base
   belongs_to :match
   belongs_to :user
 
-  enum guessed: { noguessed: 0, result: 1, draw: 2, score: 3 }
+  enum guessed: { noguessed: 0, result: 1, difference: 2, score: 3 }
 
   scope :active, -> { where('score1 IS not null AND score2 IS not null') }
 

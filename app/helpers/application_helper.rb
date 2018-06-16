@@ -70,4 +70,16 @@ module ApplicationHelper
       'default'
     end
   end
+
+  def predict_status(match_predict)
+    if match_predict.noguessed?
+      '<span class="badge badge-default">мимо</span>'.html_safe
+    elsif match_predict.result?
+      '<span class="badge badge-warning">исход</span>'.html_safe
+    elsif match_predict.difference?
+      '<span class="badge badge-info">разница</span>'.html_safe
+    elsif match_predict.score?
+      '<span class="badge badge-success">точно!</span>'.html_safe
+    end
+  end
 end

@@ -17,6 +17,29 @@ class Match < ActiveRecord::Base
   belongs_to :round
   has_many :match_predicts
 
+  after_save do |match|
+    MatchPredict.record_timestamps = false
+    if score2 >= 0 && score1 >= 0
+      match_predicts.each do |match_predict|
+        if match_predict.score1.present? && match_predict.score2.present?
+          if match_predict.score1 == score1 && match_predict.score2 == score2
+            match_predict.guessed = 'score'
+          elsif match_predict.score1 - match_predict.score2 == score1 - score2
+            match_predict.guessed = 'difference'
+          elsif match_predict.score1 > match_predict.score2 && score1 > score2
+            match_predict.guessed = 'result'
+          elsif match_predict.score1 < match_predict.score2 && score1 < score2
+            match_predict.guessed = 'result'
+          else
+            match_predict.guessed = 'noguessed'
+          end
+        end
+        match_predict.save(touch: false)
+      end
+    end
+    MatchPredict.record_timestamps = true
+  end
+
   def score1_str
     if score1 == -1
       '-'
