@@ -2,7 +2,7 @@
   <% if !match.is_started? || policy(match).manage? %>
   <p>
     <% match_predict = MatchPredict.find_or_create_by(user_id: current_user.id, match_id: match.id) %>
-    <%= form_for(match_predict, url: predicts_match_path(match), html: { novalidate: 'novalidate' }) do |f| %>
+    <%= form_for(match_predict, url: predicts_match_path(match) + "#match#{match_predict.match_id.to_s}", html: { novalidate: 'novalidate' }) do |f| %>
 
     <%= match_predict_status match %>
     Ваш прогноз: <%= f.text_field :score1, size: 2, class: 'predict-score' %>:<%= f.text_field :score2, size: 2, class: 'predict-score' %>&nbsp;&nbsp;
