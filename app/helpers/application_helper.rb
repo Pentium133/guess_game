@@ -71,7 +71,7 @@ module ApplicationHelper
     end
   end
 
-  def match_predict_status(match_predict)
+  def match_predict_result_status(match_predict)
     if match_predict.noguessed?
       '<span class="badge badge-default">мимо</span>'.html_safe
     elsif match_predict.result?
