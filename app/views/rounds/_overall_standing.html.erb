@@ -1,0 +1,23 @@
+<div class="blog">
+  <div class="blog-header">
+    <h5 class="blog-title"><%= title %></h5>
+  </div>
+
+  <div class="blog-body">
+    <% if overall.any? %>
+    <table class="table table-condensed no-margin">
+    <tbody>
+    <% overall.each_with_index do |item, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><a href="<%= user_path item[2] %>"><%= item[1] %></a></td>
+        <td><%= item[2] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+    <% else %>
+     <%= t '.no_results_yet' %>
+    <% end %>
+  </div>
+</div>

@@ -1,36 +1,46 @@
-<table class="table table-condensed table-bordered no-margin">
-<tbody>
-  <% prev_date = 100.years.ago %>
-  <% @round.matches.order(:start_at).each do |match| %>
-    <% # заголовок с датой %>
-    <% if prev_date.to_date != match.start_at.to_date %>
-    <tr>
-      <td colspan="2">
-        <% if match.start_at.to_date == Time.now.to_date %>
-          <a name="today"></a>
-        <% end %>
-        <h5 class="match-date"><%= l match.start_at, format: '%d %b %Y' %></h5>
-      </td>
-    </tr>
-    <% end %>
-    <tr style="border-bottom: none">
-      <td style="border-bottom: none">
-        <a name="match<%= match.id.to_s %>"></a>
-        <h4 class="teams">
-          <span class="badge badge-<%= match_time_class(match, current_user) %> matchtime"><%= l match.start_at, format: '%H:%M' %></span>
-          <%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b>:<b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %>
-        </h4>
-        <%= render partial: 'result_form', locals: { match: match } %>
-      </td>
-    </tr>
+<div class="row">
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-    <tr style="border-top: none">
-      <td style="border-top: none">
-        <%= render partial: 'predict_list', locals: { match: match } %>
-        <%= render partial: 'predict_form', locals: { match: match } %>
-      </td>
-    </tr>
-    <% prev_date = match.start_at %>
-  <% end %>
-</tbody>
-</table>
+    <table class="table table-condensed table-bordered no-margin">
+    <tbody>
+      <% prev_date = 100.years.ago %>
+      <% @round.matches.order(:start_at).each do |match| %>
+        <% # заголовок с датой %>
+        <% if prev_date.to_date != match.start_at.to_date %>
+        <tr>
+          <td colspan="2">
+            <% if match.start_at.to_date == Time.now.to_date %>
+              <a name="today"></a>
+            <% end %>
+            <h5 class="match-date"><%= l match.start_at, format: '%d %b %Y' %></h5>
+          </td>
+        </tr>
+        <% end %>
+        <tr style="border-bottom: none">
+          <td style="border-bottom: none">
+            <a name="match<%= match.id.to_s %>"></a>
+            <h4 class="teams">
+              <span class="badge badge-<%= match_time_class(match, current_user) %> matchtime"><%= l match.start_at, format: '%H:%M' %></span>
+              <%= match.team1 %>&nbsp;&nbsp;<b><%= match.score1_str %></b>:<b><%= match.score2_str %></b>&nbsp;&nbsp;<%= match.team2 %>
+            </h4>
+            <%= render partial: 'result_form', locals: { match: match } %>
+          </td>
+        </tr>
+
+        <tr style="border-top: none">
+          <td style="border-top: none">
+            <%= render partial: 'predict_list', locals: { match: match } %>
+            <%= render partial: 'predict_form', locals: { match: match } %>
+          </td>
+        </tr>
+        <% prev_date = match.start_at %>
+      <% end %>
+    </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= render partial: 'rounds/overall_standing', locals: { overall: @overall, title: @round.name } %>
+  </div>
+</div>

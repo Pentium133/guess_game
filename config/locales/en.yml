@@ -26,6 +26,7 @@ en:
     mountains: mountains
     not_ready_for_predictions: Not ready for predictions yet
     general_predict: Overall classification predicts
+    overall_round: Results of round
 
   pages:
     dashboard:
@@ -98,7 +99,7 @@ en:
   matches:
     predicts:
       successful: The predicts was save
-    updates:
+    update:
       successful: Match was saved
 
   users:

@@ -26,6 +26,7 @@ ru:
     mountains: горной
     not_ready_for_predictions: Ещё не готово для прогнозов
     general_predict: Прогноз на генеральную классификацию
+    overall_round: Результаты тура
 
   pages:
     dashboard:
@@ -104,7 +105,7 @@ ru:
   matches:
     predicts:
       successful: Прогноз сохранён
-    updates:
+    update:
       successful: Результат сохранён
 
   users:
