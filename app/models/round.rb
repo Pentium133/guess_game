@@ -27,7 +27,9 @@ class Round < ActiveRecord::Base
       JOIN users on user_id = users.id
       JOIN matches on match_id = matches.id
       JOIN rounds on rounds.id = matches.round_id
-      WHERE rounds.id = 1
+      WHERE rounds.id = #{id}
+      AND mp.score1 is not NULL
+      AND mp.score2 is not NULL
       GROUP by mp.user_id
       ORDER by summscore desc"
 
