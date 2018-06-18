@@ -24,16 +24,21 @@ class Match < ActiveRecord::Base
         if match_predict.score1.present? && match_predict.score2.present?
           if match_predict.score1 == score1 && match_predict.score2 == score2
             match_predict.guessed = 'score'
+            match_predict.score = 3
           elsif match_predict.score1 - match_predict.score2 == score1 - score2
             match_predict.guessed = 'difference'
+            match_predict.score = 2
           elsif match_predict.score1 > match_predict.score2 && score1 > score2
             match_predict.guessed = 'result'
+            match_predict.score = 1
           elsif match_predict.score1 < match_predict.score2 && score1 < score2
             match_predict.guessed = 'result'
+            match_predict.score = 1
           else
             match_predict.guessed = 'noguessed'
           end
         end
+        match_predict.score = match_predict.score.to_i * match_predict.match.round.multiplier.to_i
         match_predict.save(touch: false)
       end
     end

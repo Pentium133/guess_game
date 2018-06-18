@@ -82,4 +82,17 @@ module ApplicationHelper
       '<span class="badge badge-success">точно!</span>'.html_safe
     end
   end
+
+  def match_predict_result_score(match_predict)
+    if match_predict.noguessed?
+      css_class = 'default'
+    elsif match_predict.result?
+      css_class = 'warning'
+    elsif match_predict.difference?
+      css_class = 'info'
+    elsif match_predict.score?
+      css_class = 'success'
+    end
+    "<span class='badge #{css_class}-bg'>#{match_predict.score}</span>".html_safe
+  end
 end

@@ -1,5 +1,5 @@
 <tr>
   <td class="predict-time"><%= l match_predict.updated_at, format: :short %></td>
   <td class="predict-score"><%= match_predict.scores_str %></td>
-  <td><%= link_to_user match_predict.user %> <%= match_predict_result_status match_predict %></td>
+  <td><%= link_to_user match_predict.user %> <%= match_predict_result_status match_predict %>  <%= match_predict_result_score match_predict %></td>
 </tr>
