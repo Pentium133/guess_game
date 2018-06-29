@@ -10,6 +10,7 @@ class TournamentsController < ApplicationController
   def show
     @tournament = Tournament.friendly.find(params[:id])
     @page_title = @tournament.name
+    @overall = @tournament.get_overall
 
     add_breadcrumb I18n.t('menu.tournaments'), :tournaments_path
     add_breadcrumb @tournament.name
